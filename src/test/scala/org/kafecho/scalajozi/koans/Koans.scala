@@ -2,7 +2,7 @@ package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoansSuites
 
-class Koans extends KoansSuites(
+class Koans extends KoansSuites(messageColumnSize = 42)(
   new Koan00TypeInference,
   new Koan01ValandVars,
   new Koan02LookMaNoOperators,
