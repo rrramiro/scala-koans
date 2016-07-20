@@ -1,5 +1,6 @@
 package org.functionalkoans.forscala
 
+import com.github.ghik.silencer.silent
 import org.scalatest.{FunSuite, Matchers}
 
 
@@ -12,7 +13,7 @@ class AboutEmptyValues extends FunSuite with Matchers with KoanMatcher  {
   test("None should be identical to None") {
     val a = None
     val b = None
-    assert(a eq __)
+    assert(a eq __): @silent
   }
 
   test("None can be converted to a String") {

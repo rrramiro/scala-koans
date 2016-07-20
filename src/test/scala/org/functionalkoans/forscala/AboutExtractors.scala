@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
+import com.github.ghik.silencer.silent
 import org.scalatest.{FunSuite, Matchers}
 
-
+@silent
 class AboutExtractors extends FunSuite with Matchers with KoanMatcher  {
   test("When you create a case class, it automatically can be used with " +
     "pattern matching since it has an extractor") {

@@ -1,5 +1,6 @@
 package org.functionalkoans.forscala
 
+import com.github.ghik.silencer.silent
 import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
@@ -25,6 +26,6 @@ class AboutAsserts extends FunSuite with Matchers with KoanMatcher {
   }
 
   test("sometimes we expect you to fill in the values") {
-    assert(__ == 1 + 1)
+    assert(__ == 1 + 1): @silent
   }
 }
