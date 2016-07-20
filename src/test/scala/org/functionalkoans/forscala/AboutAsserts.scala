@@ -7,15 +7,15 @@ import org.scalatest.Matchers
 class AboutAsserts extends FunSuite with Matchers with KoanMatcher {
 
   test("asserts can take a boolean argument") {
-    assert(true    ) // should be true
+    assert(false) // should be true
   }
 
   test("asserts can include a message") {
-    assert(true, "This should be true")
+    assert(false, "This should be true")
   }
 
   test("true and false values can be compared with should matchers") {
-    true should be(true) // should be true
+    false should be(true) // should be true
   }
 
   test("booleans in asserts can test equality") {
