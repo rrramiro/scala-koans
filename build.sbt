@@ -1,5 +1,7 @@
 addCommandAlias("koans", "~test-only org.functionalkoans.forscala.Koans")
 
+addCommandAlias("koans2", "~test-only org.kafecho.scalajozi.koans.Koans")
+
 name := "scala-koans"
 
 version := "1.0"
