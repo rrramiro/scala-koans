@@ -1,8 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import com.github.ghik.silencer.silent
+import org.scalatest.FunSuite
 import org.scalatest.Matchers
 
+@silent
 class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
 
   test("Character Literals are quoted with single quotes") {
@@ -48,7 +50,7 @@ class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
 	by three quotation marks""") {
     val a = """An apple a day
     keeps the doctor away"""
-    a.split('\n').size should be(__) //a.split('\n').size determines the number of lines
+    a.split('\n').length should be(__) //a.split('\n').length determines the number of lines
   }
 
   test("Use stripMargin to prettify multi-line strings") {

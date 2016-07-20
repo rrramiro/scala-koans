@@ -1,5 +1,6 @@
 package org.functionalkoans.forscala
 
+import com.github.ghik.silencer.silent
 import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
@@ -26,7 +27,7 @@ class AboutFormatting extends FunSuite with Matchers with KoanMatcher {
   test("Character Literals can be an escape sequence, including octal or hexidecimal") {
 
     val c = '\u0061' //unicode for a
-    val d = '\141' //octal for a
+    val d = '\141': @silent //octal for a
     val e = '\"'
     val f = '\\'
 
