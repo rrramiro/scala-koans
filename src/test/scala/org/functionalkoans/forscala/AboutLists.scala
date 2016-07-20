@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLists extends FunSuite with Matchers with KoanMatcher  {
+class AboutLists extends FunSuite with Matchers with KoanMatcher {
 
   test("Eq tests identity (same object)") {
     val a = List(1, 2, 3)
@@ -73,18 +73,18 @@ class AboutLists extends FunSuite with Matchers with KoanMatcher  {
     a.toString should equal("List(__, __, __, __, __)")
 
     // map a function to double the numbers over the list
-    a.map {v => v * 2} should equal(List(__, __, __, __, __))
+    a.map { v => v * 2 } should equal(List(__, __, __, __, __))
 
     // filter any values divisible by 3 in the list
-    a.filter {v => v % 3 == 0} should equal(List(__, __))
+    a.filter { v => v % 3 == 0 } should equal(List(__, __))
   }
 
   test("Functions over lists can use _ as shorthand") {
     val a = List(1, 2, 3)
 
-    a.map {_ * 2} should equal(List(__, __, __))
+    a.map { _ * 2 } should equal(List(__, __, __))
 
-    a.filter {_ % 2 == 0} should equal(List(__))
+    a.filter { _ % 2 == 0 } should equal(List(__))
   }
 
   test("Functions over lists can use () instead of {}") {
@@ -99,7 +99,6 @@ class AboutLists extends FunSuite with Matchers with KoanMatcher  {
     a.reduceLeft(_ + _) should equal(__)
     a.reduceLeft(_ * _) should equal(__)
   }
-
 
   test("Foldleft is like reduce, but with an explicit starting value") {
     val a = List(1, 3, 5, 7)

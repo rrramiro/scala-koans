@@ -1,14 +1,15 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 import scala.annotation.tailrec
 
-class AboutRecursion extends FunSuite with Matchers with KoanMatcher  {
+class AboutRecursion extends FunSuite with Matchers with KoanMatcher {
 
   test(
     """Methods can be embedded in other methods, this is particularly useful as helper methods for recursion.
-      | Also in Scala, any recursive method must have a return type.""".stripMargin) {
+      | Also in Scala, any recursive method must have a return type.""".stripMargin
+  ) {
 
     //Reminder: 5! = 1 x 2 x 3 x 4 x 5 = 120
 
@@ -31,8 +32,8 @@ class AboutRecursion extends FunSuite with Matchers with KoanMatcher  {
   test(
     """As a precaution, the helpful @tailrec annotation will throw a compile time if a method is not tail recursive,
       | meaning that the last call and only call of the method is the recursive method. Scala optimizes recursive calls
-      | to a loop from a stack""".stripMargin) {
-
+      | to a loop from a stack""".stripMargin
+  ) {
 
     //    @tailrec   //Uncomment this like to see the result, then comment it again and answer the koan
     def fibonacci(n: Int): Int = {
@@ -48,8 +49,8 @@ class AboutRecursion extends FunSuite with Matchers with KoanMatcher  {
 
   test(
     """As properly tail recursive method will use an accumulator method so that the only call of a recursive method is the last one.
-      | just like the first koan above.""".stripMargin) {
-
+      | just like the first koan above.""".stripMargin
+  ) {
 
     def fibonacci(n: Int) = {
       @tailrec

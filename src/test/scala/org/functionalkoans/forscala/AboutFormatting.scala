@@ -1,20 +1,18 @@
 package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutFormatting extends FunSuite with Matchers with KoanMatcher {
 
   test("String can be placed in format") {
     val s = "Hello World"
-    "Application %s".format(s) should be (__)
+    "Application %s".format(s) should be(__)
   }
 
   test("Character Literals can be an a single character") {
     val a = 'a'
     val b = 'B'
-
 
     //format(a) is a string format, meaning the "%c".format(x)
     //will return the string representation of the char.
@@ -31,23 +29,21 @@ class AboutFormatting extends FunSuite with Matchers with KoanMatcher {
     val e = '\"'
     val f = '\\'
 
-
     "%c".format(c) should be(__)
     "%c".format(d) should be(__)
     "%c".format(e) should be(__)
     "%c".format(f) should be(__)
   }
 
-
   test("Formatting can also include numbers") {
     val j = 190
-    "%d bottles of beer on the wall" format j - 100 should be (__)
+    "%d bottles of beer on the wall" format j - 100 should be(__)
   }
 
   test("Formatting can be used for any number of items, like a string and a number") {
     val j = 190
     val k = "vodka"
 
-    "%d bottles of %s on the wall".format(j - 100, k) should be (__)
+    "%d bottles of %s on the wall".format(j - 100, k) should be(__)
   }
 }

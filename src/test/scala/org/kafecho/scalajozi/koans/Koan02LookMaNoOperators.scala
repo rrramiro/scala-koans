@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 import scala.language.postfixOps
 
@@ -9,8 +9,8 @@ class Koan02LookMaNoOperators extends FunSuite with Matchers with KoanMatcher {
 
   test("In scala, -,+,/,* are methods, not operators") {
     (1 + 1) should equal(__)
-    (1. + (1)) should equal(__)
-    (1. * (5)) should equal(__)
+    (1.+(1)) should equal(__)
+    (1.*(5)) should equal(__)
   }
 
   test("methods can be invoked like operators") {

@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutTypeSignatures extends FunSuite with Matchers with KoanMatcher  {
+class AboutTypeSignatures extends FunSuite with Matchers with KoanMatcher {
   test("In Java you declare a generic type within a <>, in Scala it is []") {
     val z: List[String] = "Do" :: "Re" :: "Mi" :: "Fa" :: "So" :: "La" :: "Te" :: "Do" :: Nil
   }
@@ -25,7 +25,7 @@ class AboutTypeSignatures extends FunSuite with Matchers with KoanMatcher  {
     }
 
     val intRand = new IntRandomizer
-    (intRand.draw < Int.MaxValue) should be (__)
+    (intRand.draw < Int.MaxValue) should be(__)
   }
 
   test("Class meta-information can be retrieved by class name by using classOf[className]") {

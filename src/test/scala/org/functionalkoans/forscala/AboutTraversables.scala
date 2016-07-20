@@ -1,17 +1,15 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
-import language.postfixOps
-import Stream._
+import scala.Stream._
+import scala.language.postfixOps
 
 class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
 
-
-  test( """Traverables are the superclass of Lists, Arrays, Maps, Sets, Streams, and more.
+  test("""Traverables are the superclass of Lists, Arrays, Maps, Sets, Streams, and more.
           |   The methods involved can be applied to each other in a different type.  ++ appends
-          |   two Traversables together.""") {
+          |   two Traversables together.""".stripMargin) {
 
     val set = Set(1, 9, 10, 22)
     val list = List(3, 4, 5, 10)
@@ -22,33 +20,33 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     result2.size should be(__)
   }
 
-  test( """map will apply the given function on all elements of a
-          |  Traversable and return a new collection of the result.""") {
+  test("""map will apply the given function on all elements of a
+          |  Traversable and return a new collection of the result.""".stripMargin) {
     val set = Set(1, 3, 4, 6)
     val result = set.map(_ * 4)
     result.last should be(__)
   }
 
-  test( """flatten will smash all child Traversables within a Traversable""") {
+  test("""flatten will smash all child Traversables within a Traversable""") {
     val list = List(List(1), List(2, 3, 4), List(5, 6, 7), List(8, 9, 10))
     list.flatten should be(List(__, __, __, __, __, __, __, __, __, __))
   }
 
-  test( """flatMap will not only apply the given function on all elements of a Traversable,
-          |  but all elements within the elements and flatten the results""") {
+  test("""flatMap will not only apply the given function on all elements of a Traversable,
+          |  but all elements within the elements and flatten the results""".stripMargin) {
     val list = List(List(1), List(2, 3, 4), List(5, 6, 7), List(8, 9, 10))
     val result = list.flatMap(_.map(_ * 4))
     result should be(List(__, __, __, __, __, __, __, __, __, __))
   }
 
-  test( """flatMap of Options will filter out all Nones and Keep the Somes""") {
+  test("""flatMap of Options will filter out all Nones and Keep the Somes""") {
     val list = List(1, 2, 3, 4, 5)
     val result = list.flatMap(it => if (it % 2 == 0) Some(it) else None)
     result should be(List(__, __))
   }
 
-  test( """collect will apply a partial function to all elements of a Traversable
-          and will return a different collection. In this koan, a case fragment is a partial function.""") {
+  test("""collect will apply a partial function to all elements of a Traversable
+          | and will return a different collection. In this koan, a case fragment is a partial function.""".stripMargin) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val result = list.collect {
       case x: Int if (x % 2 == 0) => x * 3
@@ -56,9 +54,9 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     result should be(List(__, __, __, __))
   }
 
-  test( """collect will apply a partial function to all elements of a Traversable
+  test("""collect will apply a partial function to all elements of a Traversable
           |  and will return a different collection. In this koan, two case fragments are chained to create
-          |  a more robust result.""") {
+          |  a more robust result.""".stripMargin) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val partialFunction1: PartialFunction[Int, Int] = {
       case x: Int if x % 2 == 0 => x * 3
@@ -70,94 +68,94 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     result should be(List(__, __, __, __, __, __, __))
   }
 
-  test( """foreach will apply a function to all elements of a Traversable, but unlike
+  test("""foreach will apply a function to all elements of a Traversable, but unlike
           | the map function, it will not return anything since the return type is Unit, which
-          | is like a void return type in Java, C++""") {
+          | is like a void return type in Java, C++""".stripMargin) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     list.foreach(num => println(num * 4))
     list should be(List(__, __, __, __, __, __, __))
   }
 
-  test( """toArray will convert any Traversable to an Array, which is a special wrapper around a
-          |  primitive Java array.""") {
+  test("""toArray will convert any Traversable to an Array, which is a special wrapper around a
+          |  primitive Java array.""".stripMargin) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
     val result = set.toArray
     result.isInstanceOf[Array[Int]] should be(__)
   }
 
-  test( """toList will convert any Traversable to a List.""") {
+  test("""toList will convert any Traversable to a List.""") {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
     val result = set.toList
 
     result.isInstanceOf[List[_]] should be(__)
   }
 
-  test( """toList, as well as other conversion methods like toSet, toArray,
-          |  will not convert if the collection type is the same.""") {
+  test("""toList, as well as other conversion methods like toSet, toArray,
+          |  will not convert if the collection type is the same.""".stripMargin) {
     val list = List(5, 6, 7, 8, 9)
     val result = list.toList
     result eq list should be(__) //Reminder: eq tests for reference equality
   }
 
-  test( """toIterable will convert any Traversable to an Iterable. This is a base
+  test("""toIterable will convert any Traversable to an Iterable. This is a base
           |  trait for all Scala collections that define an iterator method to step
           |  through one-by-one the collection's elements.
-          |  (see AboutIterable koan).""") {
+          |  (see AboutIterable koan).""".stripMargin) {
 
     val set = Set(4, 6, 7, 8, 9, 13, 14)
     val result = set.toIterable
     result.isInstanceOf[Iterable[_]] should be(__)
   }
 
-  test( """toSeq will convert any Traversable to a Seq which is an ordered Iterable
+  test("""toSeq will convert any Traversable to a Seq which is an ordered Iterable
           |  and is the superclass to List, Queues, and Vectors. Sequences provide
           |  a method apply for indexing. Indices range from 0 up the the
-          |  length of a sequence.""") {
+          |  length of a sequence.""".stripMargin) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
     val result = set.toSeq
     result.isInstanceOf[Seq[_]] should be(__)
   }
 
-  test( """toIndexedSeq will convert any Traversable to an IndexedSeq which is
+  test("""toIndexedSeq will convert any Traversable to an IndexedSeq which is
           |  an indexed sequence used in
-          |  Vectors and Strings""") {
+          |  Vectors and Strings""".stripMargin) {
     val set = Set(4, 6, 7, 8, 9, 13, 14)
     val result = set.toIndexedSeq
     result.isInstanceOf[IndexedSeq[_]] should be(__)
   }
 
-  test( """toStream will convert any Traversable to a Stream which is
+  test("""toStream will convert any Traversable to a Stream which is
           |  a lazy list where elements are evaluated as they
-          |  are needed.""") {
+          |  are needed.""".stripMargin) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val result = list.toStream
     result.isInstanceOf[Stream[_]] should be(__)
     (result take 3) should be(List(__, __, __))
   }
 
-  test( """toSet will convert any Traversable to a Set which is
-          |  a collection of unordered, unique values""") {
+  test("""toSet will convert any Traversable to a Set which is
+          |  a collection of unordered, unique values""".stripMargin) {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val result = list.toSet
     result.isInstanceOf[Set[_]] should be(__)
   }
 
-  test( """toMap will convert any Traversable to a Map. How it's
+  test("""toMap will convert any Traversable to a Map. How it's
           | used depends on the original collection; if it's a List or Seq,
-          | it should be of parameterized type Tuple2.""") {
+          | it should be of parameterized type Tuple2.""".stripMargin) {
     val list = List("Phoenix" -> "Arizona", "Austin" -> "Texas")
     val result = list.toMap
     result.isInstanceOf[Map[_, _]] should be(__)
   }
 
-  test( """toMap will convert a Set to a Map,
-          | it should be of parameterized type Tuple2.""") {
+  test("""toMap will convert a Set to a Map,
+          | it should be of parameterized type Tuple2.""".stripMargin) {
     val set = Set("Phoenix" -> "Arizona", "Austin" -> "Texas")
     val result = set.toMap
     result.isInstanceOf[Map[_, _]] should be(__)
   }
 
-  test( """isEmpty is pretty self evident""") {
+  test("""isEmpty is pretty self evident""") {
     val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.isEmpty should be(__)
 
@@ -165,7 +163,7 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     set.isEmpty should be(__)
   }
 
-  test( """nonEmpty is pretty self evident too""") {
+  test("""nonEmpty is pretty self evident too""") {
     val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.nonEmpty should be(__)
 
@@ -173,13 +171,13 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     set.nonEmpty should be(__)
   }
 
-  test( """size provides the size of the traversable""") {
+  test("""size provides the size of the traversable""") {
     val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.size should be(__)
   }
 
-  test( """hasDefiniteSize will return true if there is traversable that has a
-          finite end, otherwise false""") {
+  test("""hasDefiniteSize will return true if there is traversable that has a
+         | finite end, otherwise false""".stripMargin) {
     val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
     map.hasDefiniteSize should be(__)
 
@@ -188,15 +186,15 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     stream.hasDefiniteSize should be(__)
   }
 
-  test( """head will return the first element of an ordered collection, or some random
-          | element if order is not defined like in a Set or Map""") {
+  test("""head will return the first element of an ordered collection, or some random
+          | element if order is not defined like in a Set or Map""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.head should be(__)
   }
 
-  test( """headOption will return the first element as an Option of an order collection,
+  test("""headOption will return the first element as an Option of an order collection,
           | or some random element if order is not defined.  If a first element
-          | is not available, then None is returned""") {
+          | is not available, then None is returned""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.headOption should be(Some(__))
 
@@ -204,15 +202,15 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     list2.headOption should be(__)
   }
 
-  test( """last will return the last element of an ordered collection, or some random
-          | element if order is not defined like in a Set or Map""") {
+  test("""last will return the last element of an ordered collection, or some random
+          | element if order is not defined like in a Set or Map""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.last should be(__)
   }
 
-  test( """lastOption will return the first element as an Option of an order collection,
+  test("""lastOption will return the first element as an Option of an order collection,
           | or some random element if order is not defined.  If a first element
-          | is not available, then None is returned""") {
+          | is not available, then None is returned""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.lastOption should be(Some(__))
 
@@ -220,8 +218,8 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     list2.lastOption should be(__)
   }
 
-  test( """find will locate the first item that matches a predicate p as Some or None if
-          | an element is not found""") {
+  test("""find will locate the first item that matches a predicate p as Some or None if
+          | an element is not found""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.find(_ % 2 != 0) should be(Some(__))
 
@@ -229,97 +227,97 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     list2.find(_ % 2 != 0) should be(__)
   }
 
-  test( """tail will return the rest of the collection without the head""") {
+  test("""tail will return the rest of the collection without the head""") {
     val list = List(10, 19, 45, 1, 22)
     list.tail should be(List(__, __, __, __))
   }
 
-  test( """init will return the rest of the collection without the last""") {
+  test("""init will return the rest of the collection without the last""") {
     val list = List(10, 19, 45, 1, 22)
     list.init should be(List(__, __, __, __))
   }
 
-  test( """Given a `from` index, and a `to` index, slice will return the part of the
-          |  collection including `from`, and excluding `to`""") {
+  test("""Given a `from` index, and a `to` index, slice will return the part of the
+          |  collection including `from`, and excluding `to`""".stripMargin) {
     val list = List(10, 19, 45, 1, 22)
     list.slice(1, 3) should be(List(__, __))
   }
 
-  test( """Take will return the the first number of elements given.""") {
+  test("""Take will return the the first number of elements given.""") {
     val list = List(10, 19, 45, 1, 22)
     list.take(3) should be(List(__, __, __))
   }
 
-  test( """Take is used often with Streams, and Streams after all are Traversable""") {
+  test("""Take is used often with Streams, and Streams after all are Traversable""") {
     def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
     val a = streamer(2)
     (a take 3 toList) should be(List(__, __, __))
   }
 
-  test( """Drop will take the rest of the Traversable except
-          |  the number of elements given""") {
+  test("""Drop will take the rest of the Traversable except
+          |  the number of elements given""".stripMargin) {
     def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
     val a = streamer(2)
     ((a drop 6) take 3).toList should be(List(__, __, __))
   }
 
-  test( """takeWhile will continually accumulate elements until a predicate
+  test("""takeWhile will continually accumulate elements until a predicate
           |  is no longer satisfied.  In this koan, TreeSet is Traversable.
-          |  TreeSet also is also sorted.""") {
+          |  TreeSet also is also sorted.""".stripMargin) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
     list.takeWhile(_ < 100) should be(List(__, __, __, __))
   }
 
-  test( """dropWhile will continually drop elements until a predicate
+  test("""dropWhile will continually drop elements until a predicate
           |  is no longer satisfied.  Again, TreeSet is Traversable.
-          |  TreeSet also is also sorted.""") {
+          |  TreeSet also is also sorted.""".stripMargin) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
     list.dropWhile(_ < 100) should be(List(__, __, __, __))
   }
 
-  test( """filter will take out all elements that don't satisfy a predicate. An
-          |  Array is also Traversable.""") {
+  test("""filter will take out all elements that don't satisfy a predicate. An
+          |  Array is also Traversable.""".stripMargin) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     array.filter(_ < 100) should be(Array(__, __, __, __, __, __))
   }
 
-  test( """filterNot will take out all elements that satisfy a predicate. An
-          |  Array is also Traversable.""") {
+  test("""filterNot will take out all elements that satisfy a predicate. An
+          |  Array is also Traversable.""".stripMargin) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     array.filterNot(_ < 100) should be(Array(__, __))
   }
 
-  test( """splitAt will split a Traversable at a position, returning a 2 product
+  test("""splitAt will split a Traversable at a position, returning a 2 product
           |  Tuple.  Array is Traversable. splitAt is also defined as
-          |  (xs take n, xs drop n)""") {
+          |  (xs take n, xs drop n)""".stripMargin) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     val result = array splitAt 3
     result._1 should be(Array(__, __, __))
     result._2 should be(Array(__, __, __, __, __))
   }
 
-  test( """span will split a Traversable according to predicate, returning
+  test("""span will split a Traversable according to predicate, returning
           |  a 2 product Tuple.  Array is Traversable, span
-          |  is also defined as (xs takeWhile p, xs dropWhile p)""") {
+          |  is also defined as (xs takeWhile p, xs dropWhile p)""".stripMargin) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     val result = array span (_ < 100)
     result._1 should be(Array(__, __, __, __))
     result._2 should be(Array(__, __, __, __))
   }
 
-  test( """partition will split a Traversable according to predicate, return
+  test("""partition will split a Traversable according to predicate, return
           |  a 2 product Tuple. The left side are the elements satisfied by
           |  the predicate, the right side is not. Array is Traversable,
-          |  partition is also defined as (xs filter p, xs filterNot p)""") {
+          |  partition is also defined as (xs filter p, xs filterNot p)""".stripMargin) {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     val result = array partition (_ < 100)
     result._1 should be(Array(__, __, __, __, __, __))
     result._2 should be(Array(__, __))
   }
 
-  test( """groupBy will categorize a Traversable according to function, and return
-          a map with the results.  This koan uses Partial Function chaining.  If you are
-          still unfamiliar with PartialFunctions, see AboutPartialFunctions koans.""") {
+  test("""groupBy will categorize a Traversable according to function, and return
+          | a map with the results.  This koan uses Partial Function chaining.  If you are
+          | still unfamiliar with PartialFunctions, see AboutPartialFunctions koans.""".stripMargin) {
 
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
 
@@ -344,7 +342,7 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     }
 
     val result = array groupBy {
-        oddAndSmallPartial orElse
+      oddAndSmallPartial orElse
         evenAndSmallPartial orElse
         negativePartial orElse
         largePartial orElse
@@ -355,34 +353,34 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     (result("Large Number") size) should be(__)
   }
 
-  test( """forall will determine if a predicate is valid for all members of a
-          |  Traversable.""") {
+  test("""forall will determine if a predicate is valid for all members of a
+          |  Traversable.""".stripMargin) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
     val result = list forall (_ < 100)
     result should be(__)
   }
 
-  test( """`exists` will determine if a predicate
-          | is valid for some members of a Traversable.""") {
+  test("""`exists` will determine if a predicate
+          | is valid for some members of a Traversable.""".stripMargin) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
     val result = list exists (_ < 100)
     result should be(__)
   }
 
-  test( """`count` will count the number of elements that satisfy a predicate
-          | in a Traversable.""") {
+  test("""`count` will count the number of elements that satisfy a predicate
+          | in a Traversable.""".stripMargin) {
     val list = List(87, 44, 5, 4, 200, 10, 39, 100)
     val result = list count (_ < 100)
     result should be(__)
   }
 
-  test( """ `/:` or `foldLeft` will combine an operation starting with a seed and combining from the left.  Fold Left
+  test(""" `/:` or `foldLeft` will combine an operation starting with a seed and combining from the left.  Fold Left
           | is defined as (seed /: list), where seed is the initial value.  Once the fold is established, you
           | provide a function that takes two arguments.  The first argument is the running total of the operation,
           | and the second element is the next element of the list.
           |
           | Given a Traversable (x1, x2, x3, x4), an initial value of init, an operation op,
-          | foldLeft is defined as: (((init op x1) op x2) op x3) op x4)""") {
+          | foldLeft is defined as: (((init op x1) op x2) op x3) op x4)""".stripMargin) {
     val list = List(5, 4, 3, 2, 1)
     val result = (0 /: list) {
       (`running total`, `next element`) => `running total` - `next element`
@@ -403,13 +401,13 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     (((((0 - 5) - 4) - 3) - 2) - 1) should be(__)
   }
 
-  test( """ `:\` or foldRight` will combine an operation starting with a seed and combining from the right.  Fold right
+  test(""" `:\` or foldRight` will combine an operation starting with a seed and combining from the right.  Fold right
           | is defined as (list :\ seed), where seed is the initial value.  Once the fold is established, you
           | provide a function that takes two elements.  The first is the next element of the list, and the
           | second element is the running total of the operation.
           |
           | Given a Traversable (x1, x2, x3, x4), an initial value of init, an operation op,
-          | foldRight is defined as: x1 op (x2 op (x3 op (x4 op init)))""") {
+          | foldRight is defined as: x1 op (x2 op (x3 op (x4 op init)))""".stripMargin) {
 
     val list = List(5, 4, 3, 2, 1)
     val result = (list :\ 0) {
@@ -431,7 +429,7 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     (5 - (4 - (3 - (2 - (1 - 0))))) should be(__)
   }
 
-  test( """`reduceLeft` is the similar to foldLeft, except that the seed is the head value""") {
+  test("""`reduceLeft` is the similar to foldLeft, except that the seed is the head value""") {
     val intList = List(5, 4, 3, 2, 1)
     intList.reduceLeft {
       _ + _
@@ -443,7 +441,7 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     } should be(__)
   }
 
-  test( """`reduceRight` is the similar to foldRight, except that the seed is the last value""") {
+  test("""`reduceRight` is the similar to foldRight, except that the seed is the last value""") {
     val intList = List(5, 4, 3, 2, 1)
     intList.reduceRight {
       _ + _
@@ -455,9 +453,9 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     } should be(__)
   }
 
-  test( """There are some methods that take much of the folding work out by providing basic functionality.
+  test("""There are some methods that take much of the folding work out by providing basic functionality.
           |  `sum` will add all the elements, product will multiply, min would determine the smallest element, and
-          |  `max` the largest.""") {
+          |  `max` the largest.""".stripMargin) {
     val intList = List(5, 4, 3, 2, 1)
     intList.sum should be(__)
     intList.product should be(__)
@@ -465,16 +463,15 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     intList.min should be(__)
   }
 
-  test( """You would choose foldLeft/reduceLeft or foldRight/reduceRight based on your mathematical goal.
+  test("""You would choose foldLeft/reduceLeft or foldRight/reduceRight based on your mathematical goal.
           | One other reason for deciding is performance.  foldLeft is more performant since it uses
           | tail recursion and is optimized. This koan will either work or you will receive a
-          | StackOverflowError. If you do receive a StackOverflowError, try reducing the MAX_SIZE value.""") {
+          | StackOverflowError. If you do receive a StackOverflowError, try reducing the MAX_SIZE value.""".stripMargin) {
 
     val MAX_SIZE = 1000000
     val reduceLeftStartTime = new java.util.Date
     (1 to MAX_SIZE) reduceLeft (_ + _)
     val reduceLeftEndTime = new java.util.Date
-
 
     val reduceRightStartTime = new java.util.Date
     (1 to MAX_SIZE) reduceRight (_ + _)
@@ -486,9 +483,9 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     (totalReduceRightTime > totalReduceLeftTime) should be(__)
   }
 
-  test( """`transpose` will take a traversable of traversables and group them by their position in
+  test("""`transpose` will take a traversable of traversables and group them by their position in
           |  it's own traversable.  E.g. ((x1, x2),(y1, y2)).transpose = (x1, y1), (x2, y2).
-          |  or ((x1, x2, x3),(y1, y2, y3),(z1, z2, z3)).transpose = ((x1, y1, z1), (x2, y2, z2), (x3, y3, z3))""") {
+          |  or ((x1, x2, x3),(y1, y2, y3),(z1, z2, z3)).transpose = ((x1, y1, z1), (x2, y2, z2), (x3, y3, z3))""".stripMargin) {
     val list = List(List(1, 2, 3), List(4, 5, 6), List(7, 8, 9))
     list.transpose should be(List(List(__, __, __), List(__, __, __), List(__, __, __)))
 
@@ -496,17 +493,17 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     list2.transpose should be(List(List(__, __)))
   }
 
-  test( """`mkString` will format a Traversable using a given string as the delimiter.""") {
+  test("""`mkString` will format a Traversable using a given string as the delimiter.""") {
     val list = List(1, 2, 3, 4, 5)
     list.mkString(",") should be(__)
   }
 
-  test( """`mkString` will also take a beginning and ending string to surround the list.""") {
+  test("""`mkString` will also take a beginning and ending string to surround the list.""") {
     val list = List(1, 2, 3, 4, 5)
     list.mkString(">", ",", "<") should be(__)
   }
 
-  test( """`addString` will take a StringBuilder to add the contents of list into the builder.""") {
+  test("""`addString` will take a StringBuilder to add the contents of list into the builder.""") {
     val stringBuilder = new StringBuilder()
     val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
     stringBuilder.append("I want all numbers 6-12: ")
@@ -522,8 +519,7 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
       history = history :+ s
     }
 
-    lst.map { x => addHistory("Doubling %s".format(x)); x * 2}.map
-            { x => addHistory("Adding 1 to %s".format(x)); x + 1}
+    lst.map { x => addHistory("Doubling %s".format(x)); x * 2 }.map { x => addHistory("Adding 1 to %s".format(x)); x + 1 }
 
     history(0) should be(__)
     history(1) should be(__)
@@ -534,8 +530,9 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
 
     history = List[String]()
 
-    lst.view.map { x => addHistory("Doubling %s".format(x)); x * 2}.map {
-                   x => addHistory("Adding 1 to %s".format(x)); x + 1}.force
+    lst.view.map { x => addHistory("Doubling %s".format(x)); x * 2 }.map {
+      x => addHistory("Adding 1 to %s".format(x)); x + 1
+    }.force
 
     history(0) should be(__)
     history(1) should be(__)
@@ -545,8 +542,8 @@ class AboutTraversables extends FunSuite with Matchers with KoanMatcher {
     history(5) should be(__)
   }
 
-  test( """Views can also accept a `to` and `from` value which takes a subset and performs your view
-          |  functions on the subset.""") {
+  test("""Views can also accept a `to` and `from` value which takes a subset and performs your view
+          |  functions on the subset.""".stripMargin) {
     val list = List(1, 2, 3, 4, 5, 6, 7, 8)
     list.view(3, 6).map(_ + 2).map(_ * 10).force should be(List(__, __, __))
   }

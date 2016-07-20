@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class SecretAgent(val name: String) {
   def shoot(n: Int) {
@@ -18,17 +18,17 @@ object SecretAgent {
   }
 }
 
-class Person (val name:String,  private val superheroName:String)  //The superhero name is private!
+class Person(val name: String, private val superheroName: String) //The superhero name is private!
 
 object Person {
-  def showMeInnerSecret(x:Person) = x.superheroName
+  def showMeInnerSecret(x: Person) = x.superheroName
 }
 
-
-class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
+class AboutObjects extends FunSuite with Matchers with KoanMatcher {
   test(
     """An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
-      | and is called upon much in the same way""".stripMargin) {
+      | and is called upon much in the same way""".stripMargin
+  ) {
 
     object Greeting {
       def english = "Hi"
@@ -46,7 +46,7 @@ class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
     Greeting.magyar should be(__)
   }
 
-  test( """Here is proof an object is a singleton, and not a static method in a class""") {
+  test("""Here is proof an object is a singleton, and not a static method in a class""") {
     object Greeting {
       def english = "Hi"
 
@@ -67,10 +67,10 @@ class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
     x eq z should be(__)
   }
 
-
   test(
     """An object that has the same name as class is called a companion object,
-      | it is used to contain factories for the class that it complements""".stripMargin) {
+      | it is used to contain factories for the class that it complements""".stripMargin
+  ) {
 
     class Movie(val name: String, val year: Short)
 
@@ -89,11 +89,10 @@ class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
     Movie.academyAwardBestMoviesForYear(1932).get.name should be(__)
   }
 
-
   test(
     """A companion object stores shared variables and values for every instantiated class to share.
-      | (See SecretAgent class and companion object above).""".stripMargin) {
-
+      | (See SecretAgent class and companion object above).""".stripMargin
+  ) {
 
     val bond = new SecretAgent("James Bond")
     val felix = new SecretAgent("Felix Leitner")
@@ -110,7 +109,6 @@ class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
     SecretAgent.bullets should be(__)
   }
 
-
   test("A companion object can also see private values and variables of the instantiated objects") {
 
     val clark = new Person("Clark Kent", "Superman")
@@ -118,9 +116,9 @@ class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
     val bruce = new Person("Bruce Wayne", "Batman")
     val diana = new Person("Diana Prince", "Wonder Woman")
 
-    Person.showMeInnerSecret(clark) should be (__)
-    Person.showMeInnerSecret(peter) should be (__)
-    Person.showMeInnerSecret(bruce) should be (__)
-    Person.showMeInnerSecret(diana) should be (__)
+    Person.showMeInnerSecret(clark) should be(__)
+    Person.showMeInnerSecret(peter) should be(__)
+    Person.showMeInnerSecret(bruce) should be(__)
+    Person.showMeInnerSecret(diana) should be(__)
   }
 }

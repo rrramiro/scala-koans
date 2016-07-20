@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLazySequences extends FunSuite with Matchers with KoanMatcher  {
+class AboutLazySequences extends FunSuite with Matchers with KoanMatcher {
 
   test("Creating a lazy collection form a strict collection") {
     val strictList = List(10, 20, 30)
@@ -11,9 +11,9 @@ class AboutLazySequences extends FunSuite with Matchers with KoanMatcher  {
   }
 
   test("Strict collection always processes its elements but " +
-       "lazy collection does it on demand") {
+    "lazy collection does it on demand") {
     var x = 0
-    def inc = {x += 1; x}
+    def inc = { x += 1; x }
 
     val strictList = List(inc _, inc _, inc _)
     strictList.map(f => f).head should be(__)

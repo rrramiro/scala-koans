@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class Koan08Methods extends FunSuite with Matchers with KoanMatcher {
   test("Let's define a method") {

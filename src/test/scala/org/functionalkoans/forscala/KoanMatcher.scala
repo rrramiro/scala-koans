@@ -5,7 +5,7 @@ import org.scalatest.matchers.Matcher
 
 trait KoanMatcher {
 
-  def  __ : Matcher[Any] = {
+  def __ : Matcher[Any] = {
     throw new TestPendingException
   }
 

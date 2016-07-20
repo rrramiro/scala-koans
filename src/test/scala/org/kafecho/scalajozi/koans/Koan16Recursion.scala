@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 import scala.annotation.tailrec
 
@@ -9,9 +9,11 @@ class Koan16Recursion extends FunSuite with Matchers with KoanMatcher {
 
   test("Recursive factorial") {
 
-    /** This implementation of factorial is not tail recursive.
-      * The last method that it calls is not itself.
-      * Therefore, if n is large, it will run out of stack space. */
+    /**
+     * This implementation of factorial is not tail recursive.
+     * The last method that it calls is not itself.
+     * Therefore, if n is large, it will run out of stack space.
+     */
     def fact(n: Int): Int = {
       if (n <= 1) 1
       else n * fact(n - 1)
