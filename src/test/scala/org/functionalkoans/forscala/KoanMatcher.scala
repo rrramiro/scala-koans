@@ -1,9 +1,12 @@
 package org.functionalkoans.forscala
 
+import org.scalatest.Suite
 import org.scalatest.exceptions.TestPendingException
 import org.scalatest.matchers.Matcher
 
-trait KoanMatcher {
+trait KoanMatcher { self: Suite =>
+
+  def meditate = pending
 
   def __ : Matcher[Any] = {
     throw new TestPendingException
