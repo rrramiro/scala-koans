@@ -5,8 +5,7 @@ import org.scalatest.{ Status, _ }
 
 import scala.language.reflectiveCalls
 
-abstract class KoansSuites(messageColumnSize: Int)(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
-
+abstract class KoansSuites(messageColumnSize: Int = 42)(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
   override def run(testName: Option[String], args: Args): Status = {
     super.run(testName, args.copy(reporter = new ReportToTheMaster(args.reporter, args.stopper, messageColumnSize)))
   }

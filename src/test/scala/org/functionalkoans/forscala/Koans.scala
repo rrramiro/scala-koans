@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-class Koans extends KoansSuites(messageColumnSize = 42)(
+class Koans extends KoansSuites()(
   new AboutAsserts,
   new AboutValAndVar,
   new AboutLiteralBooleans,
