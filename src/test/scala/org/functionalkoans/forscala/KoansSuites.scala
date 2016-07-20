@@ -5,10 +5,13 @@ import org.scalatest.{ Status, _ }
 
 import scala.language.reflectiveCalls
 
-abstract class KoansSuites(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
-  private class ReportToTheMaster(other: Reporter, stopper: Stopper) extends Reporter {
+abstract class KoansSuites(messageColumnSize: Int)(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
 
-    private val COL_SIZE = 42
+  override def run(testName: Option[String], args: Args): Status = {
+    super.run(testName, args.copy(reporter = new ReportToTheMaster(args.reporter, args.stopper, messageColumnSize)))
+  }
+
+  private class ReportToTheMaster(other: Reporter, stopper: Stopper, columnSize: Int) extends Reporter {
 
     private type KoanEven = {
       val ordinal: Ordinal
@@ -28,13 +31,13 @@ abstract class KoansSuites(suitesToNest: Suite*) extends Suites(suitesToNest: _*
       InfoProvided(
         ordinal = event.ordinal,
         message = Seq(
-          "*" * COL_SIZE,
-          "*" * COL_SIZE,
+          "*" * columnSize,
+          "*" * columnSize,
           "",
-          wordWrap("Please meditate on koan \"%s\" of suite \"%s\"" format (event.testName.stripMargin, event.suiteName), COL_SIZE),
+          wordWrap(s"""Please meditate on koan "${event.testName.stripMargin}" of suite "${event.suiteName}"""", columnSize),
           "",
-          "*" * COL_SIZE,
-          "*" * COL_SIZE
+          "*" * columnSize,
+          "*" * columnSize
         ).mkString("\n", "\n", ""),
         nameInfo = Some(NameInfo("Koan", "koan", None, None))
       )
@@ -49,9 +52,5 @@ abstract class KoansSuites(suitesToNest: Suite*) extends Suites(suitesToNest: _*
       }
       other(event)
     }
-  }
-
-  override def run(testName: Option[String], args: Args): Status = {
-    super.run(testName, args.copy(reporter = new ReportToTheMaster(args.reporter, args.stopper)))
   }
 }
