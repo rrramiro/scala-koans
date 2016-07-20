@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class Koan07FunctionalCollections extends FunSuite with Matchers with KoanMatcher {
 
@@ -56,7 +56,6 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanMatche
     list.sortWith((a, b) => a > b)
   }
 
-
   test("In Scala, Strings are considered collection of characters.") {
     val word = "vereeniging"
 
@@ -87,6 +86,5 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanMatche
 
     counts('g') should equal(2)
   }
-
 
 }

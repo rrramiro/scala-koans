@@ -1,20 +1,19 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-
-class AboutAdvancedOptions extends FunSuite with Matchers with KoanMatcher  {
+class AboutAdvancedOptions extends FunSuite with Matchers with KoanMatcher {
   test("Option is more than just a replacement of null, its also a collection") {
-    Some(10) map { _ + 10} should be(__)
-    Some(10) filter { _ == 10} should be(__)
-    Some(Some(10)) flatMap { _ map { _ + 10}} should be(__)
+    Some(10) map { _ + 10 } should be(__)
+    Some(10) filter { _ == 10 } should be(__)
+    Some(Some(10)) flatMap { _ map { _ + 10 } } should be(__)
 
     var newValue1 = 0
-    Some(20) foreach { newValue1 = _}
+    Some(20) foreach { newValue1 = _ }
     newValue1 should be(__)
 
     var newValue2 = 0
-    None foreach { newValue2 = _}
+    None foreach { newValue2 = _ }
     newValue2 should be(__)
   }
 

@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutOptions extends FunSuite with Matchers with KoanMatcher  {
+class AboutOptions extends FunSuite with Matchers with KoanMatcher {
 
   test("Option can have one of two values - Some or None") {
     val someValue: Option[String] = Some("I am wrapped in something")
@@ -14,7 +14,7 @@ class AboutOptions extends FunSuite with Matchers with KoanMatcher  {
 
   def maybeItWillReturnSomething(flag: Boolean): Option[String] = {
     if (flag) Some("Found value") else None
-  }  
+  }
 
   test("Represent null with None because null is a bad idea") {
     val value1 = maybeItWillReturnSomething(true)

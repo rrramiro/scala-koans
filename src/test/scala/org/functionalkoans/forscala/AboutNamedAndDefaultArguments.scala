@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanMatcher  {
+class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanMatcher {
 
   class WithoutClassParameters() {
     def addColors(red: Int, green: Int, blue: Int) = {
@@ -25,7 +25,7 @@ class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanMa
   }
 
   class WithClassParametersInClassDefinition(val defaultRed: Int = 0, val defaultGreen: Int = 255,
-                                             val defaultBlue: Int = 100) {
+      val defaultBlue: Int = 100) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
     }
@@ -34,7 +34,6 @@ class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanMa
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
     }
   }
-
 
   test("can specify arguments in any order if you use their names") {
     val me = new WithoutClassParameters()

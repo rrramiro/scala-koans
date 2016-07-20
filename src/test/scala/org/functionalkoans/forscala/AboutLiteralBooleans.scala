@@ -1,7 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutLiteralBooleans extends FunSuite with Matchers with KoanMatcher {
 

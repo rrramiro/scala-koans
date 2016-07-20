@@ -1,7 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutInfixTypes extends FunSuite with Matchers with KoanMatcher {
 
@@ -40,6 +39,5 @@ class AboutInfixTypes extends FunSuite with Matchers with KoanMatcher {
 
     announceCouple(romeo loves juliet) should be(__)
   }
-
 
 }

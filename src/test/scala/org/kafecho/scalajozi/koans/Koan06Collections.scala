@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class Koan06Collections extends FunSuite with Matchers with KoanMatcher {
 
@@ -31,7 +31,6 @@ class Koan06Collections extends FunSuite with Matchers with KoanMatcher {
     head should equal(__)
     tail should equal(__) // tail is a list.
   }
-
 
   test("Lists can accessed at random") {
     val a = List(1, 3, 5, 7, 9)
@@ -94,7 +93,8 @@ class Koan06Collections extends FunSuite with Matchers with KoanMatcher {
     val capitals = Map(
       "SA" -> "Pretoria",
       "France" -> "Paris",
-      "USA" -> "Washington DC")
+      "USA" -> "Washington DC"
+    )
 
     capitals("SA") should equal(__)
 

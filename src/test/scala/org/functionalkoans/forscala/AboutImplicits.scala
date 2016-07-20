@@ -1,9 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
-import language.implicitConversions
+import scala.language.implicitConversions
 
 class AboutImplicits extends FunSuite with Matchers with KoanMatcher {
 
@@ -51,7 +50,7 @@ class AboutImplicits extends FunSuite with Matchers with KoanMatcher {
 
   test("""Implicits can be used declare a value to be provided as a default as
           |   long as an implicit value is set with in the scope.  These are
-          |   called implicit function parameters""") {
+          |   called implicit function parameters""".stripMargin) {
 
     def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = dollarsPerHour * hours
 

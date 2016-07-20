@@ -1,18 +1,20 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
-
+class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher {
 
   test("Pattern matching returns something") {
 
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red" => println("RED"); 1
-      case "blue" => println("BLUE"); 2
-      case "green" => println("GREEN"); 3
+      case "red" =>
+        println("RED"); 1
+      case "blue" =>
+        println("BLUE"); 2
+      case "green" =>
+        println("GREEN"); 3
       case _ => println(stuff); 0 //case _ will trigger if all other cases fail.
     }
 
@@ -35,7 +37,6 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
   }
 
   test("Pattern matching can match complex expressions") {
-
 
     def goldilocks(expr: Any) = expr match {
       case ("porridge", "Papa") => "Papa eating porridge"
@@ -75,7 +76,6 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
     goldilocks(("chair", "Mama")) should be(__)
   }
 
-
   test("Pattern matching can done on regular expression groups") {
     val EatingRegularExpression = """Eating Alert: bear=([^,]+),\s+source=(.+)""".r //.r turns a String to a regular expression
     val SittingRegularExpression = """Sitting Alert: bear=([^,]+),\s+source=(.+)""".r
@@ -92,7 +92,7 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
     goldilocks("Sitting Alert: bear=Mama, source=chair") should be(__)
   }
 
-  test( """A backquote can be used to refer to a stable variable in scope to create a case statement.
+  test("""A backquote can be used to refer to a stable variable in scope to create a case statement.
           | This prevents what is called \'Variable Shadowing\'""") {
     val foodItem = "porridge"
 
@@ -123,7 +123,8 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
   test(
     """To pattern match against a List, the list can be broken out into parts,
       | in this case the head (x) and the tail(xs). Since the case doesn't terminate in Nil,
-      | xs is interpreted as the rest of the list""".stripMargin) {
+      | xs is interpreted as the rest of the list""".stripMargin
+  ) {
     val secondElement = List(1, 2, 3) match {
       case x :: xs => xs.head
       case _ => 0
@@ -134,8 +135,9 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
 
   test(
     """To obtain the second you can expand on the pattern. Where x is the first element, y
-      | is the second element, and xs is the rest. """.stripMargin) {
-    val secondElement = List(1,2,3) match {
+      | is the second element, and xs is the rest. """.stripMargin
+  ) {
+    val secondElement = List(1, 2, 3) match {
       case x :: y :: xs => xs
       case _ => 0
     }
@@ -144,7 +146,8 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
   }
 
   test(
-    """Same koan as above, but we are pattern matching of a list with only one item!""".stripMargin) {
+    """Same koan as above, but we are pattern matching of a list with only one item!""".stripMargin
+  ) {
     val secondElement = List(1) match {
       case x :: y :: xs => xs
       case _ => 0
@@ -155,7 +158,8 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
 
   test(
     """To pattern match against List, you can also establish a pattern match
-      | if you know the exact number of elements in a List""".stripMargin) {
+      | if you know the exact number of elements in a List""".stripMargin
+  ) {
 
     val r = List(1, 2, 3) match {
       case x :: y :: Nil => y
@@ -165,18 +169,4 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher  {
     r should be(__)
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

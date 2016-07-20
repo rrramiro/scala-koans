@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 import scala.xml.XML
 
@@ -14,18 +14,20 @@ class Koan13Xml extends FunSuite with Matchers with KoanMatcher {
 
   test("The xml literal can have String interpolation") {
     val user = "Jacob"
-    val xml = <xml>Hello
-      {user}
-    </xml>
+    val xml = <xml>
+                Hello
+                { user }
+              </xml>
     xml.text should equal(__)
   }
 
   test("You can use an XPath like syntax to navigate the XML tree") {
     val xml = <foo>
-      <bar>
-        <baz/>
-        Yebo</bar> <bin/>
-    </foo>
+                <bar>
+                  <baz/>
+                  Yebo
+                </bar><bin/>
+              </foo>
     val node = xml \ "foo" \ "far" \ "baz"
     node.text should be(__)
   }

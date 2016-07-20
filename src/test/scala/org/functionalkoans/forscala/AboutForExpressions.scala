@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutForExpressions extends FunSuite with Matchers with KoanMatcher  {
+class AboutForExpressions extends FunSuite with Matchers with KoanMatcher {
 
   test("For loops can be simple") {
     val someNumbers = Range(0, 10)
@@ -22,13 +22,14 @@ class AboutForExpressions extends FunSuite with Matchers with KoanMatcher  {
 
     sum should equal(__)
   }
-  
+
   test("For expressions can nest, with later generators varying more rapidly than earlier ones") {
     val xValues = Range(1, 5)
     val yValues = Range(1, 3)
     val coordinates = for {
       x <- xValues
-      y <- yValues} yield (x, y)
+      y <- yValues
+    } yield (x, y)
     coordinates(4) should be(__, __)
   }
 }

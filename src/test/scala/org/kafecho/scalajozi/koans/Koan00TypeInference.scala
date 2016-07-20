@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class Koan00TypeInference extends FunSuite with Matchers with KoanMatcher {
   test("Types and ; can be inferred") {

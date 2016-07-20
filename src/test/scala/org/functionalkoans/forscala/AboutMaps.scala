@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutMaps extends FunSuite with Matchers with KoanMatcher  {
+class AboutMaps extends FunSuite with Matchers with KoanMatcher {
 
   test("Maps can be created easily") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
@@ -67,7 +67,6 @@ class AboutMaps extends FunSuite with Matchers with KoanMatcher  {
     // what happens if you change the Any to Int
   }
 
-
   test("Maps may be accessed") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     myMap("MI") should be(__)
@@ -87,7 +86,7 @@ class AboutMaps extends FunSuite with Matchers with KoanMatcher  {
     // Cheat Code (because this is hard to illustrate): uncomment the intercept code to make this pass 
     //intercept[NoSuchElementException] {
 
-      myMap("MI") should be(__)
+    myMap("MI") should be(__)
     //}
   }
 

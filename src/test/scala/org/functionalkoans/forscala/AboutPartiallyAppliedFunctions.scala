@@ -1,7 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutPartiallyAppliedFunctions extends FunSuite with Matchers with KoanMatcher {
   test("""A partially applied function is a function that you do not apply any or all the

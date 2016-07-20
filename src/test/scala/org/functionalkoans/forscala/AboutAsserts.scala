@@ -1,8 +1,7 @@
 package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 // meditate on AboutAsserts to see how the Scala Koans work
 class AboutAsserts extends FunSuite with Matchers with KoanMatcher {

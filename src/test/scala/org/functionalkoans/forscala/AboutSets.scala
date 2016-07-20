@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutSets extends FunSuite with Matchers with KoanMatcher  {
+class AboutSets extends FunSuite with Matchers with KoanMatcher {
 
   test("Sets can be created easily") {
     val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
@@ -74,7 +74,7 @@ class AboutSets extends FunSuite with Matchers with KoanMatcher  {
     val mySet = Set(1, 3, 4, 9)
     var sum = 0
     for (i <- mySet)
-      sum = sum + i  //Of course this is the same thing as mySet.reduce(_ + _)
+      sum = sum + i //Of course this is the same thing as mySet.reduce(_ + _)
 
     sum should be(__)
   }
@@ -114,7 +114,7 @@ class AboutSets extends FunSuite with Matchers with KoanMatcher  {
     val aNewSet = mySet1 diff mySet2 // Note: you can use the "&~" operator if you *really* want to.
 
     aNewSet.equals(Set("Ohio", "Iowa")) should be(__)
-  } 
+  }
 
   test("Set equivalency is independent of order") {
     val mySet1 = Set("Michigan", "Ohio", "Wisconsin", "Iowa")

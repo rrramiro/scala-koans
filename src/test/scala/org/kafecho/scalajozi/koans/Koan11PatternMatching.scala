@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import org.functionalkoans.forscala.KoanMatcher
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
 class Koan11PatternMatching extends FunSuite with Matchers with KoanMatcher {
   test("Pattern matching is a switch statement on steroids") {

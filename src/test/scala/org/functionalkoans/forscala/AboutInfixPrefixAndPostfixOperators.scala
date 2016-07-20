@@ -1,9 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-import language.postfixOps
-import org.scalatest.Matchers
+import scala.language.postfixOps
 
 class AboutInfixPrefixAndPostfixOperators extends FunSuite with Matchers with KoanMatcher {
 
@@ -12,7 +11,7 @@ class AboutInfixPrefixAndPostfixOperators extends FunSuite with Matchers with Ko
 
     val g: Int = 3
     (g + 4) should be(__) // + is an infix operator
-     g.+(4) should be(__) // same result but not using the infix operator
+    g.+(4) should be(__) // same result but not using the infix operator
   }
 
   test("""Infix Operators do NOT work if an object
@@ -29,7 +28,6 @@ class AboutInfixPrefixAndPostfixOperators extends FunSuite with Matchers with Ko
     (g toHexString) should be(__) //toHexString takes no params therefore can be called
     //as a postfix operator. Hint: The answer is 1f
   }
-
 
   test("""Prefix operators work if an object
            |  has a method name that starts with unary_ .""".stripMargin) {

@@ -1,8 +1,7 @@
 package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
-import org.scalatest.FunSuite
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 @silent
 class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
@@ -55,7 +54,7 @@ class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
 
   test("Use stripMargin to prettify multi-line strings") {
 
-   /*
+    /*
 	  * Multiline String literals can use | to specify the starting position
 	  * of subsequent lines, then use stripMargin to remove the surplus indentation.
 	  */
@@ -64,7 +63,7 @@ class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
                |keeps the doctor away"""
     a.stripMargin.split('\n')(1).charAt(0) should be(__)
 
-   /*
+    /*
 	  * a.stripMargin.split('\n')(1).charAt(0)
     * gets the first character of the second line
 	  */

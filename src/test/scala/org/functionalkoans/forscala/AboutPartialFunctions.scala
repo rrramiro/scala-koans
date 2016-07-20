@@ -1,11 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutPartialFunctions extends FunSuite with Matchers with KoanMatcher {
 
-  test( """A partial function is a trait that when
+  test("""A partial function is a trait that when
           | implemented can be used as building blocks to determine
           | a solution.  The trait PartialFunction requires that the
           | the method isDefinedAt and apply be implemented.""".stripMargin) {
@@ -30,7 +29,7 @@ class AboutPartialFunctions extends FunSuite with Matchers with KoanMatcher {
     whatToDo(4) should be(__)
   }
 
-  test( """Case statements are a quick way to create partial functions. When you create a case
+  test("""Case statements are a quick way to create partial functions. When you create a case
           | statement, the apply and isDefinedAt is created for you.""".stripMargin) {
 
     //The case statements are called case statements with guards
@@ -46,7 +45,7 @@ class AboutPartialFunctions extends FunSuite with Matchers with KoanMatcher {
     whatToDo(4) should be(__)
   }
 
-  test( """The result of partial functions can have an \'andThen\' function added to the end
+  test("""The result of partial functions can have an \'andThen\' function added to the end
           | of the chain""".stripMargin) {
 
     //These are called case statements with guards
@@ -63,7 +62,7 @@ class AboutPartialFunctions extends FunSuite with Matchers with KoanMatcher {
     whatToDo(4) should be(__)
   }
 
-  test( """The result of partial functions can have an \'andThen\' function added to the end
+  test("""The result of partial functions can have an \'andThen\' function added to the end
           | of the chain used to continue onto another chain of logic""".stripMargin) {
 
     val doubleEvens: PartialFunction[Int, Int] = {

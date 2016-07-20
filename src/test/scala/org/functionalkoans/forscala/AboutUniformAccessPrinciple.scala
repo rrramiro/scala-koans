@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatcher  {
+class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatcher {
 
   class CalculatesAgeUsingMethod(var currentYear: Int, birthYear: Int) {
 
@@ -35,7 +35,6 @@ class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatche
   test("What happens when I update current year using property") {
     val me = new CalculatesAgeUsingProperty(2010, 2003)
 
-
     me.currentYear = 2011
     me.age should be(__)
   }
@@ -43,10 +42,8 @@ class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatche
   test("What happens when I update current year using method") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
 
-
     me.currentYear = 2011
     me.age should be(__)
   }
-
 
 }

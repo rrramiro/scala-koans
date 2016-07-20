@@ -1,10 +1,9 @@
 package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.{ FunSuite, Matchers }
 
-
-class AboutEmptyValues extends FunSuite with Matchers with KoanMatcher  {
+class AboutEmptyValues extends FunSuite with Matchers with KoanMatcher {
 
   test("None equals None") {
     assert(None === __)

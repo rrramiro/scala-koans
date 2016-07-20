@@ -1,7 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{FunSuite, Matchers}
-import org.scalatest.Matchers
+import org.scalatest.{ FunSuite, Matchers }
 
 class AboutInteroperability extends FunSuite with Matchers with KoanMatcher {
   test("""You can interop with a java class and it's use of collections by importing
