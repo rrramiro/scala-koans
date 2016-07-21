@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutConstructors extends FunSuite with Matchers with KoanMatcher {
+class AboutConstructors extends FunSuite with Matchers with KoanSuite {
 
   class AboutConstructorWithAuxiliaryConstructor(val name: String) {
     // invoke auxiliary constructor

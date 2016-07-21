@@ -1,9 +1,10 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
+import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends FunSuite with Matchers with KoanMatcher {
+class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
 
   test("stuctural types") {
     def sayHello(person: { def name: String }) = "Hello, " + person.name

@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutTypeVariance extends FunSuite with Matchers with KoanMatcher {
+class AboutTypeVariance extends FunSuite with Matchers with KoanSuite {
 
   class Fruit
 

@@ -1,9 +1,9 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutAsserts extends FunSuite with Matchers with KoanMatcher {
+class AboutAsserts extends FunSuite with Matchers with KoanSuite {
 
   test("should be true") {
     assert(false) // should be true

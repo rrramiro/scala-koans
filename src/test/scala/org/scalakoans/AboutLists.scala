@@ -1,9 +1,9 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLists extends FunSuite with Matchers with KoanMatcher {
+class AboutLists extends FunSuite with Matchers with KoanSuite {
 
   test("Nil lists are identical, even of different types") {
     val a: List[String] = Nil

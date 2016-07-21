@@ -4,7 +4,7 @@ import com.github.ghik.silencer.silent
 import org.scalatest.{ FunSuite, Matchers }
 
 @silent
-class AboutLiteralStrings extends FunSuite with Matchers with KoanMatcher {
+class AboutLiteralStrings extends FunSuite with Matchers with KoanSuite {
 
   test("Character Literals are quoted with single quotes") {
     val a = 'a'

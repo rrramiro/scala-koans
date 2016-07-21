@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher {
+class AboutPatternMatching extends FunSuite with Matchers with KoanSuite {
 
   test("Pattern matching returns something") {
 
@@ -123,50 +123,50 @@ class AboutPatternMatching extends FunSuite with Matchers with KoanMatcher {
   test(
     """To pattern match against a List, the list can be broken out into parts,
       | in this case the head (x) and the tail(xs). Since the case doesn't terminate in Nil,
-      | xs is interpreted as the rest of the list""".stripMargin
+      | xs is interpreted as the rest of the list"""
   ) {
-    val secondElement = List(1, 2, 3) match {
-      case x :: xs => xs.head
-      case _ => 0
-    }
+      val secondElement = List(1, 2, 3) match {
+        case x :: xs => xs.head
+        case _ => 0
+      }
 
-    secondElement should be(__)
-  }
+      secondElement should be(__)
+    }
 
   test(
     """To obtain the second you can expand on the pattern. Where x is the first element, y
-      | is the second element, and xs is the rest. """.stripMargin
+      | is the second element, and xs is the rest. """
   ) {
-    val secondElement = List(1, 2, 3) match {
-      case x :: y :: xs => xs
-      case _ => 0
-    }
+      val secondElement = List(1, 2, 3) match {
+        case x :: y :: xs => xs
+        case _ => 0
+      }
 
-    secondElement should be(__)
-  }
+      secondElement should be(__)
+    }
 
   test(
-    """Same koan as above, but we are pattern matching of a list with only one item!""".stripMargin
+    """Same koan as above, but we are pattern matching of a list with only one item!"""
   ) {
-    val secondElement = List(1) match {
-      case x :: y :: xs => xs
-      case _ => 0
-    }
+      val secondElement = List(1) match {
+        case x :: y :: xs => xs
+        case _ => 0
+      }
 
-    secondElement should be(__)
-  }
+      secondElement should be(__)
+    }
 
   test(
     """To pattern match against List, you can also establish a pattern match
-      | if you know the exact number of elements in a List""".stripMargin
+      | if you know the exact number of elements in a List"""
   ) {
 
-    val r = List(1, 2, 3) match {
-      case x :: y :: Nil => y
-      case _ => 0
-    }
+      val r = List(1, 2, 3) match {
+        case x :: y :: Nil => y
+        case _ => 0
+      }
 
-    r should be(__)
-  }
+      r should be(__)
+    }
 }
 

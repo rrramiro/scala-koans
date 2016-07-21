@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanMatcher {
+class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
 
   test("Meet lambda. Anonymous function") {
     def lambda = { x: Int => x + 1 }
@@ -94,20 +94,16 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanMatcher 
     fiveAdder(5) should be(__)
   }
 
-  test(
-    """isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
+  test("""isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
       | 'blanked out' using existential types with is a single underline, since parameter type are unknown
-      | at runtime.""".stripMargin
-  ) {
+      | at runtime.""") {
     def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
 
     addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(__)
   }
 
-  test(
-    """function taking another function as parameter. Helps in composing functions.
-      | Hint: a map method applies the function to each element of a list""".stripMargin
-  ) {
+  test("""function taking another function as parameter. Helps in composing functions.
+      | Hint: a map method applies the function to each element of a list""") {
 
     def makeUpper(xs: List[String]) = xs map { _.toUpperCase }
 

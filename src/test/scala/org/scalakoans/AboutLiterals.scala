@@ -1,9 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import com.github.ghik.silencer.silent
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLiterals extends FunSuite with Matchers with KoanMatcher {
+@silent
+class AboutLiterals extends FunSuite with Matchers with KoanSuite {
   test("integer literals") {
     val i = 1
 

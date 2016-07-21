@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan05Functions extends FunSuite with Matchers with KoanMatcher {
+class Koan05Functions extends FunSuite with Matchers with KoanSuite {
 
   test("Function literals") {
     val triple = (x: Int) => x * 3

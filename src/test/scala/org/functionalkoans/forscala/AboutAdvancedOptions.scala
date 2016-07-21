@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutAdvancedOptions extends FunSuite with Matchers with KoanMatcher {
+class AboutAdvancedOptions extends FunSuite with Matchers with KoanSuite {
   test("Option is more than just a replacement of null, its also a collection") {
     Some(10) map { _ + 10 } should be(__)
     Some(10) filter { _ == 10 } should be(__)

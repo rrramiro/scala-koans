@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
 import scala.language.postfixOps
 
-class Koan02LookMaNoOperators extends FunSuite with Matchers with KoanMatcher {
+class Koan02LookMaNoOperators extends FunSuite with Matchers with KoanSuite {
 
   test("In scala, -,+,/,* are methods, not operators") {
     (1 + 1) should equal(__)

@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan12Traits extends FunSuite with Matchers with KoanMatcher {
+class Koan12Traits extends FunSuite with Matchers with KoanSuite {
   test("traits") {
     trait SaysHello {
       def sayHello(name: String) = "hello " + name

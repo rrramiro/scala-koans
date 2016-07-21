@@ -1,9 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import com.github.ghik.silencer.silent
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutClasses extends FunSuite with Matchers with KoanMatcher {
+@silent
+class AboutClasses extends FunSuite with Matchers with KoanSuite {
 
   test("Class") {
     class Thing {}

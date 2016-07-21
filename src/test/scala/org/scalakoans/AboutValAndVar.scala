@@ -1,9 +1,9 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutValAndVar extends FunSuite with Matchers with KoanMatcher {
+class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
 
   test("basic assignment") {
     val a: Int = 5

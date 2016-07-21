@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan08Methods extends FunSuite with Matchers with KoanMatcher {
+class Koan08Methods extends FunSuite with Matchers with KoanSuite {
   test("Let's define a method") {
     def add2(i: Int): Int = {
       return (i + 2)

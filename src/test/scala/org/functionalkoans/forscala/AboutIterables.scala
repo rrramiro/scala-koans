@@ -2,11 +2,11 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutIterables extends FunSuite with Matchers with KoanMatcher {
+class AboutIterables extends FunSuite with Matchers with KoanSuite {
   test("""Iterable is a trait that has the ability to return an iterator of itself.
           | Some known iterators are Sets, Lists, Vectors, Stacks, and Streams. Iterator has two
           | important methods:  `hasNext`, which answers whether the iterator has another element
-          | available. `next` which will return the next element in the iterator.""".stripMargin) {
+          | available. `next` which will return the next element in the iterator.""") {
     val list = List(3, 5, 9, 11, 15, 19, 21)
     val it = list.iterator
     if (it.hasNext) {
@@ -31,7 +31,7 @@ class AboutIterables extends FunSuite with Matchers with KoanMatcher {
   }
 
   test("""`sliding` can take the size of the window as well the size of the step during each
-          | iteration""".stripMargin) {
+          | iteration""") {
     val list = List(3, 5, 9, 11, 15, 19, 21, 24, 32)
     val it = list sliding (3, 3)
     it.next() should be(List(__, __, __))
@@ -40,7 +40,7 @@ class AboutIterables extends FunSuite with Matchers with KoanMatcher {
   }
 
   test("""`takeRight` is the opposite of 'take' in Traversable.  It retrieves the last elements
-          | of an Iterable. """.stripMargin) {
+          | of an Iterable. """) {
     val list = List(3, 5, 9, 11, 15, 19, 21, 24, 32)
     (list takeRight 3) should be(List(__, __, __))
   }
@@ -52,7 +52,7 @@ class AboutIterables extends FunSuite with Matchers with KoanMatcher {
 
   test("""`zip` will stitch two iterables into an iterable of pairs of corresponding elements
           |  from both iterables. e.g. Iterable(x1, x2, x3) zip Iterable(y1, y2, y3) will
-          |  return ((x1,y1), (x2, y2), (x3, y3))""".stripMargin) {
+          |  return ((x1,y1), (x2, y2), (x3, y3))""") {
     val xs = List(3, 5, 9)
     val ys = List("Bob", "Ann", "Stella")
     (xs zip ys) should be(List((__, __), (__, __), (__, __)))
@@ -60,7 +60,7 @@ class AboutIterables extends FunSuite with Matchers with KoanMatcher {
 
   test("""if two Iterables aren't the same size, then `zip` will only zip what can only be paired.
           |  e.g. Iterable(x1, x2, x3) zip Iterable(y1, y2) will
-          |  return ((x1,y1), (x2, y2))""".stripMargin) {
+          |  return ((x1,y1), (x2, y2))""") {
     val xs = List(3, 5, 9)
     val ys = List("Bob", "Ann")
     (xs zip ys) should be(List((__, __), (__, __)))
@@ -68,7 +68,7 @@ class AboutIterables extends FunSuite with Matchers with KoanMatcher {
 
   test("""if two Iterables aren't the same size, then `zipAll` can provide fillers for what it couldn't
           |  find a complement for. e.g. Iterable(x1, x2, x3) zipAll (Iterable(y1, y2), x, y) will
-          |  return ((x1,y1), (x2, y2, y))""".stripMargin) {
+          |  return ((x1,y1), (x2, y2, y))""") {
     val xs = List(3, 5, 9)
     val ys = List("Bob", "Ann")
     (xs zipAll (ys, -1, "?")) should be(List((__, __), (__, __), (__, "?")))

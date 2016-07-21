@@ -3,7 +3,7 @@ package org.functionalkoans.forscala
 import com.github.ghik.silencer.silent
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutFormatting extends FunSuite with Matchers with KoanMatcher {
+class AboutFormatting extends FunSuite with Matchers with KoanSuite {
 
   test("String can be placed in format") {
     val s = "Hello World"

@@ -1,9 +1,10 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
+import scala.language.postfixOps
 
-class AboutMethods extends FunSuite with Matchers with KoanMatcher {
+class AboutMethods extends FunSuite with Matchers with KoanSuite {
 
   test("method declaration") {
     def add2(i: Int): Int = {

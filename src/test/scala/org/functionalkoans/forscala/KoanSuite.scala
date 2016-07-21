@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.Suite
+import org.scalatest.{ Args, FailedStatus, Status, Suite }
 import org.scalatest.exceptions.TestPendingException
 import org.scalatest.matchers.Matcher
 
-trait KoanMatcher { self: Suite =>
+trait KoanSuite extends Suite {
 
   def meditate = pending
 
@@ -14,5 +14,13 @@ trait KoanMatcher { self: Suite =>
 
   protected class ___ extends Exception {
     override def toString = "___"
+  }
+
+  abstract override def runTest(testName: String, args: Args): Status = {
+    if (!args.stopper.stopRequested) {
+      super.runTest(testName, args)
+    } else {
+      FailedStatus
+    }
   }
 }

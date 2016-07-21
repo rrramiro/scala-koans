@@ -4,7 +4,7 @@ import com.github.ghik.silencer.silent
 import org.scalatest.{ FunSuite, Matchers }
 
 @silent
-class AboutExtractors extends FunSuite with Matchers with KoanMatcher {
+class AboutExtractors extends FunSuite with Matchers with KoanSuite {
   test("When you create a case class, it automatically can be used with " +
     "pattern matching since it has an extractor") {
     case class Employee(firstName: String, lastName: String)
@@ -21,22 +21,22 @@ class AboutExtractors extends FunSuite with Matchers with KoanMatcher {
   test(
     """What's an extractor? In Scala it's a method in any `object` called `unapply`, and that method
       | is used to disassemble the object given by returning a tuple wrapped in an option. Extractors can be used
-      | to assign values.""".stripMargin
+      | to assign values."""
   ) {
 
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
+      class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
 
-    object ChopShop {
-      def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
+      object ChopShop {
+        def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
+      }
+
+      val ChopShop(a, b, c, d) = new Car("Chevy", "Camaro", 1978, 120)
+
+      a should be(__)
+      b should be(__)
+      c should be(__)
+      d should be(__)
     }
-
-    val ChopShop(a, b, c, d) = new Car("Chevy", "Camaro", 1978, 120)
-
-    a should be(__)
-    b should be(__)
-    c should be(__)
-    d should be(__)
-  }
 
   test("""Of course an extractor can be used in pattern matching...""") {
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
@@ -91,28 +91,24 @@ class AboutExtractors extends FunSuite with Matchers with KoanMatcher {
     result should be(__)
   }
 
-  test(
-    """An extractor can be any stable object, including instantiated classes with an unapply method."""
-  ) {
+  test("""An extractor can be any stable object, including instantiated classes with an unapply method.""") {
 
-      class Car(val make: String, val model: String, val year: Short, val topSpeed: Short) {
-        def unapply(x: Car) = Some(x.make, x.model)
-      }
-
-      val camaro = new Car("Chevy", "Camaro", 1978, 122)
-
-      val result = camaro match {
-        case camaro(make, model) => "make: %s, model: %s".format(make, model)
-        case _ => "unknown"
-      }
-
-      result should be(__)
+    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short) {
+      def unapply(x: Car) = Some(x.make, x.model)
     }
 
-  test(
-    """What is typical is to create a custom extractor in the companion object of the class.
-      | In this koan, we use it as an assignment""".stripMargin
-  ) {
+    val camaro = new Car("Chevy", "Camaro", 1978, 122)
+
+    val result = camaro match {
+      case camaro(make, model) => "make: %s, model: %s".format(make, model)
+      case _ => "unknown"
+    }
+
+    result should be(__)
+  }
+
+  test("""What is typical is to create a custom extractor in the companion object of the class.
+      | In this koan, we use it as an assignment""") {
 
     class Employee(
       val firstName: String,

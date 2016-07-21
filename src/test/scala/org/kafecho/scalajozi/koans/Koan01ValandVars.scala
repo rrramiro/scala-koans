@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan01ValandVars extends FunSuite with Matchers with KoanMatcher {
+class Koan01ValandVars extends FunSuite with Matchers with KoanSuite {
 
   test("A val is an immutable reference which does not change.") {
     val meaningOfLife = 42

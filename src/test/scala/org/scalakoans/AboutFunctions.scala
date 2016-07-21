@@ -1,9 +1,9 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutFunctions extends FunSuite with Matchers with KoanMatcher {
+class AboutFunctions extends FunSuite with Matchers with KoanSuite {
 
   test("functions") {
     val add2 = (i: Int) => i + 2

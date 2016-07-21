@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanMatcher {
+class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanSuite {
 
   class WithoutClassParameters() {
     def addColors(red: Int, green: Int, blue: Int) = {

@@ -4,7 +4,7 @@ import org.scalatest.{ FunSuite, Matchers }
 
 import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends FunSuite with Matchers with KoanMatcher {
+class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
   class Duck {
     def quack = "Quack"
   }
@@ -16,16 +16,16 @@ class AboutStructuralTypes extends FunSuite with Matchers with KoanMatcher {
   test(
     """Structural typing is the ability to allow to the best of Scala's ability, duck typing.
        |Duck Typing is where the method signatures and properties become valid semantics, not inheritence.
-       |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ...""".stripMargin
+       |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ..."""
   ) {
 
-    def onlyThoseThatCanPerformQuacks(quacker: { def quack: String }): String = {
-      "received message: %s".format(quacker.quack)
-    }
+      def onlyThoseThatCanPerformQuacks(quacker: { def quack: String }): String = {
+        "received message: %s".format(quacker.quack)
+      }
 
-    onlyThoseThatCanPerformQuacks(new Duck()) should be(__)
-    onlyThoseThatCanPerformQuacks(BadDoctor) should be(__)
-  }
+      onlyThoseThatCanPerformQuacks(new Duck()) should be(__)
+      onlyThoseThatCanPerformQuacks(BadDoctor) should be(__)
+    }
 
   test("""Structural typing can also be used to assign values and variables""") {
     val quacker: { def quack: String } = BadDoctor

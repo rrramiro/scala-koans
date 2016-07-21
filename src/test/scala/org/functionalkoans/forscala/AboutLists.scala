@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLists extends FunSuite with Matchers with KoanMatcher {
+class AboutLists extends FunSuite with Matchers with KoanSuite {
 
   test("Eq tests identity (same object)") {
     val a = List(1, 2, 3)

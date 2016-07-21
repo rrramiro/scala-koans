@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan06Collections extends FunSuite with Matchers with KoanMatcher {
+class Koan06Collections extends FunSuite with Matchers with KoanSuite {
 
   test("Lists are immutable data structure") {
     val greeting = List("hello", "world")

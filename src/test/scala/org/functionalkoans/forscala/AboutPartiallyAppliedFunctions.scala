@@ -2,10 +2,10 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutPartiallyAppliedFunctions extends FunSuite with Matchers with KoanMatcher {
+class AboutPartiallyAppliedFunctions extends FunSuite with Matchers with KoanSuite {
   test("""A partially applied function is a function that you do not apply any or all the
          | arguments, creating another function. This partially applied function
-         | doesn't apply any arguments""".stripMargin) {
+         | doesn't apply any arguments""") {
     def sum(a: Int, b: Int, c: Int) = a + b + c
     val sum3 = sum _
     sum3(1, 9, 7) should be(__)
