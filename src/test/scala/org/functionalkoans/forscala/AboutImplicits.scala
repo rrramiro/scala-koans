@@ -4,11 +4,11 @@ import org.scalatest.{ FunSuite, Matchers }
 
 import scala.language.implicitConversions
 
-class AboutImplicits extends FunSuite with Matchers with KoanMatcher {
+class AboutImplicits extends FunSuite with Matchers with KoanSuite {
 
   test("""Implicits wrap around existing classes to provide extra functionality
            |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
-           |   Creating a method isOdd for Int, which doesn't exist""".stripMargin) {
+           |   Creating a method isOdd for Int, which doesn't exist""") {
 
     class KoanIntWrapper(val original: Int) {
       def isOdd = original % 2 != 0
@@ -50,7 +50,7 @@ class AboutImplicits extends FunSuite with Matchers with KoanMatcher {
 
   test("""Implicits can be used declare a value to be provided as a default as
           |   long as an implicit value is set with in the scope.  These are
-          |   called implicit function parameters""".stripMargin) {
+          |   called implicit function parameters""") {
 
     def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = dollarsPerHour * hours
 

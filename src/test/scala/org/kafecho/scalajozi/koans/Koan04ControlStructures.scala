@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan04ControlStructures extends FunSuite with Matchers with KoanMatcher {
+class Koan04ControlStructures extends FunSuite with Matchers with KoanSuite {
 
   test("Most things are expressions") {
 

@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
 import scala.xml.XML
 
-class Koan13Xml extends FunSuite with Matchers with KoanMatcher {
+class Koan13Xml extends FunSuite with Matchers with KoanSuite {
 
   test("You can define an xml literal") {
     val xml = <xml>Hello World</xml>

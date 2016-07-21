@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatcher {
+class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanSuite {
 
   class CalculatesAgeUsingMethod(var currentYear: Int, birthYear: Int) {
 

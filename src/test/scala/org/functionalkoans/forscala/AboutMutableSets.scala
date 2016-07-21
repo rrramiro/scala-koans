@@ -4,7 +4,7 @@ import org.scalatest.{ FunSuite, Matchers }
 
 import scala.collection.mutable
 
-class AboutMutableSets extends FunSuite with Matchers with KoanMatcher {
+class AboutMutableSets extends FunSuite with Matchers with KoanSuite {
 
   test("Mutable sets can be created easily") {
     val mySet = mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")

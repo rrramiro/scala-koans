@@ -2,10 +2,12 @@ package org.scalakoans
 
 import java.util.Date
 
-import org.functionalkoans.forscala.KoanMatcher
+import com.github.ghik.silencer.silent
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutTuples extends FunSuite with Matchers with KoanMatcher {
+@silent
+class AboutTuples extends FunSuite with Matchers with KoanSuite {
 
   test("Tuples can be created easily") {
     val tuple = ("apple", "dog")
@@ -22,7 +24,7 @@ class AboutTuples extends FunSuite with Matchers with KoanMatcher {
     animal should be("dog")
     __ should be("tree")
 
-    tuple.isInstanceOf[Tuple3[String, String, String]] should __
+    tuple.isInstanceOf[(String, String, String)] should __
     __.isInstanceOf[(String, String, String)] should be(true)
   }
 
@@ -47,14 +49,14 @@ class AboutTuples extends FunSuite with Matchers with KoanMatcher {
   test("Pair is a tuple of 2 things") {
     val tuple = (123, "abc")
 
-    tuple.isInstanceOf[Tuple2[Int, String]] should __
-    __.isInstanceOf[Pair[Int, String]] should be(true)
+    tuple.isInstanceOf[(Int, String)] should __
+    __.isInstanceOf[(Int, String)] should be(true)
   }
 
   test("-> creates a Pair") {
     val p = 123 -> "abc"
 
-    p.isInstanceOf[Pair[Int, String]] should __
+    p.isInstanceOf[(Int, String)] should __
   }
 
 }

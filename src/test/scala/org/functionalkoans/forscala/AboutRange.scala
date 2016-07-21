@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutRange extends FunSuite with Matchers with KoanMatcher {
+class AboutRange extends FunSuite with Matchers with KoanSuite {
 
   test("Range are not inclusive at end of range") {
     val someNumbers = Range(0, 10)

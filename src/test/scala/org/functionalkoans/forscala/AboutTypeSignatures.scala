@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutTypeSignatures extends FunSuite with Matchers with KoanMatcher {
+class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
   test("In Java you declare a generic type within a <>, in Scala it is []") {
     val z: List[String] = "Do" :: "Re" :: "Mi" :: "Fa" :: "So" :: "La" :: "Te" :: "Do" :: Nil
   }

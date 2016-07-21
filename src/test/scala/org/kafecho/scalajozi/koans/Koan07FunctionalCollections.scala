@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan07FunctionalCollections extends FunSuite with Matchers with KoanMatcher {
+class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite {
 
   test("Filtering") {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8)

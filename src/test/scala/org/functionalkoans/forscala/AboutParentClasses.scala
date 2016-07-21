@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutParentClasses extends FunSuite with Matchers with KoanMatcher {
+class AboutParentClasses extends FunSuite with Matchers with KoanSuite {
   test("Class hierarchy is linear, a class can only extend from one parent class") {
     class Worker(val firstName: String, val lastName: String) {}
     class Employee(override val firstName: String, override val lastName: String,

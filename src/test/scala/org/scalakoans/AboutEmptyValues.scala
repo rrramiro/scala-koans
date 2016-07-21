@@ -1,9 +1,9 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutEmptyValues extends FunSuite with Matchers with KoanMatcher {
+class AboutEmptyValues extends FunSuite with Matchers with KoanSuite {
 
   test("None equals None") {
     None should __

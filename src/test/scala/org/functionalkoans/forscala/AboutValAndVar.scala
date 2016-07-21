@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutValAndVar extends FunSuite with Matchers with KoanMatcher {
+class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
 
   test("Vars are variables, and may be reassigned") {
     var a = 5

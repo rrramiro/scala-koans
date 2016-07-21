@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan09Classes extends FunSuite with Matchers with KoanMatcher {
+class Koan09Classes extends FunSuite with Matchers with KoanSuite {
   test("A mutable class") {
     class Mutable(var value: Int)
     val m = new Mutable(5)

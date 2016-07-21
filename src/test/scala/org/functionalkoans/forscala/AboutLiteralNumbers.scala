@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLiteralNumbers extends FunSuite with Matchers with KoanMatcher {
+class AboutLiteralNumbers extends FunSuite with Matchers with KoanSuite {
   test("Integer Literals are 32-bit and can be created from decimal, hexadecimal") {
     val a = 2
     val b = 31
@@ -21,7 +21,7 @@ class AboutLiteralNumbers extends FunSuite with Matchers with KoanMatcher {
   }
 
   test("""Long Literals are 64 bit, are specified by appending an L or l at the end;
-         |   l is rarely used since it looks like a 1""".stripMargin) {
+         |   l is rarely used since it looks like a 1""") {
     val a = 2L
     val b = 31L
     val c = 0x30FL
@@ -43,7 +43,7 @@ class AboutLiteralNumbers extends FunSuite with Matchers with KoanMatcher {
          |   Float are 32-bit length, Doubles are 64-bit.
          |   Floats can be coerced using a f or F suffix, and
          |   Doubles can be coerced using a d or D suffix.
-         |   Exponent are specified using e or E.""".stripMargin) {
+         |   Exponent are specified using e or E.""") {
 
     val a = 3.0
     val b = 3.00

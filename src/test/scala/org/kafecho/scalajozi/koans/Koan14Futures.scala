@@ -1,13 +1,13 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
 import scala.concurrent._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-class Koan14Futures extends FunSuite with Matchers with KoanMatcher {
+class Koan14Futures extends FunSuite with Matchers with KoanSuite {
   test("Create futures, compose them, and wait for them to complete.") {
     import ExecutionContext.Implicits.global
 

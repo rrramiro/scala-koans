@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutMaps extends FunSuite with Matchers with KoanMatcher {
+class AboutMaps extends FunSuite with Matchers with KoanSuite {
 
   test("Maps can be created easily") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")

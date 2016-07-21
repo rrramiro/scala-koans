@@ -1,9 +1,9 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanMatcher
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class Koan10Objects extends FunSuite with Matchers with KoanMatcher {
+class Koan10Objects extends FunSuite with Matchers with KoanSuite {
   test("An object can used as a collection of things.") {
     object Settings {
       val volume = 5

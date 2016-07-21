@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutTraits extends FunSuite with Matchers with KoanMatcher {
+class AboutTraits extends FunSuite with Matchers with KoanSuite {
   test("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
     case class Event(name: String)
 
@@ -172,24 +172,24 @@ class AboutTraits extends FunSuite with Matchers with KoanMatcher {
   test(
     """More traits can be stacked one atop another, make sure that all overrides
       | are labelled, abstract override.  The order of the mixins are important.
-      | Traits on the right take effect first.""".stripMargin
+      | Traits on the right take effect first."""
   ) {
 
-    trait Doubling extends IntQueue {
-      abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
+      trait Doubling extends IntQueue {
+        abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
+      }
+
+      trait Incrementing extends IntQueue {
+        abstract override def put(x: Int) { super.put(x + 1) }
+      }
+
+      val myQueue = new BasicIntQueue with Doubling with Incrementing //mixin during instantiation
+      myQueue put 4
+      myQueue put 3
+
+      myQueue.get should be(__)
+      myQueue.get should be(__)
     }
-
-    trait Incrementing extends IntQueue {
-      abstract override def put(x: Int) { super.put(x + 1) }
-    }
-
-    val myQueue = new BasicIntQueue with Doubling with Incrementing //mixin during instantiation
-    myQueue put 4
-    myQueue put 3
-
-    myQueue.get should be(__)
-    myQueue.get should be(__)
-  }
 
   test(
     """Same koans as before except that we swapped the order of the traits"""

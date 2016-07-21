@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutCaseClasses extends FunSuite with Matchers with KoanMatcher {
+class AboutCaseClasses extends FunSuite with Matchers with KoanSuite {
 
   // case classes are very convenient, they give you a lot for free. The following Koans will
   // help you understand some of the conveniences. Case classes are also an integral part of

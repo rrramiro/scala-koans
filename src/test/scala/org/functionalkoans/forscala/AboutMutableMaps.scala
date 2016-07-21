@@ -4,7 +4,7 @@ import org.scalatest.{ FunSuite, Matchers }
 
 import scala.collection.mutable
 
-class AboutMutableMaps extends FunSuite with Matchers with KoanMatcher {
+class AboutMutableMaps extends FunSuite with Matchers with KoanSuite {
 
   test("Mutable maps can be created easily") {
     val myMap = mutable.Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")

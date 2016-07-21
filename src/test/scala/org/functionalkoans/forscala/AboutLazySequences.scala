@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutLazySequences extends FunSuite with Matchers with KoanMatcher {
+class AboutLazySequences extends FunSuite with Matchers with KoanSuite {
 
   test("Creating a lazy collection form a strict collection") {
     val strictList = List(10, 20, 30)

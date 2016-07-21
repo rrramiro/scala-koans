@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutForExpressions extends FunSuite with Matchers with KoanMatcher {
+class AboutForExpressions extends FunSuite with Matchers with KoanSuite {
 
   test("For loops can be simple") {
     val someNumbers = Range(0, 10)

@@ -1,9 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanMatcher
+import com.github.ghik.silencer.silent
+import org.functionalkoans.forscala.KoanSuite
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutPackages extends FunSuite with Matchers with KoanMatcher {
+@silent
+class AboutPackages extends FunSuite with Matchers with KoanSuite {
 
   test("packages contain classes and objects") {
     val packageOfThisClass = classOf[AboutPackages].getName.split("\\.").dropRight(1).mkString(".")

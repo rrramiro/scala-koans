@@ -4,7 +4,7 @@ import com.github.ghik.silencer.silent
 import org.scalatest.{ FunSuite, Matchers }
 
 // meditate on AboutAsserts to see how the Scala Koans work
-class AboutAsserts extends FunSuite with Matchers with KoanMatcher {
+class AboutAsserts extends FunSuite with Matchers with KoanSuite {
 
   test("asserts can take a boolean argument") {
     assert(false) // should be true

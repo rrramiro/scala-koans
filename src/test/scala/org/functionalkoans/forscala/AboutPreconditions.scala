@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import org.scalatest.{ FunSuite, Matchers }
 
-class AboutPreconditions extends FunSuite with Matchers with KoanMatcher {
+class AboutPreconditions extends FunSuite with Matchers with KoanSuite {
 
   class WithParameterRequirement(val myValue: Int) {
     require(myValue != 0)
