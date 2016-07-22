@@ -1,10 +1,10 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan08Methods extends FunSuite with Matchers with KoanSuite {
-  test("Let's define a method") {
+class Koan08Methods extends KoanFunSuite with Matchers {
+  koan("Let's define a method") {
     def add2(i: Int): Int = {
       return (i + 2)
     }
@@ -12,7 +12,7 @@ class Koan08Methods extends FunSuite with Matchers with KoanSuite {
     add2(0) should equal(__)
   }
 
-  test("Return is optional") {
+  koan("Return is optional") {
     def add2(i: Int): Int = {
       i + 2
     }
@@ -20,13 +20,13 @@ class Koan08Methods extends FunSuite with Matchers with KoanSuite {
     add2(0) should equal(__)
   }
 
-  test("Return type is optional") {
+  koan("Return type is optional") {
     def add2(i: Int) = i + 2
 
     add2(0) should equal(__)
   }
 
-  test("Nested method") {
+  koan("Nested method") {
     def add2(i: Int) = {
       def add1(x: Int) = x + 1
       add1(add1(i))

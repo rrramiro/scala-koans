@@ -1,10 +1,10 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan10Objects extends FunSuite with Matchers with KoanSuite {
-  test("An object can used as a collection of things.") {
+class Koan10Objects extends KoanFunSuite with Matchers {
+  koan("An object can used as a collection of things.") {
     object Settings {
       val volume = 5
     }
@@ -12,7 +12,7 @@ class Koan10Objects extends FunSuite with Matchers with KoanSuite {
     Settings.volume should be(__)
   }
 
-  test("You can nest objects") {
+  koan("You can nest objects") {
     object Lounge {
 
       object TV {
@@ -23,14 +23,14 @@ class Koan10Objects extends FunSuite with Matchers with KoanSuite {
     Lounge.TV.volume should be(__)
   }
 
-  test("Objects can extends classes") {
+  koan("Objects can extends classes") {
     class SuperHero(val realName: String)
     object Superman extends SuperHero("Clark Kent")
 
     Superman.realName should be(__)
   }
 
-  test("Use a singleton object as a container of static methods") {
+  koan("Use a singleton object as a container of static methods") {
     object Math {
       def add2(n: Int) = n + 2
     }
@@ -39,7 +39,7 @@ class Koan10Objects extends FunSuite with Matchers with KoanSuite {
     Math.add2(5) should be(__)
   }
 
-  test("A companion object goes with the class of the same name.") {
+  koan("A companion object goes with the class of the same name.") {
     class Foo(x: Int)
 
     object Foo {

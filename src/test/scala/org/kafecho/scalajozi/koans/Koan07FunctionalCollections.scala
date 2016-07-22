@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite {
+class Koan07FunctionalCollections extends KoanFunSuite with Matchers {
 
-  test("Filtering") {
+  koan("Filtering") {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8)
     val oddNumbers = numbers.filter(n => n % 2 == 0)
     oddNumbers should equal(List(__))
@@ -14,7 +14,7 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite 
     evenNumbers should equal(List(1, 3, 5, 7))
   }
 
-  test("Finding an element within a collection") {
+  koan("Finding an element within a collection") {
     val meaningOfLife = 42
     val answers = List(1, 3, 42, 90, 120)
     val answer: Option[Int] = answers.find(elt => elt == meaningOfLife)
@@ -23,7 +23,7 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite 
     answer.foreach(a => println("Yeah, I found it"))
   }
 
-  test("Map: apply a function to all elements of a collection.") {
+  koan("Map: apply a function to all elements of a collection.") {
 
     val numbers = List(1, 2, 3, 4)
 
@@ -36,7 +36,7 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite 
     numbers.map(plusOne) should equal(List(2, 3, 4, 5))
   }
 
-  test("foreach is for side effects") {
+  koan("foreach is for side effects") {
     val audience = Set("Guillaume", "Jacques", "Eric")
 
     val returnType = audience.foreach(a => println(a))
@@ -44,19 +44,19 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite 
     returnType.isInstanceOf[Unit] should equal(__)
   }
 
-  test("Lists can be 'reduced' with a mathematical operation") {
+  koan("Lists can be 'reduced' with a mathematical operation") {
     val list = List(1, 3, 5, 7)
     // note the two _s below indicate the first and second args respectively
     list.reduceLeft((a, b) => a + b) should equal(16)
     list.reduceLeft((a, b) => a * b) should equal(105)
   }
 
-  test("Sort a list by a predicate") {
+  koan("Sort a list by a predicate") {
     val list = List(1, 3, 4, 9, 10, 15, 40, 42, 60)
     list.sortWith((a, b) => a > b)
   }
 
-  test("In Scala, Strings are considered collection of characters.") {
+  koan("In Scala, Strings are considered collection of characters.") {
     val word = "vereeniging"
 
     // Let's find how many 'e's in that word.
@@ -70,7 +70,7 @@ class Koan07FunctionalCollections extends FunSuite with Matchers with KoanSuite 
     theGs.size should equal(__)
   }
 
-  test("Use groupBy work generic grouping.") {
+  koan("Use groupBy work generic grouping.") {
 
     val word = "vereeniging"
 

@@ -1,13 +1,13 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.language.postfixOps
 
-class Koan15ImplicitConversions extends FunSuite with Matchers with KoanSuite {
+class Koan15ImplicitConversions extends KoanFunSuite with Matchers {
 
-  test("Working with frequencies") {
+  koan("Working with frequencies") {
     case class Hertz(value: Long)
     object Conversions {
 

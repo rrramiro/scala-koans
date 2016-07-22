@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutInfixTypes extends FunSuite with Matchers with KoanSuite {
+class AboutInfixTypes extends KoanFunSuite with Matchers {
 
-  test("""We can make a type infix, meaning that the type can be displayed in complement
+  koan("""We can make a type infix, meaning that the type can be displayed in complement
          |  between two types in order to make a readable delaration""") {
     case class Person(name: String)
     class Loves[A, B](val a: A, val b: B)
@@ -20,7 +20,7 @@ class AboutInfixTypes extends FunSuite with Matchers with KoanSuite {
     announceCouple(new Loves(romeo, juliet)) should be(__)
   }
 
-  test("""Of course we can make this a bit more elegant by creating an infix operator
+  koan("""Of course we can make this a bit more elegant by creating an infix operator
            |  method to use with our infix type""") {
 
     case class Person(name: String) {

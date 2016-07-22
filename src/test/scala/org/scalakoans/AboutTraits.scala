@@ -1,11 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutTraits extends FunSuite with Matchers with KoanSuite {
+class AboutTraits extends KoanFunSuite with Matchers {
 
-  test("traits") {
+  koan("traits") {
     trait SaysHello {
       def sayHello(name: String) = "hello " + name
     }
@@ -15,7 +15,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     (new Thing).sayHello("Lou") should be(__)
   }
 
-  test("traits can have abstract members which must be implemented") {
+  koan("traits can have abstract members which must be implemented") {
     trait SaysHello {
       val name: String
       def sayHello = "hello " + name
@@ -27,7 +27,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     p.sayHello should be(__)
   }
 
-  test("multiple traits can be mixed in") {
+  koan("multiple traits can be mixed in") {
     trait SaysHello {
       val name: String
       def sayHello = "hello " + name
@@ -44,7 +44,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     p.sayHello should be(__)
   }
 
-  test("traits cannot have a constructor") {
+  koan("traits cannot have a constructor") {
     meditate
     // trait SaysHello(name: String) {
     //   def sayHello = "hello " + name

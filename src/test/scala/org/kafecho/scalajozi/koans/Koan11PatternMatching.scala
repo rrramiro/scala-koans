@@ -1,10 +1,10 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan11PatternMatching extends FunSuite with Matchers with KoanSuite {
-  test("Pattern matching is a switch statement on steroids") {
+class Koan11PatternMatching extends KoanFunSuite with Matchers {
+  koan("Pattern matching is a switch statement on steroids") {
 
     val name: String = "Fred"
 
@@ -17,7 +17,7 @@ class Koan11PatternMatching extends FunSuite with Matchers with KoanSuite {
     answer should be(__)
   }
 
-  test("You can deconstruct lists when pattern matching.") {
+  koan("You can deconstruct lists when pattern matching.") {
 
     val list = List("Hello", "World")
 
@@ -27,7 +27,7 @@ class Koan11PatternMatching extends FunSuite with Matchers with KoanSuite {
     }
   }
 
-  test("You can use case classes for pattern matching.") {
+  koan("You can use case classes for pattern matching.") {
 
     case class Person(firstname: String, surname: String)
 

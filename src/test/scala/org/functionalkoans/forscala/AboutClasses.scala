@@ -1,20 +1,20 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutClasses extends FunSuite with Matchers with KoanSuite {
+class AboutClasses extends KoanFunSuite with Matchers {
 
   // you can define class with var or val parameters
   class ClassWithVarParameter(var description: String)
 
   class ClassWithValParameter(val name: String)
 
-  test("val parameters in class definition define getter") {
+  koan("val parameters in class definition define getter") {
     val aClass = new ClassWithValParameter("name goes here")
     aClass.name should be(__)
   }
 
-  test("var parameters in class definition define getter and setter") {
+  koan("var parameters in class definition define getter and setter") {
     val aClass = new ClassWithVarParameter("description goes here")
     aClass.description should be(__)
 
@@ -25,7 +25,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
   // you can define class with private fields
   class ClassWithPrivateFields(name: String)
 
-  test("fields defined internally are private to class") {
+  koan("fields defined internally are private to class") {
     val aClass = new ClassWithPrivateFields("name")
 
     // NOTE: aClass.name is not accessible

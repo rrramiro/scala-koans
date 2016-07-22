@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
+class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
 
-  test("Meet lambda. Anonymous function") {
+  koan("Meet lambda. Anonymous function") {
     def lambda = { x: Int => x + 1 }
     def lambda2 = (x: Int) => x + 1
     val lambda3 = (x: Int) => x + 1
@@ -31,13 +31,13 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     result5 should be(__)
   }
 
-  test("An anonymous function can also take on a different look by taking out the brackets") {
+  koan("An anonymous function can also take on a different look by taking out the brackets") {
     def lambda = (x: Int) => x + 1
     def result = lambda(5)
     result should be(__)
   }
 
-  test("Meet closure. Closure is any function that closes over the environment") {
+  koan("Meet closure. Closure is any function that closes over the environment") {
     var incrementer = 1
 
     def closure = {
@@ -53,7 +53,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     result2 should be(__)
   }
 
-  test("We can take that closure and throw into a method and it will still hold the environment") {
+  koan("We can take that closure and throw into a method and it will still hold the environment") {
 
     def summation(x: Int, y: Int => Int) = y(x)
 
@@ -68,7 +68,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     result2 should be(__)
   }
 
-  test("function returning another function") {
+  koan("function returning another function") {
     def addWithoutSyntaxSugar(x: Int) = {
       new Function1[Int, Int]() {
         def apply(y: Int): Int = x + y
@@ -83,7 +83,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     fiveAdder(5) should be(__)
   }
 
-  test("function returning another function " +
+  koan("function returning another function " +
     "using an anonymous function") {
     def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
 
@@ -94,7 +94,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     fiveAdder(5) should be(__)
   }
 
-  test("""isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
+  koan("""isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
       | 'blanked out' using existential types with is a single underline, since parameter type are unknown
       | at runtime.""") {
     def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
@@ -102,7 +102,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(__)
   }
 
-  test("""function taking another function as parameter. Helps in composing functions.
+  koan("""function taking another function as parameter. Helps in composing functions.
       | Hint: a map method applies the function to each element of a list""") {
 
     def makeUpper(xs: List[String]) = xs map { _.toUpperCase }
@@ -121,7 +121,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     List("Scala", "Erlang", "Clojure") map { _.length } should be(__)
   }
 
-  test("Currying is a technique to transform function with multiple parameters to function with one parameter") {
+  koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
     def multiply(x: Int, y: Int) = x * y
     (multiply _).isInstanceOf[Function2[_, _, _]] should be(__)
     val multiplyCurried = (multiply _).curried
@@ -129,7 +129,7 @@ class AboutHigherOrderFunctions extends FunSuite with Matchers with KoanSuite {
     multiplyCurried(3)(2) should be(__)
   }
 
-  test("Currying allows you to create specialized version of generalized function") {
+  koan("Currying allows you to create specialized version of generalized function") {
     def customFilter(f: Int => Boolean)(xs: List[Int]) = {
       xs filter f
     }

@@ -1,20 +1,20 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutMaps extends FunSuite with Matchers with KoanSuite {
+class AboutMaps extends KoanFunSuite with Matchers {
 
-  test("Maps can be created easily") {
+  koan("Maps can be created easily") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     myMap.size should be(__)
   }
 
-  test("Maps contain distinct pairings") {
+  koan("Maps contain distinct pairings") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
     myMap.size should be(__)
   }
 
-  test("Maps can be added to easily") {
+  koan("Maps can be added to easily") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
 
     val aNewMap = myMap + ("IL" -> "Illinois")
@@ -23,7 +23,7 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
 
   }
 
-  test("Map values can be iterated") {
+  koan("Map values can be iterated") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
 
     val mapValues = myMap.values
@@ -41,7 +41,7 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     //mapValues.contains("Illinois") should be (true)
   }
 
-  test("Maps insertion with duplicate key updates previous entry with subsequent value") {
+  koan("Maps insertion with duplicate key updates previous entry with subsequent value") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Meechigan")
 
     val mapValues = myMap.values
@@ -51,13 +51,13 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     myMap("MI") should be(__)
   }
 
-  test("Map keys may be of mixed type") {
+  koan("Map keys may be of mixed type") {
     val myMap = Map("Ann Arbor" -> "MI", 49931 -> "MI")
     myMap("Ann Arbor") should be(__)
     myMap(49931) should be(__)
   }
 
-  test("Mixed type values can be added to a map ") {
+  koan("Mixed type values can be added to a map ") {
     val myMap = scala.collection.mutable.Map.empty[String, Any]
     myMap("Ann Arbor") = (48103, 48104, 48108)
     myMap("Houghton") = 49931
@@ -67,19 +67,19 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     // what happens if you change the Any to Int
   }
 
-  test("Maps may be accessed") {
+  koan("Maps may be accessed") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     myMap("MI") should be(__)
     myMap("IA") should be(__)
   }
 
-  test("Map elements can be removed easily") {
+  koan("Map elements can be removed easily") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - "MI"
     aNewMap.contains("MI") should be(__)
   }
 
-  test("Accessing a map by key results in an exception if key is not found") {
+  koan("Accessing a map by key results in an exception if key is not found") {
 
     val myMap = Map("OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
 
@@ -90,7 +90,7 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     //}
   }
 
-  test("Map elements can be removed in multiple") {
+  koan("Map elements can be removed in multiple") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap -- List("MI", "OH")
 
@@ -100,7 +100,7 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     aNewMap.size should be(__)
   }
 
-  test("Map elements can be removed with a tuple") {
+  koan("Map elements can be removed with a tuple") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - ("MI", "WI") // Notice: single '-' operator for tuples
 
@@ -109,14 +109,14 @@ class AboutMaps extends FunSuite with Matchers with KoanSuite {
     aNewMap.size should be(__)
   }
 
-  test("Attempted removal of nonexistent elements from a map is handled gracefully") {
+  koan("Attempted removal of nonexistent elements from a map is handled gracefully") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - "MN"
 
     aNewMap.equals(myMap) should be(__)
   }
 
-  test("Map equivalency is independent of order") {
+  koan("Map equivalency is independent of order") {
 
     val myMap1 = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val myMap2 = Map("WI" -> "Wisconsin", "MI" -> "Michigan", "IA" -> "Iowa", "OH" -> "Ohio")

@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutTraits extends FunSuite with Matchers with KoanSuite {
-  test("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
+class AboutTraits extends KoanFunSuite with Matchers {
+  koan("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
     case class Event(name: String)
 
     trait EventListener {
@@ -24,7 +24,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     myListener.listen(evt) should be(__)
   }
 
-  test("A class can only \'extend\' from one class or trait, any subsequent extension should use the keyword \'with\'") {
+  koan("A class can only \'extend\' from one class or trait, any subsequent extension should use the keyword \'with\'") {
 
     case class Event(name: String)
 
@@ -48,7 +48,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     myListener.listen(evt) should be(__)
   }
 
-  test("Traits are polymorphic. Any type can be referred to by another type if related by extension") {
+  koan("Traits are polymorphic. Any type can be referred to by another type if related by extension") {
     case class Event(name: String)
 
     trait EventListener {
@@ -72,7 +72,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     myListener.isInstanceOf[AnyRef] should be(__)
   }
 
-  test("Traits can have concrete implementations that can be mixed into concrete classes with it's own state") {
+  koan("Traits can have concrete implementations that can be mixed into concrete classes with it's own state") {
     trait Logging {
       var logCache = List[String]()
 
@@ -104,7 +104,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     baker.logCache.size should be(__)
   }
 
-  test("""Traits can also be mixed during instantiation after the fact!
+  koan("""Traits can also be mixed during instantiation after the fact!
           | This is useful if you only want to mixin per instance and not per class""") {
 
     trait Logging {
@@ -144,7 +144,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     def put(x: Int) { buf += x }
   }
 
-  test("Traits are stackable and can change the behavior of methods that the traits are stacked upon") {
+  koan("Traits are stackable and can change the behavior of methods that the traits are stacked upon") {
     trait Doubling extends IntQueue {
       abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
@@ -158,7 +158,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     myQueue.get() should be(__)
   }
 
-  test("Just like other traits, stackable traits can be mixed after the fact") {
+  koan("Just like other traits, stackable traits can be mixed after the fact") {
     trait Doubling extends IntQueue {
       abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
@@ -169,74 +169,68 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     myQueue.get() should be(__)
   }
 
-  test(
-    """More traits can be stacked one atop another, make sure that all overrides
+  koan("""More traits can be stacked one atop another, make sure that all overrides
       | are labelled, abstract override.  The order of the mixins are important.
-      | Traits on the right take effect first."""
-  ) {
+      | Traits on the right take effect first.""") {
 
-      trait Doubling extends IntQueue {
-        abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
-      }
-
-      trait Incrementing extends IntQueue {
-        abstract override def put(x: Int) { super.put(x + 1) }
-      }
-
-      val myQueue = new BasicIntQueue with Doubling with Incrementing //mixin during instantiation
-      myQueue put 4
-      myQueue put 3
-
-      myQueue.get should be(__)
-      myQueue.get should be(__)
+    trait Doubling extends IntQueue {
+      abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
 
-  test(
-    """Same koans as before except that we swapped the order of the traits"""
-  ) {
-
-      trait Doubling extends IntQueue {
-        abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
-      }
-
-      trait Incrementing extends IntQueue {
-        abstract override def put(x: Int) { super.put(x + 1) }
-      }
-
-      val myQueue = new BasicIntQueue with Incrementing with Doubling //mixin during instantiation
-      myQueue put 4
-      myQueue put 3
-      myQueue.get should be(__)
-      myQueue.get should be(__)
+    trait Incrementing extends IntQueue {
+      abstract override def put(x: Int) { super.put(x + 1) }
     }
 
-  test(
-    """Using three traits to enhance the IntQueue: Doubling, Incrementing, and Filtering!"""
-  ) {
+    val myQueue = new BasicIntQueue with Doubling with Incrementing //mixin during instantiation
+    myQueue put 4
+    myQueue put 3
 
-      trait Doubling extends IntQueue {
-        abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
-      }
+    myQueue.get should be(__)
+    myQueue.get should be(__)
+  }
 
-      trait Incrementing extends IntQueue {
-        abstract override def put(x: Int) { super.put(x + 1) }
-      }
+  koan("""Same koans as before except that we swapped the order of the traits""") {
 
-      trait Filtering extends IntQueue {
-        abstract override def put(x: Int) {
-          if (x >= 0) super.put(x)
-        }
-      }
-
-      val myQueue = new BasicIntQueue with Incrementing with Doubling with Filtering //mixin during instantiation
-      myQueue put 4
-      myQueue put -1
-      myQueue put 3
-      myQueue.get should be(__)
-      myQueue.get should be(__)
+    trait Doubling extends IntQueue {
+      abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
 
-  test("Traits are instantiated before a the mixed-in class instantiation") {
+    trait Incrementing extends IntQueue {
+      abstract override def put(x: Int) { super.put(x + 1) }
+    }
+
+    val myQueue = new BasicIntQueue with Incrementing with Doubling //mixin during instantiation
+    myQueue put 4
+    myQueue put 3
+    myQueue.get should be(__)
+    myQueue.get should be(__)
+  }
+
+  koan("""Using three traits to enhance the IntQueue: Doubling, Incrementing, and Filtering!""") {
+
+    trait Doubling extends IntQueue {
+      abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
+    }
+
+    trait Incrementing extends IntQueue {
+      abstract override def put(x: Int) { super.put(x + 1) }
+    }
+
+    trait Filtering extends IntQueue {
+      abstract override def put(x: Int) {
+        if (x >= 0) super.put(x)
+      }
+    }
+
+    val myQueue = new BasicIntQueue with Incrementing with Doubling with Filtering //mixin during instantiation
+    myQueue put 4
+    myQueue put -1
+    myQueue put 3
+    myQueue.get should be(__)
+    myQueue.get should be(__)
+  }
+
+  koan("Traits are instantiated before a the mixed-in class instantiation") {
     var sb = List[String]()
 
     trait T1 {
@@ -254,7 +248,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     sb.mkString(";") should be(__)
   }
 
-  test("Traits are instantiated before a classes instantiation from left to right") {
+  koan("Traits are instantiated before a classes instantiation from left to right") {
     var sb = List[String]()
 
     trait T1 {
@@ -276,7 +270,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     sb.mkString(";") should be(__)
   }
 
-  test("Instantiations are tracked internally and will not allow a duplicate instantiation. " +
+  koan("Instantiations are tracked internally and will not allow a duplicate instantiation. " +
     "Note T1 extends T2, and C1 also extends T2, but T2 is only instantiated once.") {
 
     var sb = List[String]()
@@ -300,7 +294,7 @@ class AboutTraits extends FunSuite with Matchers with KoanSuite {
     sb.mkString(";") should be(__)
   }
 
-  test("The diamond of death (http://en.wikipedia.org/wiki/Diamond_problem) is avoided since " +
+  koan("The diamond of death (http://en.wikipedia.org/wiki/Diamond_problem) is avoided since " +
     "instantiations are tracked and will not allow multiple instantiations") {
 
     var sb = List[String]()

@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan04ControlStructures extends FunSuite with Matchers with KoanSuite {
+class Koan04ControlStructures extends KoanFunSuite with Matchers {
 
-  test("Most things are expressions") {
+  koan("Most things are expressions") {
 
     val answer = 41
     val found = (answer == 42)
@@ -17,7 +17,7 @@ class Koan04ControlStructures extends FunSuite with Matchers with KoanSuite {
     correct should be(__)
   }
 
-  test("A while loop is NOT an expression") {
+  koan("A while loop is NOT an expression") {
     val meaningOfLife = 24
 
     val what = while (meaningOfLife != 24) {
@@ -27,7 +27,7 @@ class Koan04ControlStructures extends FunSuite with Matchers with KoanSuite {
     what.isInstanceOf[Unit] should be(__)
   }
 
-  test("In Scala, for is normally used as a list comprehension. You can also use it purely for side effects.") {
+  koan("In Scala, for is normally used as a list comprehension. You can also use it purely for side effects.") {
     val result = for (i <- 0 to 42) {
       println(s"Getting closer to the meaning of life. Currentlty at $i")
     }
@@ -35,7 +35,7 @@ class Koan04ControlStructures extends FunSuite with Matchers with KoanSuite {
     result.isInstanceOf[Unit] should be(__)
   }
 
-  test("You can create a sequence from a for comprehension") {
+  koan("You can create a sequence from a for comprehension") {
     val result = (for (i <- 0 to 3) yield i * 2).toList
 
     result should equal(List(__))

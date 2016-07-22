@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutParentClasses extends FunSuite with Matchers with KoanSuite {
-  test("Class hierarchy is linear, a class can only extend from one parent class") {
+class AboutParentClasses extends KoanFunSuite with Matchers {
+  koan("Class hierarchy is linear, a class can only extend from one parent class") {
     class Worker(val firstName: String, val lastName: String) {}
     class Employee(override val firstName: String, override val lastName: String,
       val employeeID: Long) extends Worker(firstName, lastName)
@@ -12,7 +12,7 @@ class AboutParentClasses extends FunSuite with Matchers with KoanSuite {
     me.lastName should be(__)
   }
 
-  test("A class that extends from another is polymorphic") {
+  koan("A class that extends from another is polymorphic") {
     class Worker(val firstName: String, val lastName: String) {}
     class Employee(override val firstName: String, override val lastName: String,
       val employeeID: Long) extends Worker(firstName, lastName)
@@ -24,14 +24,14 @@ class AboutParentClasses extends FunSuite with Matchers with KoanSuite {
     worker.lastName should be(__)
   }
 
-  test("An abstract class, as in Java, cannot be instantiated and only inherited") {
+  koan("An abstract class, as in Java, cannot be instantiated and only inherited") {
     abstract class Worker(val firstName: String, val lastName: String) {}
 
     // if you uncomment this line, if will fail compilation
     //val worker = new Worker
   }
 
-  test("A class can be placed inside an abstract class just like in java") {
+  koan("A class can be placed inside an abstract class just like in java") {
     abstract class Worker(val firstName: String, val lastName: String) {
       class Assignment(val hours: Long) {
         // nothing to do here.  Just observe that it compiles

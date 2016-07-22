@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
 import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
+class AboutStructuralTypes extends KoanFunSuite with Matchers {
   class Duck {
     def quack = "Quack"
   }
@@ -13,26 +13,24 @@ class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
     def quack = "Here try these experimental pills"
   }
 
-  test(
-    """Structural typing is the ability to allow to the best of Scala's ability, duck typing.
+  koan("""Structural typing is the ability to allow to the best of Scala's ability, duck typing.
        |Duck Typing is where the method signatures and properties become valid semantics, not inheritence.
-       |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ..."""
-  ) {
+       |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ...""") {
 
-      def onlyThoseThatCanPerformQuacks(quacker: { def quack: String }): String = {
-        "received message: %s".format(quacker.quack)
-      }
-
-      onlyThoseThatCanPerformQuacks(new Duck()) should be(__)
-      onlyThoseThatCanPerformQuacks(BadDoctor) should be(__)
+    def onlyThoseThatCanPerformQuacks(quacker: { def quack: String }): String = {
+      "received message: %s".format(quacker.quack)
     }
 
-  test("""Structural typing can also be used to assign values and variables""") {
+    onlyThoseThatCanPerformQuacks(new Duck()) should be(__)
+    onlyThoseThatCanPerformQuacks(BadDoctor) should be(__)
+  }
+
+  koan("""Structural typing can also be used to assign values and variables""") {
     val quacker: { def quack: String } = BadDoctor
     quacker.quack should be(__)
   }
 
-  test("""Use a semicolon (;) to add more methods for the structural type""") {
+  koan("""Use a semicolon (;) to add more methods for the structural type""") {
     class Human {
       def speak = "Uh, hey"
       def move(steps: Int, direction: String) = "Don't want to, rather just chill"
@@ -49,7 +47,7 @@ class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
     someBovine.move(3, "South") should be(__)
   }
 
-  test("""You can use type aliasing if the structural type gets to be too much typing""") {
+  koan("""You can use type aliasing if the structural type gets to be too much typing""") {
     class Goose {
       def speak = "HONK!"
       def move(steps: Int, direction: String) = direction match {

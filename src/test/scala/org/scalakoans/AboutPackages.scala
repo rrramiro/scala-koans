@@ -1,26 +1,26 @@
 package org.scalakoans
 
 import com.github.ghik.silencer.silent
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 @silent
-class AboutPackages extends FunSuite with Matchers with KoanSuite {
+class AboutPackages extends KoanFunSuite with Matchers {
 
-  test("packages contain classes and objects") {
+  koan("packages contain classes and objects") {
     val packageOfThisClass = classOf[AboutPackages].getName.split("\\.").dropRight(1).mkString(".")
 
     packageOfThisClass should be(__)
   }
 
-  test("package namespaces") {
+  koan("package namespaces") {
     // package is defined below
     val p = new abc.Person
     p.isInstanceOf[___] should be(true)
     p.isInstanceOf[___] should be(true)
   }
 
-  test("imports are relative to existing imports") {
+  koan("imports are relative to existing imports") {
     // package is defined below
     import first._
     import inside._
@@ -30,7 +30,7 @@ class AboutPackages extends FunSuite with Matchers with KoanSuite {
     a.isInstanceOf[___] should be(true)
   }
 
-  test("import an object's methods") {
+  koan("import an object's methods") {
     object Colors {
       val BLUE = "BLUE"
       val RED = "RED"
@@ -41,7 +41,7 @@ class AboutPackages extends FunSuite with Matchers with KoanSuite {
     BLUE should be(__)
   }
 
-  test("importing a variable's methods") {
+  koan("importing a variable's methods") {
     case class Person(val firstName: String)
 
     val person = Person("Lou")

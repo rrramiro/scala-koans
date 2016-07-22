@@ -1,23 +1,23 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
+class AboutValAndVar extends KoanFunSuite with Matchers {
 
-  test("basic assignment") {
+  koan("basic assignment") {
     val a: Int = 5
 
     a should __
   }
 
-  test("type inference makes type declaration unecessary") {
+  koan("type inference makes type declaration unecessary") {
     val a = 5
 
     a should __
   }
 
-  test("assignment with var may be reassigned") {
+  koan("assignment with var may be reassigned") {
     var a = 5
     a should be(5)
 
@@ -25,7 +25,7 @@ class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
     a should __
   }
 
-  test("assignment with val may not be reassigned") {
+  koan("assignment with val may not be reassigned") {
     val a = 5
     a should be(5)
 

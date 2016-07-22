@@ -1,24 +1,24 @@
 package org.scalakoans
 
 import com.github.ghik.silencer.silent
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 @silent
-class AboutLiterals extends FunSuite with Matchers with KoanSuite {
-  test("integer literals") {
+class AboutLiterals extends KoanFunSuite with Matchers {
+  koan("integer literals") {
     val i = 1
 
     i.isInstanceOf[Int] should __
   }
 
-  test("double literals") {
+  koan("double literals") {
     val f = 2.0
 
     f.isInstanceOf[Double] should be(__)
   }
 
-  test("string literals") {
+  koan("string literals") {
     val s = "abcd"
 
     s.isInstanceOf[___] should be(true)
@@ -33,7 +33,7 @@ class AboutLiterals extends FunSuite with Matchers with KoanSuite {
     str should __
   }
 
-  test("symbol literals") {
+  koan("symbol literals") {
     val s = 'abc
 
     s.isInstanceOf[___] should be(true)

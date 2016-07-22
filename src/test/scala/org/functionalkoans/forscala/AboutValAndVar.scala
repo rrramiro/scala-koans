@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
+class AboutValAndVar extends KoanFunSuite with Matchers {
 
-  test("Vars are variables, and may be reassigned") {
+  koan("Vars are variables, and may be reassigned") {
     var a = 5
     a should be(10) //Fix this.
 
@@ -12,7 +12,7 @@ class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
     a should be(__)
   }
 
-  test("vals are values, and may not be reassigned, analogous to final in Java") {
+  koan("vals are values, and may not be reassigned, analogous to final in Java") {
     val a = 5
     a should be(__)
 
@@ -21,25 +21,25 @@ class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
     // a should be (7)
   }
 
-  test("All vals and var types are inferred by default, but you can add the type explicitly") {
+  koan("All vals and var types are inferred by default, but you can add the type explicitly") {
     val a: Int = 10
     var b: String = "Hello" //NOTE: vars are not preferred in the Scala world
     b = b + " " + 10
     b should be(__)
   }
 
-  test("If you want to include a space in your variable or value use backticks") {
+  koan("If you want to include a space in your variable or value use backticks") {
     val `my greatest gift in dollars` = 500
     (`my greatest gift in dollars` + 30) should be(__) //Whoa!
   }
 
-  test("Any strange characters that you wish to use in a variable or value can be used after an underscore") {
+  koan("Any strange characters that you wish to use in a variable or value can be used after an underscore") {
     val isThisMySalaryPerYear_? = 50000
     val thisShouldBeMyRaise_! = isThisMySalaryPerYear_? + 50000
     thisShouldBeMyRaise_! should be(__)
   }
 
-  test("Backticks can also be used to spite your co-workers and send them into a spiral of confusion and agony!") {
+  koan("Backticks can also be used to spite your co-workers and send them into a spiral of confusion and agony!") {
     val `void` = 100
     val `false` = true
     val `return` = 90
@@ -47,7 +47,7 @@ class AboutValAndVar extends FunSuite with Matchers with KoanSuite {
     (if (`false`) `void` else `return`) should be(__)
   }
 
-  test("A lazy val is assignment that will not evaluated until it is called. Note there is no lazy var") {
+  koan("A lazy val is assignment that will not evaluated until it is called. Note there is no lazy var") {
     var history = ""
     lazy val a = { history = history + "5"; 19 }
     history should be(__)

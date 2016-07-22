@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanSuite {
+class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
 
   class WithoutClassParameters() {
     def addColors(red: Int, green: Int, blue: Int) = {
@@ -35,7 +35,7 @@ class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanSu
     }
   }
 
-  test("can specify arguments in any order if you use their names") {
+  koan("can specify arguments in any order if you use their names") {
     val me = new WithoutClassParameters()
 
     // what happens if you change the order of these parameters (nothing)
@@ -45,35 +45,35 @@ class AboutNamedAndDefaultArguments() extends FunSuite with Matchers with KoanSu
     myColor should equal(__, __, __)
   }
 
-  test("can default arguments if you leave them off") {
+  koan("can default arguments if you leave them off") {
     val me = new WithoutClassParameters()
     val myColor = me.addColorsWithDefaults(green = 255)
 
     myColor should equal(__, __, __)
   }
 
-  test("can access class parameters and specify arguments in any order if you use their names") {
+  koan("can access class parameters and specify arguments in any order if you use their names") {
     val me = new WithClassParameters(40, 50, 60)
     val myColor = me.addColors(green = 50, red = 60, blue = 40)
 
     myColor should equal(__, __, __)
   }
 
-  test("can access class parameters and default arguments if you leave them off") {
+  koan("can access class parameters and default arguments if you leave them off") {
     val me = new WithClassParameters(10, 20, 30)
     val myColor = me.addColorsWithDefaults(green = 70)
 
     myColor should equal(__, __, __)
   }
 
-  test("can default class parameters and have default arguments too") {
+  koan("can default class parameters and have default arguments too") {
     val me = new WithClassParametersInClassDefinition()
     val myColor = me.addColorsWithDefaults(green = 70)
 
     myColor should equal(__, __, __)
   }
 
-  test("default parameters can be functional too") {
+  koan("default parameters can be functional too") {
     def reduce(a: Int, f: (Int, Int) => Int = _ + _): Int = f(a, a)
 
     reduce(5) should equal(__)

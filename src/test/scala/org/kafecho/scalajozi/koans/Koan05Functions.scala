@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan05Functions extends FunSuite with Matchers with KoanSuite {
+class Koan05Functions extends KoanFunSuite with Matchers {
 
-  test("Function literals") {
+  koan("Function literals") {
     val triple = (x: Int) => x * 3
 
     triple(1) should equal(__)
@@ -25,7 +25,7 @@ class Koan05Functions extends FunSuite with Matchers with KoanSuite {
     squareTheTriple(2) should equal(__)
   }
 
-  test("A higher order function takes a function as a parameter.") {
+  koan("A higher order function takes a function as a parameter.") {
 
     // In Scala you can define methods inside other methods.
     def processNumber(n: Int, fn: Int => Int): Int = fn(n)

@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
 /**
  * AboutByNameParameter
@@ -8,9 +8,9 @@ import org.scalatest.{ FunSuite, Matchers }
  * Prerequisites: AboutEither, AboutHigherOrderFunctions, AboutExceptions,
  *                About Pattern Matching, AboutApply
  */
-class AboutByNameParameter extends FunSuite with Matchers with KoanSuite {
+class AboutByNameParameter extends KoanFunSuite with Matchers {
 
-  test("""() => Int is a Function type that takes a Unit type. Unit is known as 'void' to a Java programmer. The function
+  koan("""() => Int is a Function type that takes a Unit type. Unit is known as 'void' to a Java programmer. The function
       | and returns an Int. You can place this as a method parameter so that you can you use it as a block, but still
       | it doesn't look quite right.""") {
 
@@ -29,7 +29,7 @@ class AboutByNameParameter extends FunSuite with Matchers with KoanSuite {
     y should be(__)
   }
 
-  test("""A by-name parameter does the same thing as a previous koan but there is no need to explicitly
+  koan("""A by-name parameter does the same thing as a previous koan but there is no need to explicitly
       | handle Unit or (). This is used extensively in scala to create blocks.""") {
 
     def calc(x: => Int): Either[Throwable, Int] = { //x is a call by name parameter
@@ -49,7 +49,7 @@ class AboutByNameParameter extends FunSuite with Matchers with KoanSuite {
     y should be(__)
   }
 
-  test("""By name parameters can also be used with an Object and apply to make interesting block-like calls""") {
+  koan("""By name parameters can also be used with an Object and apply to make interesting block-like calls""") {
     object PigLatinizer {
       def apply(x: => String) = x.tail + x.head + "ay"
     }

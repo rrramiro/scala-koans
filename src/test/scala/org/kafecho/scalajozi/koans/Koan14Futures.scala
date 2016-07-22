@@ -1,14 +1,14 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.concurrent._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-class Koan14Futures extends FunSuite with Matchers with KoanSuite {
-  test("Create futures, compose them, and wait for them to complete.") {
+class Koan14Futures extends KoanFunSuite with Matchers {
+  koan("Create futures, compose them, and wait for them to complete.") {
     import ExecutionContext.Implicits.global
 
     // Let's think hard about what the meaning of life could be.
@@ -25,7 +25,7 @@ class Koan14Futures extends FunSuite with Matchers with KoanSuite {
     check should equal(__)
   }
 
-  test("Use futures with for comprehension") {
+  koan("Use futures with for comprehension") {
     import ExecutionContext.Implicits.global
 
     // Let's think hard about what the meaning of life could be.
