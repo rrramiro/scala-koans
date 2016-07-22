@@ -1,11 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutAbstractClasses extends FunSuite with Matchers with KoanSuite {
+class AboutAbstractClasses extends KoanFunSuite with Matchers {
 
-  test("Abstract Classes") {
+  koan("Abstract Classes") {
     abstract class Super {
       def sayHello(name: String): String
     }

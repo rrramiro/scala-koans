@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutForExpressions extends FunSuite with Matchers with KoanSuite {
+class AboutForExpressions extends KoanFunSuite with Matchers {
 
-  test("For loops can be simple") {
+  koan("For loops can be simple") {
     val someNumbers = Range(0, 10)
     var sum = 0
     for (i <- someNumbers)
@@ -13,7 +13,7 @@ class AboutForExpressions extends FunSuite with Matchers with KoanSuite {
     sum should equal(__)
   }
 
-  test("For loops can contain additional logic") {
+  koan("For loops can contain additional logic") {
     val someNumbers = Range(0, 10)
     var sum = 0
     // sum only the even numbers
@@ -23,7 +23,7 @@ class AboutForExpressions extends FunSuite with Matchers with KoanSuite {
     sum should equal(__)
   }
 
-  test("For expressions can nest, with later generators varying more rapidly than earlier ones") {
+  koan("For expressions can nest, with later generators varying more rapidly than earlier ones") {
     val xValues = Range(1, 5)
     val yValues = Range(1, 3)
     val coordinates = for {

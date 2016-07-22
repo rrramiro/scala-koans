@@ -1,22 +1,22 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutLists extends FunSuite with Matchers with KoanSuite {
+class AboutLists extends KoanFunSuite with Matchers {
 
-  test("Eq tests identity (same object)") {
+  koan("Eq tests identity (same object)") {
     val a = List(1, 2, 3)
     val b = List(1, 2, 3)
     (a eq b) should be(__)
   }
 
-  test("== tests equality (same content)") {
+  koan("== tests equality (same content)") {
     val a = List(1, 2, 3)
     val b = List(1, 2, 3)
     (a == b) should be(__)
   }
 
-  test("Nil lists are identical, even of different types") {
+  koan("Nil lists are identical, even of different types") {
     val a: List[String] = Nil
     val b: List[Int] = Nil
 
@@ -30,18 +30,18 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     (a eq b) should be(__)
   }
 
-  test("Lists are easily created") {
+  koan("Lists are easily created") {
     val a = List(1, 2, 3)
     a should equal(List(__, __, __))
   }
 
-  test("Lists can be accessed via head and tail") {
+  koan("Lists can be accessed via head and tail") {
     val a = List(1, 2, 3)
     a.head should equal(__)
     a.tail should equal(List(__, __))
   }
 
-  test("Lists can accessed by position") {
+  koan("Lists can accessed by position") {
     val a = List(1, 3, 5, 7, 9)
     a(0) should equal(__)
     a(2) should equal(__)
@@ -52,7 +52,7 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     }
   }
 
-  test("Lists are immutable") {
+  koan("Lists are immutable") {
     val a = List(1, 3, 5, 7, 9)
     val b = a.filterNot(v => v == 5) // remove where value is 5
 
@@ -60,7 +60,7 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     b should equal(List(__, __, __, __))
   }
 
-  test("Lists have many useful methods") {
+  koan("Lists have many useful methods") {
     val a = List(1, 3, 5, 7, 9)
 
     // get the length of the list
@@ -79,7 +79,7 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     a.filter { v => v % 3 == 0 } should equal(List(__, __))
   }
 
-  test("Functions over lists can use _ as shorthand") {
+  koan("Functions over lists can use _ as shorthand") {
     val a = List(1, 2, 3)
 
     a.map { _ * 2 } should equal(List(__, __, __))
@@ -87,20 +87,20 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     a.filter { _ % 2 == 0 } should equal(List(__))
   }
 
-  test("Functions over lists can use () instead of {}") {
+  koan("Functions over lists can use () instead of {}") {
     val a = List(1, 2, 3)
     a.map(_ * 2) should equal(List(__, __, __))
     a.filter(_ % 2 != 0) should equal(List(__, __))
   }
 
-  test("Lists can be 'reduced' with a mathematical operation") {
+  koan("Lists can be 'reduced' with a mathematical operation") {
     val a = List(1, 3, 5, 7)
     // note the two _s below indicate the first and second args respectively
     a.reduceLeft(_ + _) should equal(__)
     a.reduceLeft(_ * _) should equal(__)
   }
 
-  test("Foldleft is like reduce, but with an explicit starting value") {
+  koan("Foldleft is like reduce, but with an explicit starting value") {
     val a = List(1, 3, 5, 7)
     // NOTE: foldLeft uses a form called currying that we will explore later
     a.foldLeft(0)(_ + _) should equal(__)
@@ -109,12 +109,12 @@ class AboutLists extends FunSuite with Matchers with KoanSuite {
     a.foldLeft(0)(_ * _) should equal(__)
   }
 
-  test("You can create a list from a range") {
+  koan("You can create a list from a range") {
     val a = (1 to 5).toList
     a should be(List(__, __, __, __, __))
   }
 
-  test("Lists reuse their tails") {
+  koan("Lists reuse their tails") {
     val d = Nil
     val c = 3 :: d
     val b = 2 :: c

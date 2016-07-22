@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutPreconditions extends FunSuite with Matchers with KoanSuite {
+class AboutPreconditions extends KoanFunSuite with Matchers {
 
   class WithParameterRequirement(val myValue: Int) {
     require(myValue != 0)
@@ -13,7 +13,7 @@ class AboutPreconditions extends FunSuite with Matchers with KoanSuite {
   }
 
   // Instruction: use Intercept to catch the type of exception thrown by an invalid precondition
-  test("On precondition violation, intercept expects type of exception thrown") {
+  koan("On precondition violation, intercept expects type of exception thrown") {
     val myInstance = new WithParameterRequirement("Do you really like my hair?")
     myInstance.myValue should be(__)
 

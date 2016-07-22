@@ -1,13 +1,13 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.annotation.tailrec
 
-class Koan16Recursion extends FunSuite with Matchers with KoanSuite {
+class Koan16Recursion extends KoanFunSuite with Matchers {
 
-  test("Recursive factorial") {
+  koan("Recursive factorial") {
 
     /**
      * This implementation of factorial is not tail recursive.
@@ -20,7 +20,7 @@ class Koan16Recursion extends FunSuite with Matchers with KoanSuite {
     }
   }
 
-  test("Tail recursive factorial") {
+  koan("Tail recursive factorial") {
 
     def fact(n: Int): Int = {
 

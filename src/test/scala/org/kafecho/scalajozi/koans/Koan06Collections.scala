@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan06Collections extends FunSuite with Matchers with KoanSuite {
+class Koan06Collections extends KoanFunSuite with Matchers {
 
-  test("Lists are immutable data structure") {
+  koan("Lists are immutable data structure") {
     val greeting = List("hello", "world")
 
     greeting.size should equal(__)
@@ -20,19 +20,19 @@ class Koan06Collections extends FunSuite with Matchers with KoanSuite {
     // Or to the end
     val appended = greeting :+ "Bye"
   }
-  test("Lists can be accessed via head and tail") {
+  koan("Lists can be accessed via head and tail") {
     val a = List(1, 2, 3)
     a.head should equal(1)
     a.tail should equal(List(2, 3))
   }
 
-  test("You can deconstruct a list into its head and tail") {
+  koan("You can deconstruct a list into its head and tail") {
     val head :: tail = List(1, 2, 3, 4)
     head should equal(__)
     tail should equal(__) // tail is a list.
   }
 
-  test("Lists can accessed at random") {
+  koan("Lists can accessed at random") {
     val a = List(1, 3, 5, 7, 9)
     a(0) should equal(1)
     a(2) should equal(5)
@@ -43,7 +43,7 @@ class Koan06Collections extends FunSuite with Matchers with KoanSuite {
     }
   }
 
-  test("Arrays are mutable") {
+  koan("Arrays are mutable") {
     val array = Array(1, 2, 3, 4)
     array(0) should equal(__)
 
@@ -56,7 +56,7 @@ class Koan06Collections extends FunSuite with Matchers with KoanSuite {
     array(0) should equal(__)
   }
 
-  test("Mutable sets") {
+  koan("Mutable sets") {
     // In Scala, you can bring a package to the scope of a method.
     import scala.collection.mutable.Set
 
@@ -76,7 +76,7 @@ class Koan06Collections extends FunSuite with Matchers with KoanSuite {
     (australians intersect southAfricans) should equal(Set(__))
   }
 
-  test("Immutable sets") {
+  koan("Immutable sets") {
     // In Scala, default imported Set is immutable
 
     val southAfricansLike = Set("Braai", "Wine", "Sundowners")
@@ -89,7 +89,7 @@ class Koan06Collections extends FunSuite with Matchers with KoanSuite {
     guillaumeLikes("Cheese") should be(__)
   }
 
-  test("Maps....") {
+  koan("Maps....") {
     val capitals = Map(
       "SA" -> "Pretoria",
       "France" -> "Paris",

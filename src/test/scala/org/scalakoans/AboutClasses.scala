@@ -1,13 +1,13 @@
 package org.scalakoans
 
 import com.github.ghik.silencer.silent
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
 @silent
-class AboutClasses extends FunSuite with Matchers with KoanSuite {
+class AboutClasses extends KoanFunSuite with Matchers {
 
-  test("Class") {
+  koan("Class") {
     class Thing {}
 
     val t = new Thing
@@ -17,7 +17,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     // t2.isInstanceOf[Thing2] should be(true)
   }
 
-  test("Class getters") {
+  koan("Class getters") {
     class Person(val firstName: String)
 
     val p = new Person("Lou")
@@ -30,7 +30,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     // p.firstName = "Who"
   }
 
-  test("Class getter/setters") {
+  koan("Class getter/setters") {
     class Person(var firstName: String)
 
     val p = new Person("Lou")
@@ -40,7 +40,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     p.firstName should __
   }
 
-  test("Class private fields") {
+  koan("Class private fields") {
     class Person(var firstName: String) {
       private val ssn = "111-11-1111"
     }
@@ -51,7 +51,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     // p.ssn should __
   }
 
-  test("Class instance methods") {
+  koan("Class instance methods") {
     class Person(val firstName: String, val lastName: String) {
       def fullName = lastName + ", " + firstName
 
@@ -71,7 +71,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     // p.firstNameLowerCase should __
   }
 
-  test("Class constructor") {
+  koan("Class constructor") {
     var x = 2
 
     class Thing {
@@ -83,7 +83,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     x should __
   }
 
-  test("Class super class constructors") {
+  koan("Class super class constructors") {
     class Animal(val name: String, val numberOfLegs: Int)
 
     class Cat(name: String) extends Animal(name, 4)
@@ -99,7 +99,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     // roo.numberOfLegs should be(2)
   }
 
-  test("override methods") {
+  koan("override methods") {
     class Animal(val name: String) {
       def makeNoise = "noisy"
     }
@@ -115,7 +115,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     (new Cat("Lou")).makeNoise should be("meow")
   }
 
-  test("lazy vals") {
+  koan("lazy vals") {
     class Thing {
       var x = 0
 
@@ -134,7 +134,7 @@ class AboutClasses extends FunSuite with Matchers with KoanSuite {
     t.x should be(__)
   }
 
-  test("lightweight Case classes") {
+  koan("lightweight Case classes") {
     case class Cat(name: String)
 
     val lou = Cat("Lou")

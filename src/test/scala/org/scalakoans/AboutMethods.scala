@@ -1,12 +1,12 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 import scala.language.postfixOps
 
-class AboutMethods extends FunSuite with Matchers with KoanSuite {
+class AboutMethods extends KoanFunSuite with Matchers {
 
-  test("method declaration") {
+  koan("method declaration") {
     def add2(i: Int): Int = {
       return i + 2
     }
@@ -18,7 +18,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     // add3(2) should be(5)
   }
 
-  test("return not always necssary") {
+  koan("return not always necssary") {
     def add2(i: Int): Int = {
       i + 2
     }
@@ -26,7 +26,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     add2(3) should __
   }
 
-  test("return type necessity") {
+  koan("return type necessity") {
     def add2(i: Int) = {
       i + 2
     }
@@ -34,7 +34,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     add2(4) should __
   }
 
-  test("nested methods") {
+  koan("nested methods") {
 
     def add2(i: Int) = {
       def add(x: Int, y: Int) = {
@@ -50,7 +50,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     // add3(2) should be(5)
   }
 
-  test("method without a return") {
+  koan("method without a return") {
     var x = 2
     def add2ToX() {
       x += 2
@@ -61,19 +61,19 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     x should __
   }
 
-  test("brackets around the method body aren't always necessary for simple expressions") {
+  koan("brackets around the method body aren't always necessary for simple expressions") {
     def add2(i: Int) = i + 2
 
     add2(2) should __
   }
 
-  test("named arguments") {
+  koan("named arguments") {
     def add2(i: Int) = i + 2
 
     add2(i = 5) should __
   }
 
-  test("default arguments") {
+  koan("default arguments") {
     def addNumbers(first: Int, second: Int = 2) = first + second
 
     addNumbers(3) should __
@@ -83,7 +83,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     // addNumbers2(3)
   }
 
-  test("by-name arguments make lazy arguments") {
+  koan("by-name arguments make lazy arguments") {
     var x = 0
     def addOneToXAndReturnX() = { x += 1; x }
 
@@ -106,7 +106,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     i should __
   }
 
-  test("operators are just methods") {
+  koan("operators are just methods") {
     val x = 2
 
     val i = x + 2
@@ -116,7 +116,7 @@ class AboutMethods extends FunSuite with Matchers with KoanSuite {
     j should __
   }
 
-  test("methods can be invoked like operators") {
+  koan("methods can be invoked like operators") {
     val s = "hello"
     s.length should __
 

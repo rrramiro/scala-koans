@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
 class SecretAgent(val name: String) {
   def shoot(n: Int) {
@@ -24,29 +24,27 @@ object Person {
   def showMeInnerSecret(x: Person) = x.superheroName
 }
 
-class AboutObjects extends FunSuite with Matchers with KoanSuite {
-  test(
-    """An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
-      | and is called upon much in the same way"""
-  ) {
+class AboutObjects extends KoanFunSuite with Matchers {
+  koan("""An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
+      | and is called upon much in the same way""") {
 
-      object Greeting {
-        def english = "Hi"
+    object Greeting {
+      def english = "Hi"
 
-        def espanol = "Hola"
+      def espanol = "Hola"
 
-        def deutsch = "Hallo"
+      def deutsch = "Hallo"
 
-        def magyar = "Szia"
-      }
-
-      Greeting.english should be(__)
-      Greeting.espanol should be(__)
-      Greeting.deutsch should be(__)
-      Greeting.magyar should be(__)
+      def magyar = "Szia"
     }
 
-  test("""Here is proof an object is a singleton, and not a static method in a class""") {
+    Greeting.english should be(__)
+    Greeting.espanol should be(__)
+    Greeting.deutsch should be(__)
+    Greeting.magyar should be(__)
+  }
+
+  koan("""Here is proof an object is a singleton, and not a static method in a class""") {
     object Greeting {
       def english = "Hi"
 
@@ -67,49 +65,45 @@ class AboutObjects extends FunSuite with Matchers with KoanSuite {
     x eq z should be(__)
   }
 
-  test(
-    """An object that has the same name as class is called a companion object,
-      | it is used to contain factories for the class that it complements"""
-  ) {
+  koan("""An object that has the same name as class is called a companion object,
+      | it is used to contain factories for the class that it complements""") {
 
-      class Movie(val name: String, val year: Short)
+    class Movie(val name: String, val year: Short)
 
-      object Movie {
-        def academyAwardBestMoviesForYear(x: Short) = {
-          //These are match statement, more powerful than Java switch statements!
-          x match {
-            case 1930 => Some(new Movie("All Quiet On the Western Front", 1930))
-            case 1931 => Some(new Movie("Cimarron", 1931))
-            case 1932 => Some(new Movie("Grand Hotel", 1932))
-            case _ => None
-          }
+    object Movie {
+      def academyAwardBestMoviesForYear(x: Short) = {
+        //These are match statement, more powerful than Java switch statements!
+        x match {
+          case 1930 => Some(new Movie("All Quiet On the Western Front", 1930))
+          case 1931 => Some(new Movie("Cimarron", 1931))
+          case 1932 => Some(new Movie("Grand Hotel", 1932))
+          case _ => None
         }
       }
-
-      Movie.academyAwardBestMoviesForYear(1932).get.name should be(__)
     }
 
-  test(
-    """A companion object stores shared variables and values for every instantiated class to share.
-      | (See SecretAgent class and companion object above)."""
-  ) {
+    Movie.academyAwardBestMoviesForYear(1932).get.name should be(__)
+  }
 
-      val bond = new SecretAgent("James Bond")
-      val felix = new SecretAgent("Felix Leitner")
-      val jason = new SecretAgent("Jason Bourne")
-      val _99 = new SecretAgent("99")
-      val max = new SecretAgent("Max Smart")
+  koan("""A companion object stores shared variables and values for every instantiated class to share.
+      | (See SecretAgent class and companion object above).""") {
 
-      bond.shoot(800)
-      felix.shoot(200)
-      jason.shoot(150)
-      _99.shoot(150)
-      max.shoot(200)
+    val bond = new SecretAgent("James Bond")
+    val felix = new SecretAgent("Felix Leitner")
+    val jason = new SecretAgent("Jason Bourne")
+    val _99 = new SecretAgent("99")
+    val max = new SecretAgent("Max Smart")
 
-      SecretAgent.bullets should be(__)
-    }
+    bond.shoot(800)
+    felix.shoot(200)
+    jason.shoot(150)
+    _99.shoot(150)
+    max.shoot(200)
 
-  test("A companion object can also see private values and variables of the instantiated objects") {
+    SecretAgent.bullets should be(__)
+  }
+
+  koan("A companion object can also see private values and variables of the instantiated objects") {
 
     val clark = new Person("Clark Kent", "Superman")
     val peter = new Person("Peter Parker", "Spiderman")

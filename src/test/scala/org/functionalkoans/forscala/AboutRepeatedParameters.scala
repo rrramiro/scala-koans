@@ -1,23 +1,23 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutRepeatedParameters extends FunSuite with Matchers with KoanSuite {
+class AboutRepeatedParameters extends KoanFunSuite with Matchers {
 
   def repeatedParameterMethod(x: Int, y: String, z: Any*) = {
     "%d %ss can give you %s".format(x, y, z.mkString(", "))
   }
 
-  test("""A repeated parameter must be the last parameter and this will
+  koan("""A repeated parameter must be the last parameter and this will
       | let you add as many extra parameters as needed""") {
     repeatedParameterMethod(3, "egg", "a delicious sandwich", "protein", "high cholesterol") should be(__)
   }
 
-  test("A repeated parameter can accept a collection as the last parameter but will be considered a single object") {
+  koan("A repeated parameter can accept a collection as the last parameter but will be considered a single object") {
     repeatedParameterMethod(3, "egg", List("a delicious sandwich", "protein", "high cholesterol")) should be(__)
   }
 
-  test("A repeated parameter can accept a collection,and if you want it expanded, add :_*") {
+  koan("A repeated parameter can accept a collection,and if you want it expanded, add :_*") {
     repeatedParameterMethod(3, "egg", List("a delicious sandwich", "protein", "high cholesterol"): _*) should be(__)
   }
 }

@@ -1,11 +1,11 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan01ValandVars extends FunSuite with Matchers with KoanSuite {
+class Koan01ValandVars extends KoanFunSuite with Matchers {
 
-  test("A val is an immutable reference which does not change.") {
+  koan("A val is an immutable reference which does not change.") {
     val meaningOfLife = 42
     meaningOfLife should be(__)
 
@@ -14,7 +14,7 @@ class Koan01ValandVars extends FunSuite with Matchers with KoanSuite {
     // meaningOfLife = 360
   }
 
-  test("A var is a mutable reference.") {
+  koan("A var is a mutable reference.") {
     var msg = "abc"
     msg should be("abc")
 
@@ -23,13 +23,13 @@ class Koan01ValandVars extends FunSuite with Matchers with KoanSuite {
     msg should be(__)
   }
 
-  test("You can't re-define the type of a var.") {
+  koan("You can't re-define the type of a var.") {
     var what = "Hello world"
     // The line below does not compile. Try to uncomment it to see what happens. 
     // what = 5
   }
 
-  test("Beware, a val can point to something that is actually mutable.") {
+  koan("Beware, a val can point to something that is actually mutable.") {
     val array = Array(1, 2, 3, 4)
 
     // The reference is immutable, so you can't change what it points to.

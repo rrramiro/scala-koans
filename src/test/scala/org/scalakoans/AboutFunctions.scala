@@ -1,11 +1,11 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutFunctions extends FunSuite with Matchers with KoanSuite {
+class AboutFunctions extends KoanFunSuite with Matchers {
 
-  test("functions") {
+  koan("functions") {
     val add2 = (i: Int) => i + 2
 
     add2(2) should be(__)
@@ -15,7 +15,7 @@ class AboutFunctions extends FunSuite with Matchers with KoanSuite {
     // add3(2) should be(5)
   }
 
-  test("function has a type") {
+  koan("function has a type") {
     val add2 = { (i: Int) =>
       i + 2
     }
@@ -31,7 +31,7 @@ class AboutFunctions extends FunSuite with Matchers with KoanSuite {
     addNumbers.isInstanceOf[Function2[Int, Int, Int]] should be(__)
   }
 
-  test("functions can be returned") {
+  koan("functions can be returned") {
     def makeAdder(i: Int) = (x: Int) => x + i
 
     val add2 = makeAdder(2)
@@ -39,7 +39,7 @@ class AboutFunctions extends FunSuite with Matchers with KoanSuite {
     add2(3) should be(__)
   }
 
-  test("functions can be taken in as parameters") {
+  koan("functions can be taken in as parameters") {
     def callWith1AndAdd2(f: (Int) => Int) = f(1) + 2
 
     val result = callWith1AndAdd2 { i => i + 3 }
@@ -47,7 +47,7 @@ class AboutFunctions extends FunSuite with Matchers with KoanSuite {
     result should be(__)
   }
 
-  test("if function has only one parameter, _ can be used") {
+  koan("if function has only one parameter, _ can be used") {
     def callWith1AndAdd2(f: (Int) => Int) = f(1) + 2
 
     val result = callWith1AndAdd2 { _ + 3 }
@@ -55,7 +55,7 @@ class AboutFunctions extends FunSuite with Matchers with KoanSuite {
     result should be(__)
   }
 
-  test("objects and instances can be functions") {
+  koan("objects and instances can be functions") {
     object Add2 {
       def apply(i: Int) = i + 2
     }

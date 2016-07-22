@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutApply extends FunSuite with Matchers with KoanSuite {
-  test("""The apply method is a magical method in Scala, it is a method that doesn't require you
+class AboutApply extends KoanFunSuite with Matchers {
+  koan("""The apply method is a magical method in Scala, it is a method that doesn't require you
       |to leave out the entire method name!""") {
 
     class Counter(val seed: Int) {
@@ -17,7 +17,7 @@ class AboutApply extends FunSuite with Matchers with KoanSuite {
     a.seed should be(__)
   }
 
-  test("""The apply method can also be used in singleton objects as well, in fact, it is the most common way
+  koan("""The apply method can also be used in singleton objects as well, in fact, it is the most common way
           to create a factory method in an object""") {
     class Employee(val firstName: String, val lastName: String) //private constructor!
 

@@ -1,10 +1,10 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 
-class Koan12Traits extends FunSuite with Matchers with KoanSuite {
-  test("traits") {
+class Koan12Traits extends KoanFunSuite with Matchers {
+  koan("traits") {
     trait SaysHello {
       def sayHello(name: String) = "hello " + name
     }
@@ -14,7 +14,7 @@ class Koan12Traits extends FunSuite with Matchers with KoanSuite {
     (new Thing).sayHello("Lou") should be(__)
   }
 
-  test("traits can have abstract members which must be implemented") {
+  koan("traits can have abstract members which must be implemented") {
     trait SaysHello {
       val name: String
 
@@ -27,7 +27,7 @@ class Koan12Traits extends FunSuite with Matchers with KoanSuite {
     p.sayHello should be(__)
   }
 
-  test("multiple traits can be mixed in") {
+  koan("multiple traits can be mixed in") {
     trait SaysHello {
       val name: String
 

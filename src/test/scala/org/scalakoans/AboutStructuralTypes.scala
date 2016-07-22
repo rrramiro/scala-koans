@@ -1,12 +1,12 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanSuite
-import org.scalatest.{ FunSuite, Matchers }
+import org.functionalkoans.forscala.KoanFunSuite
+import org.scalatest.Matchers
 import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
+class AboutStructuralTypes extends KoanFunSuite with Matchers {
 
-  test("stuctural types") {
+  koan("stuctural types") {
     def sayHello(person: { def name: String }) = "Hello, " + person.name
 
     case class Person(name: String)
@@ -21,7 +21,7 @@ class AboutStructuralTypes extends FunSuite with Matchers with KoanSuite {
     //sayHello(p2) should be(__)
   }
 
-  test("defined structural type") {
+  koan("defined structural type") {
     type HasName = { def name: String }
 
     def sayHello(person: HasName) = "Hello, " + person.name

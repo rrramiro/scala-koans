@@ -1,18 +1,18 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.{ FunSuite, Matchers }
+import org.scalatest.Matchers
 
-class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
-  test("In Java you declare a generic type within a <>, in Scala it is []") {
+class AboutTypeSignatures extends KoanFunSuite with Matchers {
+  koan("In Java you declare a generic type within a <>, in Scala it is []") {
     val z: List[String] = "Do" :: "Re" :: "Mi" :: "Fa" :: "So" :: "La" :: "Te" :: "Do" :: Nil
   }
 
-  test("Most of the time, Scala will infer the type and [] are optional") {
+  koan("Most of the time, Scala will infer the type and [] are optional") {
     //Infers that the list assigned to variable is of type List[String]
     val z = "Do" :: "Re" :: "Mi" :: "Fa" :: "So" :: "La" :: "Te" :: "Do" :: Nil
   }
 
-  test("A trait can be declared containing a type, where a concrete implementer will satisfy the type") {
+  koan("A trait can be declared containing a type, where a concrete implementer will satisfy the type") {
     trait Randomizer[A] {
       def draw(): A
     }
@@ -28,19 +28,19 @@ class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
     (intRand.draw < Int.MaxValue) should be(__)
   }
 
-  test("Class meta-information can be retrieved by class name by using classOf[className]") {
+  koan("Class meta-information can be retrieved by class name by using classOf[className]") {
     classOf[String].getCanonicalName should be(__)
     classOf[String].getSimpleName should be(__)
   }
 
-  test("Class meta-information can be derived from an object reference using getClass()") {
+  koan("Class meta-information can be derived from an object reference using getClass()") {
     val zoom = "zoom"
     zoom.getClass should be(__) // Hint: classOf ...
     zoom.getClass.getCanonicalName should be(__)
     zoom.getClass.getSimpleName should be(__)
   }
 
-  test("isInstanceOf[className] is used to determine the if an object reference is an instance of given class") {
+  koan("isInstanceOf[className] is used to determine the if an object reference is an instance of given class") {
     trait Randomizer[A] {
       def draw(): A
     }
@@ -56,7 +56,7 @@ class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
     intRand.draw.isInstanceOf[Int] should be(__)
   }
 
-  test("asInstanceOf[className] is used to cast one reference to another") {
+  koan("asInstanceOf[className] is used to cast one reference to another") {
     trait Randomizer[A] {
       def draw: A
     }
@@ -74,7 +74,7 @@ class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
     intRand2.isInstanceOf[IntRandomizer] should be(__)
   }
 
-  test("asInstanceOf[className] will throw a ClassCastException if a class derived from " +
+  koan("asInstanceOf[className] will throw a ClassCastException if a class derived from " +
     "and the class target aren't from the same inheritance branch") {
     trait Randomizer[A] {
       def draw(): A
@@ -94,7 +94,7 @@ class AboutTypeSignatures extends FunSuite with Matchers with KoanSuite {
     }
   }
 
-  test("null.asInstanceOf[className] can be used to generate basic default values") {
+  koan("null.asInstanceOf[className] can be used to generate basic default values") {
     null.asInstanceOf[String] should be(__)
     null.asInstanceOf[Int] should be(__)
     null.asInstanceOf[Short] should be(__)
