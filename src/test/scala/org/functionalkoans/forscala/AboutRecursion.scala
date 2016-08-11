@@ -7,8 +7,9 @@ import scala.annotation.tailrec
 
 class AboutRecursion extends KoanFunSuite with Matchers {
 
-  koan("""Methods can be embedded in other methods, this is particularly useful as helper methods for recursion.
-      | Also in Scala, any recursive method must have a return type.""") {
+  koan("""Methods can be embedded in other methods,
+        | this is particularly useful as helper methods for recursion.
+        | Also in Scala, any recursive method must have a return type.""") {
 
     //Reminder: 5! = 1 x 2 x 3 x 4 x 5 = 120
 
@@ -28,11 +29,15 @@ class AboutRecursion extends KoanFunSuite with Matchers {
     factorial(3) should be(__)
   }
 
-  koan("""As a precaution, the helpful @tailrec annotation will throw a compile time if a method is not tail recursive,
-      | meaning that the last call and only call of the method is the recursive method. Scala optimizes recursive calls
-      | to a loop from a stack""") {
+  koan("""As a precaution, the helpful @tailrec annotation will
+         | throw a compile time if a method is not tail recursive,
+         | meaning that the last call and only call of the method
+         | is the recursive method. Scala optimizes recursive calls
+         | to a loop from a stack""") {
 
-    //    @tailrec   //Uncomment this like to see the result, then comment it again and answer the koan
+    //Uncomment this like to see the result,
+    //then comment it again and answer the koan
+    //@tailrec
     def fibonacci(n: Int): Int = {
       if (n <= 1)
         1
@@ -44,8 +49,9 @@ class AboutRecursion extends KoanFunSuite with Matchers {
     fibonacci(4) should be(__)
   }
 
-  koan("""As properly tail recursive method will use an accumulator method so that the only call of a recursive method is the last one.
-      | just like the first koan above.""") {
+  koan("""As properly tail recursive method will use an accumulator method
+         | so that the only call of a recursive method is the last one.
+         | just like the first koan above.""") {
 
     def fibonacci(n: Int) = {
       @tailrec

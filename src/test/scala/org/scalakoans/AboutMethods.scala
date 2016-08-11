@@ -62,7 +62,8 @@ class AboutMethods extends KoanFunSuite with Matchers {
     x should __
   }
 
-  koan("brackets around the method body aren't always necessary for simple expressions") {
+  koan("""brackets around the method body aren't
+      | always necessary for simple expressions""") {
     def add2(i: Int) = i + 2
 
     add2(2) should __

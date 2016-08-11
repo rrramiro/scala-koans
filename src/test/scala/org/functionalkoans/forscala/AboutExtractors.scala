@@ -6,24 +6,32 @@ import org.scalatest.Matchers
 
 @silent
 class AboutExtractors extends KoanFunSuite with Matchers {
-  koan("When you create a case class, it automatically can be used with " +
-    "pattern matching since it has an extractor") {
-    case class Employee(firstName: String, lastName: String)
+  koan(
+    """When you create a case class, it automatically can be used with
+      | pattern matching since it has an extractor"""
+  ) {
+      case class Employee(firstName: String, lastName: String)
 
-    val rob = new Employee("Robin", "Williams")
-    val result = rob match {
-      case Employee("Robin", _) => "Where's Batman?"
-      case _ => "No Batman Joke For You"
+      val rob = new Employee("Robin", "Williams")
+      val result = rob match {
+        case Employee("Robin", _) => "Where's Batman?"
+        case _ => "No Batman Joke For You"
+      }
+
+      result should be(__)
     }
 
-    result should be(__)
-  }
+  koan("""What's an extractor? In Scala it's a method in any `object`
+         | called `unapply`, and that method is used to disassemble the
+         | object given by returning a tuple wrapped in an option.
+         | Extractors can be used to assign values.""") {
 
-  koan("""What's an extractor? In Scala it's a method in any `object` called `unapply`, and that method
-      | is used to disassemble the object given by returning a tuple wrapped in an option. Extractors can be used
-      | to assign values.""") {
-
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
+    class Car(
+      val make: String,
+      val model: String,
+      val year: Short,
+      val topSpeed: Short
+    )
 
     object ChopShop {
       def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
@@ -38,7 +46,12 @@ class AboutExtractors extends KoanFunSuite with Matchers {
   }
 
   koan("""Of course an extractor can be used in pattern matching...""") {
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
+    class Car(
+      val make: String,
+      val model: String,
+      val year: Short,
+      val topSpeed: Short
+    )
 
     object ChopShop {
       def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
@@ -53,8 +66,14 @@ class AboutExtractors extends KoanFunSuite with Matchers {
     x._2 should be(__)
   }
 
-  koan("""Since we aren't really using u and v in the previous pattern matching with can replace them with _.""") {
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
+  koan("""Since we aren't really using u and v in the previous pattern
+      | matching with can replace them with _.""") {
+    class Car(
+      val make: String,
+      val model: String,
+      val year: Short,
+      val topSpeed: Short
+    )
 
     object ChopShop {
       def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
@@ -71,8 +90,17 @@ class AboutExtractors extends KoanFunSuite with Matchers {
 
   koan("As long as the method signatures aren't the same, " +
     "you can have an many unapply methods as you want") {
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
-    class Employee(val firstName: String, val middleName: Option[String], val lastName: String)
+    class Car(
+      val make: String,
+      val model: String,
+      val year: Short,
+      val topSpeed: Short
+    )
+    class Employee(
+      val firstName: String,
+      val middleName: Option[String],
+      val lastName: String
+    )
 
     object Tokenizer {
       def unapply(x: Car) = Some(x.make, x.model, x.year, x.topSpeed)
@@ -88,9 +116,15 @@ class AboutExtractors extends KoanFunSuite with Matchers {
     result should be(__)
   }
 
-  koan("""An extractor can be any stable object, including instantiated classes with an unapply method.""") {
+  koan("""An extractor can be any stable object, including instantiated
+      | classes with an unapply method.""") {
 
-    class Car(val make: String, val model: String, val year: Short, val topSpeed: Short) {
+    class Car(
+        val make: String,
+        val model: String,
+        val year: Short,
+        val topSpeed: Short
+    ) {
       def unapply(x: Car) = Some(x.make, x.model)
     }
 
@@ -104,8 +138,8 @@ class AboutExtractors extends KoanFunSuite with Matchers {
     result should be(__)
   }
 
-  koan("""What is typical is to create a custom extractor in the companion object of the class.
-      | In this koan, we use it as an assignment""") {
+  koan("""What is typical is to create a custom extractor in the companion
+         | object of the class. In this koan, we use it as an assignment""") {
 
     class Employee(
       val firstName: String,
@@ -129,7 +163,8 @@ class AboutExtractors extends KoanFunSuite with Matchers {
     c should be(__)
   }
 
-  koan("In this koan we use the unapply for pattern matching employee objects") {
+  koan("""In this koan we use the unapply for pattern matching
+         | employee objects""") {
 
     class Employee(
       val firstName: String,
@@ -147,8 +182,10 @@ class AboutExtractors extends KoanFunSuite with Matchers {
     val singri = new Employee("Singri", None, "Keerthi")
 
     val result = singri match {
-      case Employee("Singri", None, x) => "Yay, Singri %s! with no middle name!".format(x)
-      case Employee("Singri", Some(x), _) => "Yay, Singri with a middle name of %s".format(x)
+      case Employee("Singri", None, x) =>
+        "Yay, Singri %s! with no middle name!".format(x)
+      case Employee("Singri", Some(x), _) =>
+        "Yay, Singri with a middle name of %s".format(x)
       case _ => "I don't care, going on break"
     }
 

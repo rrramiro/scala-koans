@@ -32,13 +32,15 @@ class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
     result5 should be(__)
   }
 
-  koan("An anonymous function can also take on a different look by taking out the brackets") {
+  koan("""An anonymous function can also take on a different look by taking
+         | out the brackets""") {
     def lambda = (x: Int) => x + 1
     def result = lambda(5)
     result should be(__)
   }
 
-  koan("Meet closure. Closure is any function that closes over the environment") {
+  koan("""Meet closure. Closure is any function that closes
+         | over the environment""") {
     var incrementer = 1
 
     def closure = {
@@ -54,7 +56,8 @@ class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
     result2 should be(__)
   }
 
-  koan("We can take that closure and throw into a method and it will still hold the environment") {
+  koan("""We can take that closure and throw into a method and
+      | it will still hold the environment""") {
 
     def summation(x: Int, y: Int => Int) = y(x)
 
@@ -95,16 +98,18 @@ class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
     fiveAdder(5) should be(__)
   }
 
-  koan("""isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
-      | 'blanked out' using existential types with is a single underline, since parameter type are unknown
-      | at runtime.""") {
+  koan("""isInstanceOf is the same as instanceof in java, but in this case
+         | the parameter types can be 'blanked out' using existential types
+         | with is a single underline, since parameter type are unknown
+         | at runtime.""") {
     def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
 
     addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(__)
   }
 
-  koan("""function taking another function as parameter. Helps in composing functions.
-      | Hint: a map method applies the function to each element of a list""") {
+  koan("""function taking another function as parameter. Helps in composing
+         | functions.
+         | Hint: a map method applies the function to each element of a list""") {
 
     def makeUpper(xs: List[String]) = xs map { _.toUpperCase }
 
@@ -122,7 +127,8 @@ class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
     List("Scala", "Erlang", "Clojure") map { _.length } should be(__)
   }
 
-  koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
+  koan("""Currying is a technique to transform function with multiple
+        | parameters to function with one parameter""") {
     def multiply(x: Int, y: Int) = x * y
     (multiply _).isInstanceOf[Function2[_, _, _]] should be(__)
     val multiplyCurried = (multiply _).curried
@@ -130,7 +136,8 @@ class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
     multiplyCurried(3)(2) should be(__)
   }
 
-  koan("Currying allows you to create specialized version of generalized function") {
+  koan("""Currying allows you to create specialized version of
+      | generalized function""") {
     def customFilter(f: Int => Boolean)(xs: List[Int]) = {
       xs filter f
     }

@@ -46,7 +46,8 @@ class AboutLazySequences extends KoanFunSuite with Matchers {
     Stream.continually(1).take(4).sum should be(__)
   }
 
-  koan("Always remember tail of a lazy collection is never computed unless required") {
+  koan("""Always remember tail of a lazy collection is never computed
+      | unless required""") {
     def makeLazy(value: Int): Stream[Int] = {
       Stream.cons(value, makeLazy(value + 1))
     }

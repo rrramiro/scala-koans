@@ -5,7 +5,8 @@ import org.scalatest.Matchers
 
 class AboutLiteralBooleans extends KoanFunSuite with Matchers {
 
-  koan("""Boolean literals are either true or false, using the true or false keyword""") {
+  koan("""Boolean literals are either true or false,
+      | using the true or false keyword""") {
     val a = true
     val b = false
     val c = 1 > 2

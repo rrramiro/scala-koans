@@ -24,7 +24,8 @@ class AboutFormatting extends KoanFunSuite with Matchers {
 
   }
 
-  koan("Character Literals can be an escape sequence, including octal or hexidecimal") {
+  koan("""Character Literals can be an escape sequence, including octal
+         | or hexidecimal""") {
 
     val c = '\u0061' //unicode for a
     val d = '\141' //octal for a
@@ -42,7 +43,8 @@ class AboutFormatting extends KoanFunSuite with Matchers {
     "%d bottles of beer on the wall" format j - 100 should be(__)
   }
 
-  koan("Formatting can be used for any number of items, like a string and a number") {
+  koan("""Formatting can be used for any number of items,
+         | like a string and a number""") {
     val j = 190
     val k = "vodka"
 

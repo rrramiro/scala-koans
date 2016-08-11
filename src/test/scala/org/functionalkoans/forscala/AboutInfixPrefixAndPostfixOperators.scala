@@ -18,15 +18,19 @@ class AboutInfixPrefixAndPostfixOperators extends KoanFunSuite with Matchers {
   koan("""Infix Operators do NOT work if an object
            |  has a method that takes two parameters.""") {
     val g: String = "Check out the big brains on Brad!"
-    g indexOf 'o' should be(__) //indexOf(Char) can be used as an infix operator
-    //g indexOf 'o', 4 should be (6) //indexOf(Char, Int) cannot be used an infix operator
-    g.indexOf('o', 7) should be(__) //indexOf(Char, Int) must use standard java/scala calls
+    //indexOf(Char) can be used as an infix operator
+    g indexOf 'o' should be(__)
+    //indexOf(Char, Int) cannot be used an infix operator
+    //g indexOf 'o', 4 should be (6)
+    //indexOf(Char, Int) must use standard java/scala calls
+    g.indexOf('o', 7) should be(__)
   }
 
   koan("""Postfix operators work if an object
            |  has a method that takes no parameters.""") {
     val g: Int = 31
-    (g toHexString) should be(__) //toHexString takes no params therefore can be called
+    //toHexString takes no params therefore can be called
+    (g toHexString) should be(__)
     //as a postfix operator. Hint: The answer is 1f
   }
 

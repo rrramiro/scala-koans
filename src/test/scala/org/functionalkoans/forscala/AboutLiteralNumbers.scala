@@ -4,7 +4,8 @@ import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 class AboutLiteralNumbers extends KoanFunSuite with Matchers {
-  koan("Integer Literals are 32-bit and can be created from decimal, hexadecimal") {
+  koan("""Integer Literals are 32-bit and can be created
+      | from decimal, hexadecimal""") {
     val a = 2
     val b = 31
     val c = 0x30F
@@ -21,8 +22,8 @@ class AboutLiteralNumbers extends KoanFunSuite with Matchers {
     h should be(__) //Hint: 30F = 783
   }
 
-  koan("""Long Literals are 64 bit, are specified by appending an L or l at the end;
-         |   l is rarely used since it looks like a 1""") {
+  koan("""Long Literals are 64 bit, are specified by appending
+         | an L or l at the end;   l is rarely used since it looks like a 1""") {
     val a = 2L
     val b = 31L
     val c = 0x30FL

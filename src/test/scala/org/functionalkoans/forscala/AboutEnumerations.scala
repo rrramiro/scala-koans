@@ -5,8 +5,9 @@ import org.scalatest.Matchers
 
 class AboutEnumerations extends KoanFunSuite with Matchers {
 
-  // To create an enumeration, create an object that extends the abstract class Enumeration,
-  // and set a val variable to the method Value.  This is a trick to give values to each val."
+  // To create an enumeration, create an object that extends the
+  // abstract class Enumeration, and set a val variable to the method Value.
+  // This is a trick to give values to each val."
   koan("Value assigns a numerical value to fields") {
 
     object Planets extends Enumeration {
@@ -23,16 +24,17 @@ class AboutEnumerations extends KoanFunSuite with Matchers {
 
     Planets.Mercury.id should be(__)
     Planets.Venus.id should be(__)
-
-    Planets.Mercury.toString should be(__) //How does it get the name? by Reflection.
+    //How does it get the name? by Reflection.
+    Planets.Mercury.toString should be(__)
     Planets.Venus.toString should be(__)
 
     (Planets.Earth == Planets.Earth) should be(__)
     (Planets.Neptune == Planets.Jupiter) should be(__)
   }
 
-  // You can create an enumeration with your own index and your own Strings, in this koan,
-  // we will start with an index of one and use Greek names instead of Roman
+  // You can create an enumeration with your own index and your own Strings,
+  // in this koan, we will start with an index of one and use Greek names
+  // instead of Roman
   koan("Enumerations can set their own index and name") {
     object GreekPlanets extends Enumeration {
 
@@ -58,7 +60,8 @@ class AboutEnumerations extends KoanFunSuite with Matchers {
     (GreekPlanets.Neptune == GreekPlanets.Jupiter) should be(__)
   }
 
-  // Enumerations can be declared in one line if you are merely setting variables to Value
+  // Enumerations can be declared in one line if you are merely setting
+  // variables to Value
   koan("Enumeration declarations can be done on one line") {
     object Planets extends Enumeration {
       val Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto = Value
@@ -104,8 +107,12 @@ class AboutEnumerations extends KoanFunSuite with Matchers {
 
       val G = 6.67300E-11
 
-      class PlanetValue(val i: Int, val name: String, val mass: Double, val radius: Double)
-          extends Val(i: Int, name: String) {
+      class PlanetValue(
+          val i: Int,
+          val name: String,
+          val mass: Double,
+          val radius: Double
+      ) extends Val(i: Int, name: String) {
 
         def surfaceGravity = G * mass / (radius * radius)
 

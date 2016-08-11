@@ -8,7 +8,9 @@ import org.scalatest.Matchers
 class AboutPackages extends KoanFunSuite with Matchers {
 
   koan("packages contain classes and objects") {
-    val packageOfThisClass = classOf[AboutPackages].getName.split("\\.").dropRight(1).mkString(".")
+    val packageOfThisClass = {
+      classOf[AboutPackages].getName.split("\\.").dropRight(1).mkString(".")
+    }
 
     packageOfThisClass should be(__)
   }

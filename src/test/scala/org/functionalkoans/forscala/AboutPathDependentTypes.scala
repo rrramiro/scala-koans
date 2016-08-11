@@ -11,8 +11,9 @@ case class Board(length: Int, height: Int) {
 }
 
 class AboutPathDependentTypes extends KoanFunSuite with Matchers {
-  koan("""When a class is instantiated inside of another object, it belongs to the object.  This is a path
-      | dependent type. Once established, it cannot be placed inside of another object""") {
+  koan("""When a class is instantiated inside of another object,
+        | it belongs to the object.  This is a path dependent type.
+        | Once established, it cannot be placed inside of another object""") {
 
     val b1 = Board(20, 20)
     val b2 = Board(30, 30)
