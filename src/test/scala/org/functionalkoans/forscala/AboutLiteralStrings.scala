@@ -44,9 +44,7 @@ class AboutLiteralStrings extends KoanFunSuite with Matchers {
     a should be(__)
   }
 
-  koan("""Multiline String literals
-	are surrounded
-	by three quotation marks""") {
+  koan("""Multiline String literals are surrounded by three quotation marks""") {
     val a = """An apple a day
     keeps the doctor away"""
     a.split('\n').length should be(__) //a.split('\n').length determines the number of lines
@@ -55,17 +53,17 @@ class AboutLiteralStrings extends KoanFunSuite with Matchers {
   koan("Use stripMargin to prettify multi-line strings") {
 
     /*
-	  * Multiline String literals can use | to specify the starting position
-	  * of subsequent lines, then use stripMargin to remove the surplus indentation.
-	  */
+    * Multiline String literals can use | to specify the starting position
+    * of subsequent lines, then use stripMargin to remove the surplus indentation.
+    */
 
     val a = """An apple a day
                |keeps the doctor away"""
     a.stripMargin.split('\n')(1).charAt(0) should be(__)
 
     /*
-	  * a.stripMargin.split('\n')(1).charAt(0)
+    * a.stripMargin.split('\n')(1).charAt(0)
     * gets the first character of the second line
-	  */
+    */
   }
 }

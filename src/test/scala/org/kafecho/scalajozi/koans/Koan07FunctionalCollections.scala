@@ -77,7 +77,7 @@ class Koan07FunctionalCollections extends KoanFunSuite with Matchers {
     // groupBy: for a given character c, find all characters in the string that are c.
     val groups: Map[Char, String] = word.groupBy(c => c)
 
-    // Let's work out how often a given character appears. 
+    // Let's work out how often a given character appears.
     val counts = groups.mapValues(s => s.length())
 
     println(s"Counts: $counts")

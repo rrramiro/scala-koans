@@ -81,7 +81,7 @@ class AboutMethods extends KoanFunSuite with Matchers {
   koan("""If you want to ensure a method is not only recursive but _tail recursive_,
       | you can get help from the scala compiler to ensure that it is indeed a
       | tail recursive call by
-      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive. The 
+      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive. The
       | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
 
     import scala.annotation.tailrec //importing annotation!
