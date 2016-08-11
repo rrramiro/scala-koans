@@ -51,7 +51,8 @@ abstract class KoansSuites(
         topBorder,
         "",
         wordWrap(
-          s"""Please meditate on koan "${event.testName.stripMargin}" of suite "${event.suiteName}"""".stripMargin,
+          s"""Please meditate on koan "${event.testName.stripMargin}"
+             | of suite "${event.suiteName}"""".stripMargin,
           columnSize
         ),
         "",

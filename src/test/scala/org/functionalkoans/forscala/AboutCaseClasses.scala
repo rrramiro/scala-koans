@@ -5,9 +5,10 @@ import org.scalatest.Matchers
 
 class AboutCaseClasses extends KoanFunSuite with Matchers {
 
-  // case classes are very convenient, they give you a lot for free. The following Koans will
-  // help you understand some of the conveniences. Case classes are also an integral part of
-  // pattern matching which will be the subject of a later
+  // case classes are very convenient, they give you a lot for free.
+  // The following Koans will help you understand some of the conveniences.
+  // Case classes are also an integral part of pattern matching which will
+  // be the subject of a later
 
   koan("Case classes have an automatic equals method that works") {
     case class Person(first: String, last: String)

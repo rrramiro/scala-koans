@@ -27,13 +27,16 @@ class Koan04ControlStructures extends KoanFunSuite with Matchers {
     what.isInstanceOf[Unit] should be(__)
   }
 
-  koan("In Scala, for is normally used as a list comprehension. You can also use it purely for side effects.") {
-    val result = for (i <- 0 to 42) {
-      println(s"Getting closer to the meaning of life. Currentlty at $i")
-    }
+  koan(
+    """In Scala, for is normally used as a list comprehension.
+      | You can also use it purely for side effects."""
+  ) {
+      val result = for (i <- 0 to 42) {
+        println(s"Getting closer to the meaning of life. Currentlty at $i")
+      }
 
-    result.isInstanceOf[Unit] should be(__)
-  }
+      result.isInstanceOf[Unit] should be(__)
+    }
 
   koan("You can create a sequence from a for comprehension") {
     val result = (for (i <- 0 to 3) yield i * 2).toList

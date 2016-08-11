@@ -6,17 +6,32 @@ import org.scalatest.Matchers
 class AboutMaps extends KoanFunSuite with Matchers {
 
   koan("Maps can be created easily") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
     myMap.size should be(__)
   }
 
   koan("Maps contain distinct pairings") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "MI" -> "Michigan"
+    )
     myMap.size should be(__)
   }
 
   koan("Maps can be added to easily") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "MI" -> "Michigan"
+    )
 
     val aNewMap = myMap + ("IL" -> "Illinois")
 
@@ -25,7 +40,12 @@ class AboutMaps extends KoanFunSuite with Matchers {
   }
 
   koan("Map values can be iterated") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "MI" -> "Michigan"
+    )
 
     val mapValues = myMap.values
 
@@ -38,19 +58,28 @@ class AboutMaps extends KoanFunSuite with Matchers {
 
     // for (mval <- mapValues) println(mval)
 
-    // NOTE that the following will not compile, as iterators do not implement "contains"
+    // NOTE that the following will not compile, as iterators
+    // do not implement "contains"
     //mapValues.contains("Illinois") should be (true)
   }
 
-  koan("Maps insertion with duplicate key updates previous entry with subsequent value") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Meechigan")
+  koan(
+    """Maps insertion with duplicate key updates previous entry
+      | with subsequent value"""
+  ) {
+      val myMap = Map(
+        "MI" -> "Michigan",
+        "OH" -> "Ohio",
+        "WI" -> "Wisconsin",
+        "MI" -> "Meechigan"
+      )
 
-    val mapValues = myMap.values
+      val mapValues = myMap.values
 
-    mapValues.size should be(__)
+      mapValues.size should be(__)
 
-    myMap("MI") should be(__)
-  }
+      myMap("MI") should be(__)
+    }
 
   koan("Map keys may be of mixed type") {
     val myMap = Map("Ann Arbor" -> "MI", 49931 -> "MI")
@@ -69,13 +98,23 @@ class AboutMaps extends KoanFunSuite with Matchers {
   }
 
   koan("Maps may be accessed") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
     myMap("MI") should be(__)
     myMap("IA") should be(__)
   }
 
   koan("Map elements can be removed easily") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
     val aNewMap = myMap - "MI"
     aNewMap.contains("MI") should be(__)
   }
@@ -84,7 +123,9 @@ class AboutMaps extends KoanFunSuite with Matchers {
 
     val myMap = Map("OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
 
-    // Cheat Code (because this is hard to illustrate): uncomment the intercept code to make this pass
+    /* Cheat Code (because this is hard to illustrate): uncomment
+     * the intercept code to make this pass
+     */
     //intercept[NoSuchElementException] {
 
     myMap("MI") should be(__)
@@ -92,7 +133,12 @@ class AboutMaps extends KoanFunSuite with Matchers {
   }
 
   koan("Map elements can be removed in multiple") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
     val aNewMap = myMap -- List("MI", "OH")
 
     aNewMap.contains("MI") should be(__)
@@ -102,7 +148,12 @@ class AboutMaps extends KoanFunSuite with Matchers {
   }
 
   koan("Map elements can be removed with a tuple") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val myMap = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
     val aNewMap = myMap - ("MI", "WI") // Notice: single '-' operator for tuples
 
     aNewMap.contains("MI") should be(__)
@@ -110,17 +161,35 @@ class AboutMaps extends KoanFunSuite with Matchers {
     aNewMap.size should be(__)
   }
 
-  koan("Attempted removal of nonexistent elements from a map is handled gracefully") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    val aNewMap = myMap - "MN"
+  koan(
+    """Attempted removal of nonexistent elements from a map
+      |is handled gracefully"""
+  ) {
+      val myMap = Map(
+        "MI" -> "Michigan",
+        "OH" -> "Ohio",
+        "WI" -> "Wisconsin",
+        "IA" -> "Iowa"
+      )
+      val aNewMap = myMap - "MN"
 
-    aNewMap.equals(myMap) should be(__)
-  }
+      aNewMap.equals(myMap) should be(__)
+    }
 
   koan("Map equivalency is independent of order") {
 
-    val myMap1 = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    val myMap2 = Map("WI" -> "Wisconsin", "MI" -> "Michigan", "IA" -> "Iowa", "OH" -> "Ohio")
+    val myMap1 = Map(
+      "MI" -> "Michigan",
+      "OH" -> "Ohio",
+      "WI" -> "Wisconsin",
+      "IA" -> "Iowa"
+    )
+    val myMap2 = Map(
+      "WI" -> "Wisconsin",
+      "MI" -> "Michigan",
+      "IA" -> "Iowa",
+      "OH" -> "Ohio"
+    )
 
     myMap1.equals(myMap2) should be(__)
   }

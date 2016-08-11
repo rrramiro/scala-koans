@@ -23,7 +23,8 @@ class AboutAsserts extends KoanFunSuite with Matchers {
   koan("booleans in asserts can test equality") {
     val v1 = 4
     val v2 = 4
-    v1 === __ // === is an assert. It is from ScalaTest, not from the Scala language
+    // === is an assert. It is from ScalaTest, not from the Scala language
+    v1 === __
   }
 
   koan("sometimes we expect you to fill in the values") {
