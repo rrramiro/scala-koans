@@ -13,7 +13,8 @@ class AboutConstructors extends KoanFunSuite with Matchers {
     }
   }
 
-  koan("Primary constructor specified with a parameter requires that parameter to be passed in") {
+  koan("""Primary constructor specified with a parameter requires that
+      | parameter to be passed in""") {
     val aboutMe = new AboutConstructorWithAuxiliaryConstructor()
     aboutMe.name should be(__)
   }

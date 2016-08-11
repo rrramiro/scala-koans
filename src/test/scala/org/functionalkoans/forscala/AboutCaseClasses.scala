@@ -65,7 +65,8 @@ class AboutCaseClasses extends KoanFunSuite with Matchers {
   }
 
   koan("Case classes can have mutable properties") {
-    case class Dog(var name: String, breed: String) // you can rename a dog, but change its breed? nah!
+    // you can rename a dog, but change its breed? nah!
+    case class Dog(var name: String, breed: String)
     val d1 = Dog("Scooby", "Doberman")
 
     d1.name should be(__)
@@ -81,8 +82,8 @@ class AboutCaseClasses extends KoanFunSuite with Matchers {
     case class Dog(name: String, breed: String) // Doberman
 
     val d1 = Dog("Scooby", "Doberman")
-
-    val d2 = d1.copy(name = "Scooby Doo") // copy the case class but change the name in the copy
+    // copy the case class but change the name in the copy
+    val d2 = d1.copy(name = "Scooby Doo")
 
     d1.name should be(__) // original left alone
     d1.breed should be(__)
@@ -92,13 +93,20 @@ class AboutCaseClasses extends KoanFunSuite with Matchers {
   }
 
   // case class has to be defined outside of the test for this one
-  case class Person(first: String, last: String, age: Int = 0, ssn: String = "")
+  case class Person(
+    first: String,
+    last: String,
+    age: Int = 0,
+    ssn: String = ""
+  )
 
   koan("Case classes have default and named parameters") {
 
     val p1 = Person("Fred", "Jones", 23, "111-22-3333")
-    val p2 = Person("Samantha", "Jones") // note missing age and ssn
-    val p3 = Person(last = "Jones", first = "Fred", ssn = "111-22-3333") // note the order can change, and missing age
+    // note missing age and ssn
+    val p2 = Person("Samantha", "Jones")
+    // note the order can change, and missing age
+    val p3 = Person(last = "Jones", first = "Fred", ssn = "111-22-3333")
     val p4 = p3.copy(age = 23)
 
     p1.first should be(__)
@@ -119,14 +127,17 @@ class AboutCaseClasses extends KoanFunSuite with Matchers {
     (p1 == p4) should be(__)
   }
 
-  koan("Case classes can be disassembled to their constituent parts as a tuple") {
-    val p1 = Person("Fred", "Jones", 23, "111-22-3333")
+  koan(
+    "Case classes can be disassembled to their constituent parts as a tuple"
+  ) {
+      val p1 = Person("Fred", "Jones", 23, "111-22-3333")
 
-    val parts = Person.unapply(p1).get // this seems weird, but it's critical to other features of Scala
+      // this seems weird, but it's critical to other features of Scala
+      val parts = Person.unapply(p1).get
 
-    parts._1 should be(__)
-    parts._2 should be(__)
-    parts._3 should be(__)
-    parts._4 should be(__)
-  }
+      parts._1 should be(__)
+      parts._2 should be(__)
+      parts._3 should be(__)
+      parts._4 should be(__)
+    }
 }

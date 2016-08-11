@@ -24,14 +24,16 @@ class AboutPartialFunctions extends KoanFunSuite with Matchers {
       def apply(v1: Int) = v1 * 3
     }
 
-    val whatToDo = doubleEvens orElse tripleOdds //Here we chain the partial functions together
+    //Here we chain the partial functions together
+    val whatToDo = doubleEvens orElse tripleOdds
 
     whatToDo(3) should be(__)
     whatToDo(4) should be(__)
   }
 
-  koan("""Case statements are a quick way to create partial functions. When you create a case
-          | statement, the apply and isDefinedAt is created for you.""") {
+  koan("""Case statements are a quick way to create partial functions.
+        | When you create a case statement, the apply and isDefinedAt
+        | is created for you.""") {
 
     //The case statements are called case statements with guards
     val doubleEvens: PartialFunction[Int, Int] = {
@@ -41,13 +43,14 @@ class AboutPartialFunctions extends KoanFunSuite with Matchers {
       case x: Int if (x % 2) != 0 => x * 3
     }
 
-    val whatToDo = doubleEvens orElse tripleOdds //Here we chain the partial functions together
+    //Here we chain the partial functions together
+    val whatToDo = doubleEvens orElse tripleOdds
     whatToDo(3) should be(__)
     whatToDo(4) should be(__)
   }
 
-  koan("""The result of partial functions can have an \'andThen\' function added to the end
-          | of the chain""") {
+  koan("""The result of partial functions can have an \'andThen\'
+         | function added to the end of the chain""") {
 
     //These are called case statements with guards
     val doubleEvens: PartialFunction[Int, Int] = {
@@ -58,13 +61,15 @@ class AboutPartialFunctions extends KoanFunSuite with Matchers {
     }
 
     val addFive = (x: Int) => x + 5
-    val whatToDo = doubleEvens orElse tripleOdds andThen addFive //Here we chain the partial functions together
+    //Here we chain the partial functions together
+    val whatToDo = doubleEvens orElse tripleOdds andThen addFive
     whatToDo(3) should be(__)
     whatToDo(4) should be(__)
   }
 
-  koan("""The result of partial functions can have an \'andThen\' function added to the end
-          | of the chain used to continue onto another chain of logic""") {
+  koan("""The result of partial functions can have an \'andThen\'
+        | function added to the end of the chain used to continue
+        | onto another chain of logic""") {
 
     val doubleEvens: PartialFunction[Int, Int] = {
       case x: Int if (x % 2) == 0 => x * 2

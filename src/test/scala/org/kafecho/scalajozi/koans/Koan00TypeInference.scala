@@ -15,7 +15,13 @@ class Koan00TypeInference extends KoanFunSuite with Matchers {
     val b = 42
 
     // Type inference works with collections.
-    val capitalToCountry: Map[String, String] = Map("Paris" -> "France", "Pretoria" -> "SA")
-    val countryToCapital = Map("France" -> "France", "SA" -> "Pretoria")
+    val capitalToCountry: Map[String, String] = Map(
+      "Paris" -> "France",
+      "Pretoria" -> "SA"
+    )
+    val countryToCapital = Map(
+      "France" -> "France",
+      "SA" -> "Pretoria"
+    )
   }
 }

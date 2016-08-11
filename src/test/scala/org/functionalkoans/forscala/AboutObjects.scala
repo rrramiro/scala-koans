@@ -26,8 +26,9 @@ object Person {
 }
 
 class AboutObjects extends KoanFunSuite with Matchers {
-  koan("""An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
-      | and is called upon much in the same way""") {
+  koan("""An object is a singleton. One object -- that's it.
+        | This object is a replacement of static in Java,
+        | and is called upon much in the same way""") {
 
     object Greeting {
       def english = "Hi"
@@ -45,7 +46,8 @@ class AboutObjects extends KoanFunSuite with Matchers {
     Greeting.magyar should be(__)
   }
 
-  koan("""Here is proof an object is a singleton, and not a static method in a class""") {
+  koan("""Here is proof an object is a singleton, and not
+      | a static method in a class""") {
     object Greeting {
       def english = "Hi"
 
@@ -66,8 +68,9 @@ class AboutObjects extends KoanFunSuite with Matchers {
     x eq z should be(__)
   }
 
-  koan("""An object that has the same name as class is called a companion object,
-      | it is used to contain factories for the class that it complements""") {
+  koan("""An object that has the same name as class
+         | is called a companion object, it is used to contain
+         | factories for the class that it complements""") {
 
     class Movie(val name: String, val year: Short)
 
@@ -86,8 +89,9 @@ class AboutObjects extends KoanFunSuite with Matchers {
     Movie.academyAwardBestMoviesForYear(1932).get.name should be(__)
   }
 
-  koan("""A companion object stores shared variables and values for every instantiated class to share.
-      | (See SecretAgent class and companion object above).""") {
+  koan("""A companion object stores shared variables and values
+         | for every instantiated class to share. (See SecretAgent class
+         | and companion object above).""") {
 
     val bond = new SecretAgent("James Bond")
     val felix = new SecretAgent("Felix Leitner")
@@ -104,7 +108,8 @@ class AboutObjects extends KoanFunSuite with Matchers {
     SecretAgent.bullets should be(__)
   }
 
-  koan("A companion object can also see private values and variables of the instantiated objects") {
+  koan("""A companion object can also see private values and variables
+      | of the instantiated objects""") {
 
     val clark = new Person("Clark Kent", "Superman")
     val peter = new Person("Peter Parker", "Spiderman")

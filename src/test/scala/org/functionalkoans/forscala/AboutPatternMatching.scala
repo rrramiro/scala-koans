@@ -67,10 +67,14 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
   koan("Pattern matching can substitute parts of expressions") {
 
     def goldilocks(expr: Any) = expr match {
-      case ("porridge", bear) => bear + " said someone's been eating my porridge"
-      case ("chair", bear) => bear + " said someone's been sitting in my chair"
-      case ("bed", bear) => bear + " said someone's been sleeping in my bed"
-      case _ => "what?"
+      case ("porridge", bear) =>
+        bear + " said someone's been eating my porridge"
+      case ("chair", bear) =>
+        bear + " said someone's been sitting in my chair"
+      case ("bed", bear) =>
+        bear + " said someone's been sleeping in my bed"
+      case _ =>
+        "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(__)
@@ -78,23 +82,29 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
   }
 
   koan("Pattern matching can done on regular expression groups") {
-    val EatingRegularExpression = """Eating Alert: bear=([^,]+),\s+source=(.+)""".r //.r turns a String to a regular expression
+    //.r turns a String to a regular expression
+    val EatingRegularExpression = """Eating Alert: bear=([^,]+),\s+source=(.+)""".r
     val SittingRegularExpression = """Sitting Alert: bear=([^,]+),\s+source=(.+)""".r
     val SleepingRegularExpression = """Sleeping Alert: bear=([^,]+),\s+source=(.+)""".r
 
     def goldilocks(expr: String) = expr match {
-      case (EatingRegularExpression(bear, source)) => "%s said someone's been eating my %s".format(bear, source)
-      case (SittingRegularExpression(bear, source)) => "%s said someone's been sitting on my %s".format(bear, source)
-      case (SleepingRegularExpression(bear, source)) => "%s said someone's been sleeping in my %s".format(bear, source)
-      case _ => "what?"
+      case (EatingRegularExpression(bear, source)) =>
+        "%s said someone's been eating my %s".format(bear, source)
+      case (SittingRegularExpression(bear, source)) =>
+        "%s said someone's been sitting on my %s".format(bear, source)
+      case (SleepingRegularExpression(bear, source)) =>
+        "%s said someone's been sleeping in my %s".format(bear, source)
+      case _ =>
+        "what?"
     }
 
     goldilocks("Eating Alert: bear=Papa, source=porridge") should be(__)
     goldilocks("Sitting Alert: bear=Mama, source=chair") should be(__)
   }
 
-  koan("""A backquote can be used to refer to a stable variable in scope to create a case statement.
-          | This prevents what is called \'Variable Shadowing\'""") {
+  koan("""A backquote can be used to refer to a stable variable in scope
+          | to create a case statement. This prevents what is
+          | called \'Variable Shadowing\'""") {
     val foodItem = "porridge"
 
     def goldilocks(expr: Any) = expr match {
@@ -110,7 +120,8 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     goldilocks(("beer", "Cousin")) should be(__)
   }
 
-  koan("A backquote can be used to refer to a method parameter as a stable variable to create a case statement.") {
+  koan("""A backquote can be used to refer to a method parameter
+      | as a stable variable to create a case statement.""") {
 
     def patternEquals(i: Int, j: Int) = j match {
       case `i` => true
@@ -121,9 +132,10 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     patternEquals(9, 9) should be(__)
   }
 
-  koan("""To pattern match against a List, the list can be broken out into parts,
-      | in this case the head (x) and the tail(xs). Since the case doesn't terminate in Nil,
-      | xs is interpreted as the rest of the list""") {
+  koan("""To pattern match against a List, the list can be broken
+      | out into parts, in this case the head (x) and the tail(xs).
+      | Since the case doesn't terminate in Nil, xs is interpreted
+      | as the rest of the list""") {
     val secondElement = List(1, 2, 3) match {
       case x :: xs => xs.head
       case _ => 0
@@ -132,8 +144,9 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     secondElement should be(__)
   }
 
-  koan("""To obtain the second you can expand on the pattern. Where x is the first element, y
-      | is the second element, and xs is the rest. """) {
+  koan("""To obtain the second you can expand on the pattern.
+        | Where x is the first element, y is the second element,
+        | and xs is the rest. """) {
     val secondElement = List(1, 2, 3) match {
       case x :: y :: xs => xs
       case _ => 0
@@ -142,7 +155,8 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     secondElement should be(__)
   }
 
-  koan("""Same koan as above, but we are pattern matching of a list with only one item!""") {
+  koan("""Same koan as above, but we are pattern matching
+      | of a list with only one item!""") {
     val secondElement = List(1) match {
       case x :: y :: xs => xs
       case _ => 0

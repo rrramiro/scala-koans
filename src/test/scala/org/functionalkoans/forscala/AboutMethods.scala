@@ -41,27 +41,32 @@ class AboutMethods extends KoanFunSuite with Matchers {
     add(1, 1) should be(__)
   }
 
-  koan("""If a method does not of have equal it is considered `Unit` which is analogous to `void` in Java""") {
+  koan("""If a method does not of have equal it is considered `Unit`
+      | which is analogous to `void` in Java""") {
     def foo(x: Int) { //Note: No `=`
       (x + 4) should be(__)
     }
     foo(5)
   }
 
-  koan("""If you want to have an = on the method, while still explicitly returning Unit you can make the return type `Unit`,
-      | this also analogous to `void""") {
+  koan("""If you want to have an = on the method, while still explicitly
+         | returning Unit you can make the return type `Unit`,
+         | this also analogous to `void""") {
     def foo(x: Int): Unit = { //Note we are declaring Unit
       (x + 4) should be(__)
     }
     foo(3)
   }
 
-  koan("""Once you have an =, it is understood that there will be a return type and can be inferred""") {
+  koan("""Once you have an =, it is understood that there will be a
+      | return type and can be inferred""") {
     def foo(x: Int) = 3 + 4
-    foo(3).isInstanceOf[Int] should be(__) //.isInstanceOf[...] is analogous to Java's instanceOf
+    //.isInstanceOf[...] is analogous to Java's instanceOf
+    foo(3).isInstanceOf[Int] should be(__)
   }
 
-  koan("""Of course if you wish to be explicit about the return type, you can attach it at the end of the method""") {
+  koan("""Of course if you wish to be explicit about the return type,
+         | you can attach it at the end of the method""") {
     def foo(x: Int): Int = 3 + 4
     foo(3).isInstanceOf[Int] should be(__)
   }
@@ -74,20 +79,25 @@ class AboutMethods extends KoanFunSuite with Matchers {
       else x * factorial(x - 1)
     }
 
-    factorial(4) should be(__) // List(...) is how a list is created more about lists later.
+    // List(...) is how a list is created more about lists later.
+    factorial(4) should be(__)
 
     //Note: Fire up a REPL and paste factorial(100000)!
   }
 
-  koan("""If you want to ensure a method is not only recursive but _tail recursive_,
-      | you can get help from the scala compiler to ensure that it is indeed a
-      | tail recursive call by
-      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive. The
-      | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
+  koan("""If you want to ensure a method is not only recursive but
+         | _tail recursive_, you can get help from the scala compiler
+         | to ensure that it is indeed a tail recursive call by
+         | including scala.annotation.tailrec on the method.
+         | When methods are properly tail recursive. The
+         | Scala compiler will optimize the code from stack recursion
+         | into a loop at compile time""") {
 
     import scala.annotation.tailrec //importing annotation!
+
+    // This is an accumulator to ensure tail recursion!
     @tailrec
-    def fact(i: BigInt, accumulator: BigInt): BigInt = { // This is an accumulator to ensure tail recursion!
+    def fact(i: BigInt, accumulator: BigInt): BigInt = {
       if (i <= 1)
         accumulator
       else
@@ -103,9 +113,10 @@ class AboutMethods extends KoanFunSuite with Matchers {
     //Note: Fire up a REPL and try factorial(100000) now!
   }
 
-  koan("""In scala, methods can be placed inside in methods! This comes useful for
-      | recursion where accumulator helper methods can be placed inside the outer
-      |  method, or you just want to place one method in another for design reasons""") {
+  koan("""In scala, methods can be placed inside in methods!
+        | This comes useful for recursion where accumulator helper
+        | methods can be placed inside the outer method, or you
+        | just want to place one method in another for design reasons""") {
     def factorial(i: BigInt): BigInt = {
       @tailrec
       def fact(i: BigInt, accumulator: BigInt): BigInt = {
@@ -120,40 +131,53 @@ class AboutMethods extends KoanFunSuite with Matchers {
     factorial(3) should be(6)
   }
 
-  koan("""Remember you can have strange characters in values and variables as long as they're
-      |  after an underscore, well you can do the same in methods""") {
+  koan("""Remember you can have strange characters in values and variables
+         | as long as they're after an underscore, well you can do the same
+         | in methods""") {
 
     class Pennies(val n: Int)
     def doYouHaveAnySpareChange_?() = new Pennies(25)
     doYouHaveAnySpareChange_?.n should be(__)
   }
 
-  koan("""If you also remember you can add reserved words or words with space to any value or variable?
-      | Same applies for methods. Although please note that this is uncommon unless you really are into
-      | internal DSLs""") {
+  koan("""If you also remember you can add reserved words or words with
+        | space to any value or variable? Same applies for methods
+        | Although please note that this is uncommon unless you really are into
+        | internal DSLs""") {
 
-    class Employee(val `first name`: String, val `last name`: String, val `employee status`: String)
+    class Employee(
+      val `first name`: String,
+      val `last name`: String,
+      val `employee status`: String
+    )
 
     def `put employee on probation`(employee: Employee) = {
       new Employee(employee.`first name`, employee.`last name`, "Probation")
     }
 
-    val probationEmployee = `put employee on probation`(new Employee("Milton", "Waddams", ""))
+    val probationEmployee = `put employee on probation`(new Employee(
+      "Milton",
+      "Waddams",
+      ""
+    ))
     probationEmployee.`employee status` should be(__)
   }
 
-  koan("""Convention (not required for the compiler) states that if you a call a method that
-      |returns a Unit, invoke that method with empty parenthesis, other leave the parenthesis out""") {
+  koan("""Convention (not required for the compiler) states that
+        | if you a call a method that returns a Unit, invoke that
+        | method with empty parenthesis, other leave the parenthesis out""") {
 
     def add(a: Int, b: Int) = a + b //implied return type of Int!
     def performSideEffect(): Unit = System.currentTimeMillis
 
     add(4, 6) should be(__)
-    performSideEffect() //Notice the parenthesis, since the method we called is Unit!
+    //Notice the parenthesis, since the method we called is Unit!
+    performSideEffect()
   }
 
-  koan("""Methods with colons are right-associative, that means the object that a method is on will be on
-      |the _right_ and the method parameter will be on the _left_""") {
+  koan("""Methods with colons are right-associative, that means
+        | the object that a method is on will be on the _right_ and
+        | the method parameter will be on the _left_""") {
 
     class Foo(y: Int) {
       def ~:(n: Int) = n + y + 3

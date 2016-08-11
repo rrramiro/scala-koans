@@ -48,7 +48,8 @@ class AboutLiteralStrings extends KoanFunSuite with Matchers {
   koan("""Multiline String literals are surrounded by three quotation marks""") {
     val a = """An apple a day
     keeps the doctor away"""
-    a.split('\n').length should be(__) //a.split('\n').length determines the number of lines
+    //a.split('\n').length determines the number of lines
+    a.split('\n').length should be(__)
   }
 
   koan("Use stripMargin to prettify multi-line strings") {

@@ -11,14 +11,28 @@ class AboutRepeatedParameters extends KoanFunSuite with Matchers {
 
   koan("""A repeated parameter must be the last parameter and this will
       | let you add as many extra parameters as needed""") {
-    repeatedParameterMethod(3, "egg", "a delicious sandwich", "protein", "high cholesterol") should be(__)
+    repeatedParameterMethod(
+      3,
+      "egg",
+      "a delicious sandwich", "protein", "high cholesterol"
+    ) should be(__)
   }
 
-  koan("A repeated parameter can accept a collection as the last parameter but will be considered a single object") {
-    repeatedParameterMethod(3, "egg", List("a delicious sandwich", "protein", "high cholesterol")) should be(__)
+  koan("""A repeated parameter can accept a collection as the last parameter
+      | but will be considered a single object""") {
+    repeatedParameterMethod(
+      3,
+      "egg",
+      List("a delicious sandwich", "protein", "high cholesterol")
+    ) should be(__)
   }
 
-  koan("A repeated parameter can accept a collection,and if you want it expanded, add :_*") {
-    repeatedParameterMethod(3, "egg", List("a delicious sandwich", "protein", "high cholesterol"): _*) should be(__)
+  koan("""A repeated parameter can accept a collection,and if you want
+      | it expanded, add :_*""") {
+    repeatedParameterMethod(
+      3,
+      "egg",
+      List("a delicious sandwich", "protein", "high cholesterol"): _*
+    ) should be(__)
   }
 }

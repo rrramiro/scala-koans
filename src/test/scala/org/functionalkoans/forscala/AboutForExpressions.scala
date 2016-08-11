@@ -24,7 +24,8 @@ class AboutForExpressions extends KoanFunSuite with Matchers {
     sum should equal(__)
   }
 
-  koan("For expressions can nest, with later generators varying more rapidly than earlier ones") {
+  koan("""For expressions can nest, with later generators varying more
+         | rapidly than earlier ones""") {
     val xValues = Range(1, 5)
     val yValues = Range(1, 3)
     val coordinates = for {

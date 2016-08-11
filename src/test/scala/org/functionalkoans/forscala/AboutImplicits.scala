@@ -8,14 +8,16 @@ import scala.language.implicitConversions
 class AboutImplicits extends KoanFunSuite with Matchers {
 
   koan("""Implicits wrap around existing classes to provide extra functionality
-           |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
-           |   Creating a method isOdd for Int, which doesn't exist""") {
+         | This is similar to \'monkey patching\' in Ruby, and Meta-Programming
+         | in Groovy. Creating a method isOdd for Int, which doesn't exist""") {
 
     class KoanIntWrapper(val original: Int) {
       def isOdd = original % 2 != 0
     }
 
-    implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
+    implicit def thisMethodNameIsIrrelevant(value: Int) = {
+      new KoanIntWrapper(value)
+    }
 
     19.isOdd should be(__)
     20.isOdd should be(__)
@@ -30,7 +32,9 @@ class AboutImplicits extends KoanFunSuite with Matchers {
         def isEven = !isOdd
       }
 
-      implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
+      implicit def thisMethodNameIsIrrelevant(value: Int) = {
+        new KoanIntWrapper(value)
+      }
     }
 
     import MyPredef._
@@ -42,7 +46,9 @@ class AboutImplicits extends KoanFunSuite with Matchers {
   koan("""Implicits can be used to automatically convert one type to another""") {
 
     import java.math.BigInteger
-    implicit def Int2BigIntegerConvert(value: Int): BigInteger = new BigInteger(value.toString)
+    implicit def Int2BigIntegerConvert(value: Int): BigInteger = {
+      new BigInteger(value.toString)
+    }
 
     def add(a: BigInteger, b: BigInteger) = a.add(b)
 
@@ -53,7 +59,9 @@ class AboutImplicits extends KoanFunSuite with Matchers {
           |   long as an implicit value is set with in the scope.  These are
           |   called implicit function parameters""") {
 
-    def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = dollarsPerHour * hours
+    def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = {
+      dollarsPerHour * hours
+    }
 
     implicit var hourlyRate = BigDecimal(34.00)
 
@@ -65,8 +73,9 @@ class AboutImplicits extends KoanFunSuite with Matchers {
 
   koan("""Implicit Function Parameters can contain a list of implicits""") {
 
-    def howMuchCanIMake_?(hours: Int)(implicit amount: BigDecimal, currencyName: String) =
-      (amount * hours).toString() + " " + currencyName
+    def howMuchCanIMake_?(hours: Int)(implicit
+      amount: BigDecimal,
+      currencyName: String) = (amount * hours).toString() + " " + currencyName
 
     implicit var hourlyRate = BigDecimal(34.00)
     implicit val currencyName = "Dollars"
@@ -77,10 +86,14 @@ class AboutImplicits extends KoanFunSuite with Matchers {
     howMuchCanIMake_?(95) should be(__)
   }
 
-  koan("""Default arguments though are preferred to Implicit Function Parameters""") {
+  koan("""Default arguments though are preferred to Implicit Function
+      | Parameters""") {
 
-    def howMuchCanIMake_?(hours: Int, amount: BigDecimal = 34, currencyName: String = "Dollars") =
-      (amount * hours).toString() + " " + currencyName
+    def howMuchCanIMake_?(
+      hours: Int,
+      amount: BigDecimal = 34,
+      currencyName: String = "Dollars"
+    ) = (amount * hours).toString() + " " + currencyName
 
     howMuchCanIMake_?(30) should be(__)
 

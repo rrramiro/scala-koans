@@ -15,7 +15,11 @@ class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
     }
   }
 
-  class WithClassParameters(val defaultRed: Int, val defaultGreen: Int, val defaultBlue: Int) {
+  class WithClassParameters(
+      val defaultRed: Int,
+      val defaultGreen: Int,
+      val defaultBlue: Int
+  ) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
     }
@@ -25,8 +29,11 @@ class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
     }
   }
 
-  class WithClassParametersInClassDefinition(val defaultRed: Int = 0, val defaultGreen: Int = 255,
-      val defaultBlue: Int = 100) {
+  class WithClassParametersInClassDefinition(
+      val defaultRed: Int = 0,
+      val defaultGreen: Int = 255,
+      val defaultBlue: Int = 100
+  ) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
     }
@@ -53,14 +60,16 @@ class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
     myColor should equal(__, __, __)
   }
 
-  koan("can access class parameters and specify arguments in any order if you use their names") {
+  koan("""can access class parameters and specify arguments in any
+         | order if you use their names""") {
     val me = new WithClassParameters(40, 50, 60)
     val myColor = me.addColors(green = 50, red = 60, blue = 40)
 
     myColor should equal(__, __, __)
   }
 
-  koan("can access class parameters and default arguments if you leave them off") {
+  koan("""can access class parameters and default arguments
+        | if you leave them off""") {
     val me = new WithClassParameters(10, 20, 30)
     val myColor = me.addColorsWithDefaults(green = 70)
 

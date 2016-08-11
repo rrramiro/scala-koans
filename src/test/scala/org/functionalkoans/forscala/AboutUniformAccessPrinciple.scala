@@ -30,8 +30,9 @@ class AboutUniformAccessPrinciple extends KoanFunSuite with Matchers {
 
   koan("Cannot add parameter to Method invocation") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
-    // uncomment following line to see what happens if you try to access parameterless method with parens
-    //me.age() should be (7)
+    // uncomment following line to see what happens if you try
+    // to access parameterless method with parens
+    // me.age() should be (7)
   }
   koan("What happens when I update current year using property") {
     val me = new CalculatesAgeUsingProperty(2010, 2003)

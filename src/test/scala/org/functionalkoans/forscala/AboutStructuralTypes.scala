@@ -14,9 +14,11 @@ class AboutStructuralTypes extends KoanFunSuite with Matchers {
     def quack = "Here try these experimental pills"
   }
 
-  koan("""Structural typing is the ability to allow to the best of Scala's ability, duck typing.
-       |Duck Typing is where the method signatures and properties become valid semantics, not inheritence.
-       |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ...""") {
+  koan("""Structural typing is the ability to allow to the best of Scala's
+       | ability, duck typing. Duck Typing is where the method signatures and
+       | properties become valid semantics, not inheritence.
+       | Duck Typing comes from the term "If it walk like duck, and talks
+       | like a duck, ...""") {
 
     def onlyThoseThatCanPerformQuacks(quacker: { def quack: String }): String = {
       "received message: %s".format(quacker.quack)
@@ -39,16 +41,25 @@ class AboutStructuralTypes extends KoanFunSuite with Matchers {
 
     class Cow {
       def speak = "Whattup?"
-      def move(steps: Int, direction: String) = s"Ok, moving $steps steps..heading $direction"
+      def move(steps: Int, direction: String) = {
+        s"Ok, moving $steps steps..heading $direction"
+      }
     }
 
-    val someDude: { def speak: String; def move(steps: Int, direction: String): String } = new Human()
-    val someBovine: { def speak: String; def move(steps: Int, direction: String): String } = new Cow()
+    val someDude: {
+      def speak: String
+      def move(steps: Int, direction: String): String
+    } = new Human()
+    val someBovine: {
+      def speak: String
+      def move(steps: Int, direction: String): String
+    } = new Cow()
     someDude.move(4, "North") should be(__)
     someBovine.move(3, "South") should be(__)
   }
 
-  koan("""You can use type aliasing if the structural type gets to be too much typing""") {
+  koan("""You can use type aliasing if the structural
+         | type gets to be too much typing""") {
     class Goose {
       def speak = "HONK!"
       def move(steps: Int, direction: String) = direction match {
@@ -57,7 +68,10 @@ class AboutStructuralTypes extends KoanFunSuite with Matchers {
       }
     }
 
-    type SpeakerAndMover = { def speak: String; def move(steps: Int, direction: String): String }
+    type SpeakerAndMover = {
+      def speak: String
+      def move(steps: Int, direction: String): String
+    }
 
     val someGoose: SpeakerAndMover = new Goose()
     someGoose.move(4, "North") should be(__)

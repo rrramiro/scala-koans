@@ -42,7 +42,8 @@ class AboutParentClasses extends KoanFunSuite with Matchers {
       val employeeID: Long) extends Worker(firstName, lastName)
 
     val employee = new Employee("Name", "Yourself", 2291)
-    val assignment = new employee.Assignment(22) //using the employee instance's path, create an assignment for it.
+    //using the employee instance's path, create an assignment for it.
+    val assignment = new employee.Assignment(22)
     assignment.hours should be(__)
   }
 }
