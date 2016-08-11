@@ -24,7 +24,10 @@ class Koan16Recursion extends KoanFunSuite with Matchers {
 
     def fact(n: Int): Int = {
 
-      /** This implementation is tail recursive. The compiler re-writes this as a loop. */
+      /**
+       * This implementation is tail recursive.
+       * The compiler re-writes this as a loop.
+       */
       @tailrec def tailRecFact(acc: Int, n: Int): Int = {
         if (n <= 1) acc
         else tailRecFact(acc * n, n - 1)

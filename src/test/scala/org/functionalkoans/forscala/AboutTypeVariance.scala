@@ -127,8 +127,8 @@ class AboutTypeVariance extends KoanFunSuite with Matchers {
     //    val tangeloBasket: MyContainer[Tangelo] = new MyContainer[Orange](new Orange()) //Bad!
   }
 
-  // Declaring - indicates contravariance variance.  
-  // Using - you can apply any container with a certain type to a container with a superclass of that type.  
+  // Declaring - indicates contravariance variance.
+  // Using - you can apply any container with a certain type to a container with a superclass of that type.
   // This is reverse to covariant.  In our example, we can set a citrus basket to
   // an orange or tangelo basket. Since an orange or tangelo basket is a citrus basket
 

@@ -10,7 +10,7 @@ class Koan01ValandVars extends KoanFunSuite with Matchers {
     meaningOfLife should be(__)
 
     // You can't reassign a val.
-    // The line below does not compile. Try to uncomment it to see what happens. 
+    // The line below does not compile. Try to uncomment it to see what happens.
     // meaningOfLife = 360
   }
 
@@ -25,7 +25,7 @@ class Koan01ValandVars extends KoanFunSuite with Matchers {
 
   koan("You can't re-define the type of a var.") {
     var what = "Hello world"
-    // The line below does not compile. Try to uncomment it to see what happens. 
+    // The line below does not compile. Try to uncomment it to see what happens.
     // what = 5
   }
 
@@ -33,7 +33,7 @@ class Koan01ValandVars extends KoanFunSuite with Matchers {
     val array = Array(1, 2, 3, 4)
 
     // The reference is immutable, so you can't change what it points to.
-    // The line below does not compile. Try to uncomment it to see what happens. 
+    // The line below does not compile. Try to uncomment it to see what happens.
     //array = Array(5,6,7,8)
 
     array(0) should be(1)
