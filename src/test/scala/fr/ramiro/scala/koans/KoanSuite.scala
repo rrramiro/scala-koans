@@ -1,8 +1,6 @@
-package org.functionalkoans.forscala
+package fr.ramiro.scala.koans
 
 import org.scalatest.{ Args, FailedStatus, Status, Suite }
-import org.scalatest.exceptions.TestPendingException
-import org.scalatest.matchers.Matcher
 
 trait KoanSuite extends Suite with KoanMatchers {
 

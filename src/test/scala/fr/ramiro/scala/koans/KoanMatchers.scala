@@ -1,4 +1,4 @@
-package org.functionalkoans.forscala
+package fr.ramiro.scala.koans
 
 import org.scalatest.exceptions.TestPendingException
 import org.scalatest.matchers.Matcher

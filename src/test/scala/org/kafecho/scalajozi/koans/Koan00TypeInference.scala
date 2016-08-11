@@ -1,6 +1,6 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoanFunSuite
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 class Koan00TypeInference extends KoanFunSuite with Matchers {
