@@ -2,6 +2,7 @@ package org.functionalkoans.forscala
 
 import java.util.Date
 
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 class AboutTuples extends KoanFunSuite with Matchers {

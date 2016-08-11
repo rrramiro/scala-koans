@@ -1,6 +1,6 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoansSuites
+import fr.ramiro.scala.koans.KoansSuites
 
 class Koans extends KoansSuites()(
   new AboutAsserts,

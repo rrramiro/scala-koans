@@ -1,6 +1,6 @@
 package org.kafecho.scalajozi.koans
 
-import org.functionalkoans.forscala.KoansSuites
+import fr.ramiro.scala.koans.KoansSuites
 
 class Koans extends KoansSuites()(
   new Koan00TypeInference,

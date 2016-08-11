@@ -1,7 +1,7 @@
 package org.scalakoans
 
 import com.github.ghik.silencer.silent
-import org.functionalkoans.forscala.KoanFunSuite
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 @silent

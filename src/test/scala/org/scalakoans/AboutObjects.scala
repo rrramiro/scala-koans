@@ -1,6 +1,6 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanFunSuite
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 class AboutObjects extends KoanFunSuite with Matchers {

@@ -3,7 +3,7 @@ package org.scalakoans
 import java.util.Date
 
 import com.github.ghik.silencer.silent
-import org.functionalkoans.forscala.KoanFunSuite
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 @silent

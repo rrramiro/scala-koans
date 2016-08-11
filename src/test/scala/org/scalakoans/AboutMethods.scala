@@ -1,7 +1,8 @@
 package org.scalakoans
 
-import org.functionalkoans.forscala.KoanFunSuite
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
+
 import scala.language.postfixOps
 
 class AboutMethods extends KoanFunSuite with Matchers {

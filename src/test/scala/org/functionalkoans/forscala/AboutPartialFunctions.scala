@@ -1,5 +1,6 @@
 package org.functionalkoans.forscala
 
+import fr.ramiro.scala.koans.KoanFunSuite
 import org.scalatest.Matchers
 
 class AboutPartialFunctions extends KoanFunSuite with Matchers {

@@ -1,4 +1,4 @@
-package org.functionalkoans.forscala
+package fr.ramiro.scala.koans
 
 import org.scalatest.{ FunSuite, Tag }
 
