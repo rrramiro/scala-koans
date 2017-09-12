@@ -71,4 +71,5 @@ abstract class KoansSuites(
       }
     )
   )
+
 }
