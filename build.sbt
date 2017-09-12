@@ -1,8 +1,8 @@
-addCommandAlias("koans", "~test-only org.functionalkoans.forscala.Koans")
+addCommandAlias("koans", "~testOnly org.functionalkoans.forscala.Koans")
 
-addCommandAlias("koans2", "~test-only org.kafecho.scalajozi.koans.Koans")
+addCommandAlias("koans2", "~testOnly org.kafecho.scalajozi.koans.Koans")
 
-addCommandAlias("koans3", "~test-only org.scalakoans.Koans")
+addCommandAlias("koans3", "~testOnly org.scalakoans.Koans")
 
 name := "scala-koans"
 
@@ -36,3 +36,11 @@ javacOptions ++= Seq("-encoding", "UTF-8")
 javaOptions in (Test,run) += "-Xmx512M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m"
 
 addCompilerPlugin("com.github.ghik" % "silencer-plugin" % "0.4")
+
+import scalariform.formatter.preferences._
+
+scalariformPreferences := scalariformPreferences.value
+  .setPreference(AlignSingleLineCaseStatements, true)
+  .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 100)
+  .setPreference(DoubleIndentClassDeclaration, true)
+  .setPreference(DanglingCloseParenthesis, Preserve)

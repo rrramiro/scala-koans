@@ -27,10 +27,10 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     val stuff = "blue"
 
     val myStuff = stuff match {
-      case "red" => (255, 0, 0)
+      case "red"   => (255, 0, 0)
       case "green" => (0, 255, 0)
-      case "blue" => (0, 0, 255)
-      case _ => println(stuff); 0
+      case "blue"  => (0, 0, 255)
+      case _       => println(stuff); 0
     }
 
     myStuff should be(__, __, __)
@@ -43,7 +43,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
       case ("porridge", "Papa") => "Papa eating porridge"
       case ("porridge", "Mama") => "Mama eating porridge"
       case ("porridge", "Baby") => "Baby eating porridge"
-      case _ => "what?"
+      case _                    => "what?"
     }
 
     goldilocks(("porridge", "Mama")) should be(__)
@@ -53,10 +53,10 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
   koan("Pattern matching can wildcard parts of expressions") {
 
     def goldilocks(expr: Any) = expr match {
-      case ("porridge", _) => "eating"
+      case ("porridge", _)   => "eating"
       case ("chair", "Mama") => "sitting"
-      case ("bed", "Baby") => "sleeping"
-      case _ => "what?"
+      case ("bed", "Baby")   => "sleeping"
+      case _                 => "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(__)
@@ -108,10 +108,10 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
     val foodItem = "porridge"
 
     def goldilocks(expr: Any) = expr match {
-      case (`foodItem`, _) => "eating"
+      case (`foodItem`, _)   => "eating"
       case ("chair", "Mama") => "sitting"
-      case ("bed", "Baby") => "sleeping"
-      case _ => "what?"
+      case ("bed", "Baby")   => "sleeping"
+      case _                 => "what?"
     }
 
     goldilocks(("porridge", "Papa")) should be(__)
@@ -125,7 +125,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
 
     def patternEquals(i: Int, j: Int) = j match {
       case `i` => true
-      case _ => false
+      case _   => false
     }
     patternEquals(3, 3) should be(__)
     patternEquals(7, 9) should be(__)
@@ -138,7 +138,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
       | as the rest of the list""") {
     val secondElement = List(1, 2, 3) match {
       case x :: xs => xs.head
-      case _ => 0
+      case _       => 0
     }
 
     secondElement should be(__)
@@ -149,7 +149,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
         | and xs is the rest. """) {
     val secondElement = List(1, 2, 3) match {
       case x :: y :: xs => xs
-      case _ => 0
+      case _            => 0
     }
 
     secondElement should be(__)
@@ -159,7 +159,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
       | of a list with only one item!""") {
     val secondElement = List(1) match {
       case x :: y :: xs => xs
-      case _ => 0
+      case _            => 0
     }
 
     secondElement should be(__)
@@ -170,7 +170,7 @@ class AboutPatternMatching extends KoanFunSuite with Matchers {
 
     val r = List(1, 2, 3) match {
       case x :: y :: Nil => y
-      case _ => 0
+      case _             => 0
     }
 
     r should be(__)

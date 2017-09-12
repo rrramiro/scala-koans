@@ -6,9 +6,9 @@ import System.lineSeparator
 import scala.language.reflectiveCalls
 
 abstract class KoansSuites(
-    columnSize: Int = 50,
-    showFailures: Boolean = false,
-    borderPattern: String = "*",
+  columnSize: Int = 50,
+  showFailures: Boolean = false,
+  borderPattern: String = "*"
 )(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
 
   private type TestEvent = {
@@ -56,10 +56,10 @@ abstract class KoansSuites(
     )
   }
 
-  override def run(testName: Option[String], args: Args): Status = {
-    super.run(
-      testName = testName,
-      args = args.copy(reporter = {
+  override def run(testName: Option[String], args: Args): Status = super.run(
+    testName = testName,
+    args = args.copy(
+      reporter = {
         case e @ (_: TestIgnored | _: TestFailed | _: TestPending) =>
           args.stopper.requestStop()
           args.reporter(meditationMessage(e.asInstanceOf[TestEvent]))
@@ -68,7 +68,7 @@ abstract class KoansSuites(
           }
         case event: Event =>
           args.reporter(event)
-      })
+      }
     )
-  }
+  )
 }

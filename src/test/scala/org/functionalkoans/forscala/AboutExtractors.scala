@@ -15,7 +15,7 @@ class AboutExtractors extends KoanFunSuite with Matchers {
       val rob = new Employee("Robin", "Williams")
       val result = rob match {
         case Employee("Robin", _) => "Where's Batman?"
-        case _ => "No Batman Joke For You"
+        case _                    => "No Batman Joke For You"
       }
 
       result should be(__)
@@ -59,7 +59,7 @@ class AboutExtractors extends KoanFunSuite with Matchers {
 
     val x = new Car("Chevy", "Camaro", 1978, 120) match {
       case ChopShop(s, t, u, v) => (s, t)
-      case _ => ("Ford", "Edsel")
+      case _                    => ("Ford", "Edsel")
     }
 
     x._1 should be(__)
@@ -81,7 +81,7 @@ class AboutExtractors extends KoanFunSuite with Matchers {
 
     val x = new Car("Chevy", "Camaro", 1978, 120) match {
       case ChopShop(s, t, _, _) => (s, t)
-      case _ => ("Ford", "Edsel")
+      case _                    => ("Ford", "Edsel")
     }
 
     x._1 should be(__)
@@ -110,7 +110,7 @@ class AboutExtractors extends KoanFunSuite with Matchers {
 
     val result = new Employee("Kurt", None, "Vonnegut") match {
       case Tokenizer(c, d) => "c: %s, d: %s".format(c, d)
-      case _ => "Not found"
+      case _               => "Not found"
     }
 
     result should be(__)
@@ -120,10 +120,10 @@ class AboutExtractors extends KoanFunSuite with Matchers {
       | classes with an unapply method.""") {
 
     class Car(
-        val make: String,
-        val model: String,
-        val year: Short,
-        val topSpeed: Short
+      val make: String,
+      val model: String,
+      val year: Short,
+      val topSpeed: Short
     ) {
       def unapply(x: Car) = Some(x.make, x.model)
     }
@@ -132,7 +132,7 @@ class AboutExtractors extends KoanFunSuite with Matchers {
 
     val result = camaro match {
       case camaro(make, model) => "make: %s, model: %s".format(make, model)
-      case _ => "unknown"
+      case _                   => "unknown"
     }
 
     result should be(__)

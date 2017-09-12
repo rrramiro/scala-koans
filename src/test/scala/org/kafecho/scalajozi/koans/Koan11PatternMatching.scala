@@ -9,7 +9,7 @@ class Koan11PatternMatching extends KoanFunSuite with Matchers {
     val name: String = "Fred"
 
     val answer = name match {
-      case "Fred" => "Hi Fred"
+      case "Fred"  => "Hi Fred"
       case "Julio" => "Hola Julio"
       case "Paula" => "Ciao Paula"
     }
@@ -23,7 +23,7 @@ class Koan11PatternMatching extends KoanFunSuite with Matchers {
 
     list match {
       case "Hello" :: tail => println("You've said hello")
-      case _ => println("Default statement")
+      case _               => println("Default statement")
     }
   }
 
@@ -33,8 +33,8 @@ class Koan11PatternMatching extends KoanFunSuite with Matchers {
 
     def matchThis(p: Person): String = p match {
       case Person("Guillaume", _) => "Bonjour Guillaume"
-      case Person(_, "Bond") => "Hi 007"
-      case Person(name, _) => s"Hi $name"
+      case Person(_, "Bond")      => "Hi 007"
+      case Person(name, _)        => s"Hi $name"
     }
 
     matchThis(Person("Guillaume", "Belrose")) should be(__)

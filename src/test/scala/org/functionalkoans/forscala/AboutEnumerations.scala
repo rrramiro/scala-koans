@@ -108,10 +108,10 @@ class AboutEnumerations extends KoanFunSuite with Matchers {
       val G = 6.67300E-11
 
       class PlanetValue(
-          val i: Int,
-          val name: String,
-          val mass: Double,
-          val radius: Double
+        val i: Int,
+        val name: String,
+        val mass: Double,
+        val radius: Double
       ) extends Val(i: Int, name: String) {
 
         def surfaceGravity = G * mass / (radius * radius)
