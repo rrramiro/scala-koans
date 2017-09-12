@@ -2,20 +2,21 @@ package fr.ramiro.scala.koans
 
 import org.scalatest.events.{ TestFailed, TestPending, _ }
 import org.scalatest.{ Status, _ }
-
+import System.lineSeparator
 import scala.language.reflectiveCalls
 
 abstract class KoansSuites(
     columnSize: Int = 50,
     showFailures: Boolean = false,
-    bottomBorderPattern: String = "*",
-    topBorderPattern: String = "*"
+    borderPattern: String = "*",
 )(suitesToNest: Suite*) extends Suites(suitesToNest: _*) {
 
   private type TestEvent = {
     val ordinal: Ordinal
     val suiteName: String
+    val suiteId: String
     val testName: String
+    val suiteClassName: Option[String]
   }
 
   private def wordWrap(s: String, maxLength: Int): String = {
@@ -25,57 +26,49 @@ abstract class KoansSuites(
       } else {
         out.updated(out.length - 1, out.last + " " + in)
       }
-    }).mkString("\n").trim
+    }).mkString(lineSeparator()).trim
   }
 
-  private def topBorder = {
-    if (topBorderPattern.nonEmpty) {
-      topBorderPattern * (columnSize / topBorderPattern.length)
-    } else {
-      "*" * columnSize
-    }
-  }
-
-  private def bottomBorder = {
-    if (bottomBorderPattern.nonEmpty) {
-      bottomBorderPattern * (columnSize / bottomBorderPattern.length)
+  private def formatBorder(pattern: String) = {
+    if (pattern.nonEmpty) {
+      pattern * (columnSize / pattern.length)
     } else {
       "*" * columnSize
     }
   }
 
   private def meditationMessage(event: TestEvent) = {
-    InfoProvided(
+    NoteProvided(
       ordinal = event.ordinal,
       message = Seq(
-        topBorder,
+        formatBorder(borderPattern),
         "",
         wordWrap(
-          s"""Please meditate on koan "${event.testName.stripMargin}"
-             | of suite "${event.suiteName}"""".stripMargin,
+          s"""Please meditate on koan "${event.testName.stripMargin}"""",
           columnSize
         ),
         "",
-        bottomBorder
-      ).mkString("\n", "\n", ""),
-      nameInfo = Some(NameInfo("Koans", "koans", None, None))
+        formatBorder(borderPattern)
+      ).mkString(lineSeparator(), lineSeparator(), ""),
+      nameInfo = Some(
+        NameInfo(event.suiteName, event.suiteId, event.suiteClassName, None)
+      )
     )
   }
 
   override def run(testName: Option[String], args: Args): Status = {
-    super.run(testName, args.copy(reporter = new Reporter {
-      def apply(event: Event) {
-        event match {
-          case e @ (_: TestIgnored | _: TestFailed | _: TestPending) =>
-            args.stopper.requestStop()
-            args.reporter(meditationMessage(e.asInstanceOf[TestEvent]))
-            if (showFailures) {
-              args.reporter(event)
-            }
-          case _ =>
-            args.reporter(event)
-        }
-      }
-    }))
+    super.run(
+      testName = testName,
+      args = args.copy(reporter = {
+        case e @ (_: TestIgnored | _: TestFailed | _: TestPending) =>
+          args.stopper.requestStop()
+          args.reporter(meditationMessage(e.asInstanceOf[TestEvent]))
+          if (showFailures) {
+            args.reporter(e)
+          }
+        case event: Event =>
+          args.reporter(event)
+      })
+    )
   }
 }
