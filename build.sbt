@@ -8,7 +8,7 @@ name := "scala-koans"
 
 version := "1.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.2"
 
 traceLevel := -1
 
@@ -28,12 +28,11 @@ offline := true
 
 libraryDependencies ++= Seq(
   "com.github.ghik" % "silencer-lib" % "0.4",
-	"org.scalatest" %% "scalatest" % "2.2.6" % "test" withSources() withJavadoc()
+  "org.scalatest" %% "scalatest" % "3.0.2" % "test" withSources() withJavadoc()
 )
 
 javacOptions ++= Seq("-encoding", "UTF-8")
 
 javaOptions in (Test,run) += "-Xmx512M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m"
-
 
 addCompilerPlugin("com.github.ghik" % "silencer-plugin" % "0.4")
