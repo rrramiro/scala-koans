@@ -16,9 +16,9 @@ class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
   }
 
   class WithClassParameters(
-      val defaultRed: Int,
-      val defaultGreen: Int,
-      val defaultBlue: Int
+    val defaultRed: Int,
+    val defaultGreen: Int,
+    val defaultBlue: Int
   ) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
@@ -30,9 +30,9 @@ class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
   }
 
   class WithClassParametersInClassDefinition(
-      val defaultRed: Int = 0,
-      val defaultGreen: Int = 255,
-      val defaultBlue: Int = 100
+    val defaultRed: Int = 0,
+    val defaultGreen: Int = 255,
+    val defaultBlue: Int = 100
   ) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)

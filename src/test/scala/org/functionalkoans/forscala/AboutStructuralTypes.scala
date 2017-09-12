@@ -64,7 +64,7 @@ class AboutStructuralTypes extends KoanFunSuite with Matchers {
       def speak = "HONK!"
       def move(steps: Int, direction: String) = direction match {
         case "North" => "Nope, not in winter"
-        case _ => s"Ok, moving $steps steps..heading $direction"
+        case _       => s"Ok, moving $steps steps..heading $direction"
       }
     }
 
