@@ -4,7 +4,7 @@ import org.scalatest._
 import org.scalatest.exceptions.TestPendingException
 import org.scalatest.matchers.Matcher
 
-class KoanFunSuite extends FunSuite {
+class KoanFunSuite extends FunSuite with CancelAfterFailure {
   def koan(testName: String, testTags: Tag*)(testFun: => Unit): Unit = {
     test(testName, testTags: _*)(testFun)
   }
