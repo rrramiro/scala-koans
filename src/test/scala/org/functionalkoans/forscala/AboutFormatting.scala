@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 @silent
 class AboutFormatting extends KoanFunSuite with Matchers {
@@ -28,12 +28,12 @@ class AboutFormatting extends KoanFunSuite with Matchers {
          | or hexidecimal""") {
 
     val c = '\u0061' //unicode for a
-    val d = '\141' //octal for a
+    //TODO remove val d = '\141' //octal for a
     val e = '\"'
     val f = '\\'
 
     "%c".format(c) should be(__)
-    "%c".format(d) should be(__)
+    //TODO remove "%c".format(d) should be(__)
     "%c".format(e) should be(__)
     "%c".format(f) should be(__)
   }

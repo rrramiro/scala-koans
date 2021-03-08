@@ -1,7 +1,7 @@
 package org.scalakoans
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class AboutTraits extends KoanFunSuite with Matchers {
 

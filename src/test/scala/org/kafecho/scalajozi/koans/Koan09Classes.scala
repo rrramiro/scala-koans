@@ -1,7 +1,7 @@
 package org.kafecho.scalajozi.koans
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class Koan09Classes extends KoanFunSuite with Matchers {
   koan("A mutable class") {

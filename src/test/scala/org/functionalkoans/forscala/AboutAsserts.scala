@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 // meditate on AboutAsserts to see how the Scala Koans work
 @silent

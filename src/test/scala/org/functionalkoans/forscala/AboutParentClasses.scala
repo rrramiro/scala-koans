@@ -1,7 +1,7 @@
 package org.functionalkoans.forscala
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class AboutParentClasses extends KoanFunSuite with Matchers {
   koan("Class hierarchy is linear, a class can only extend from one parent class") {

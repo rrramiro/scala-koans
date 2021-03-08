@@ -4,7 +4,7 @@ import java.util.Date
 
 import com.github.ghik.silencer.silent
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 @silent
 class AboutTuples extends KoanFunSuite with Matchers {

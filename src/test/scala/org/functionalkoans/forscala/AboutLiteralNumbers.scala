@@ -1,7 +1,7 @@
 package org.functionalkoans.forscala
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class AboutLiteralNumbers extends KoanFunSuite with Matchers {
   koan("""Integer Literals are 32-bit and can be created

@@ -1,7 +1,7 @@
 package org.functionalkoans.forscala
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 case class Board(length: Int, height: Int) {
   case class Coordinate(x: Int, y: Int) {

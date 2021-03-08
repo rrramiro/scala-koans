@@ -19,3 +19,8 @@ project/plugins/project/
 
 .sbtserver
 .sbtserver.lock
+.vscode
+.bsp
+.metals
+.bloop
+metals.sbt
