@@ -2,7 +2,7 @@ package org.functionalkoans.forscala
 
 import com.github.ghik.silencer.silent
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 @silent
 class AboutLiteralStrings extends KoanFunSuite with Matchers {
@@ -21,11 +21,13 @@ class AboutLiteralStrings extends KoanFunSuite with Matchers {
     c.toString should be(__)
   }
 
+  /* TODO remove
   koan("Character Literals can use octal as well") {
     val d = '\141' //octal for a
 
     d.toString should be(__)
   }
+  */
 
   koan("Character Literals can use escape sequences") {
     val e = '\"'
@@ -40,10 +42,12 @@ class AboutLiteralStrings extends KoanFunSuite with Matchers {
     a should be(__)
   }
 
+  /* TODO remove
   koan("String Literals can contain escape sequences.") {
     val a = "An \141pple \141 d\141y keeps the doctor \141w\141y"
     a should be(__)
   }
+  */
 
   koan("""Multiline String literals are surrounded by three quotation marks""") {
     val a = """An apple a day

@@ -2,7 +2,7 @@ package org.scalakoans
 
 import com.github.ghik.silencer.silent
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 @silent
 class AboutClasses extends KoanFunSuite with Matchers {

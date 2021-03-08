@@ -1,7 +1,7 @@
 package org.functionalkoans.forscala
 
 import fr.ramiro.scala.koans.KoanFunSuite
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 class AboutIterables extends KoanFunSuite with Matchers {
   koan("""Iterable is a trait that has the ability to return an iterator
@@ -12,7 +12,7 @@ class AboutIterables extends KoanFunSuite with Matchers {
     val list = List(3, 5, 9, 11, 15, 19, 21)
     val it = list.iterator
     if (it.hasNext) {
-      it.next should be(__)
+      it.next() should be(__)
     }
   }
 
@@ -96,6 +96,6 @@ class AboutIterables extends KoanFunSuite with Matchers {
 
       val xs1 = Set(3, 2, 1, 4, 5, 6, 7)
       val ys1 = Set(7, 2, 1, 4, 5, 6, 3)
-      (xs1 sameElements ys1) should be(__)
+      (xs1.iterator.sameElements(ys1)) should be(__)
     }
 }
